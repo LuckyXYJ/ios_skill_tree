@@ -46,9 +46,33 @@ struct Person_IMPL {
 	int _age;
 	int _height;
 };
+
+// Student
+@interface Student : Person
+{
+    int _no;
+//    int _sex;
+}
+@end
 ```
 
 ### 一个Person对象、一个Student对象占用多少内存空间？
+
+Person 8+4+4
+
+Student 16+4 = 20。内存对齐后占用2
+
+```
+// 创建一个实例对象，至少需要多少内存？
+#import <objc/runtime.h>
+class_getInstanceSize([NSObject class]);
+
+// 创建一个实例对象，实际上分配了多少内存？
+#import <malloc/malloc.h>
+malloc_size((__bridge const void *)obj);
+```
+
+
 
 #### 内存对齐
 
@@ -72,7 +96,7 @@ struct Person_IMPL {
 
 Debug -> Debug Workfllow -> View Memory （Shift + Command + M）
 
-### OC对象的分类
+## OC对象的分类
 
 Objective-C中的对象，简称OC对象，主要可以分为3种
 
@@ -80,3 +104,83 @@ Objective-C中的对象，简称OC对象，主要可以分为3种
 - class对象（类对象）
 - meta-class对象（元类对象） 
 
+### instance对象
+
+![image-20220531175925368](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220531175925368.png)
+
+object1、object2是NSObject的instance对象（实例对象）
+
+它们是不同的两个对象，分别占据着两块不同的内存
+
+instance对象就是通过类alloc出来的对象，每次调用alloc都会产生新的instance对象
+
+instance对象在内存中存储的信息包括
+
+- isa指针
+- 其他成员变量
+
+### class对象
+
+![image-20220531175849847](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220531175849847.png)
+
+nobjectClass1 ~ objectClass5都是NSObject的class对象（类对象）
+
+每个类在内存中有且只有一个class对象
+
+class对象在内存中存储的信息主要包括
+
+- isa指针
+- superclass指针
+- 类的属性信息（@property）、
+- 类的对象方法信息（instance method）
+- 类的协议信息（protocol）、
+- 类的成员变量信息（ivar）
+
+### meta-class对象
+
+![image-20220531180004913](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220531180004913.png)
+
+objectMetaClass是NSObject的meta-class对象（元类对象）
+
+每个类在内存中有且只有一个meta-class对象
+
+meta-class对象和class对象的内存结构是一样的，但是用途不一样，在内存中存储的信息主要包括
+
+- isa指针
+- superclass指针
+- 类的类方法信息（class method）
+- ......
+
+注意：以下代码获取的objectClass是class对象，并不是meta-class对象
+
+```
+Class objClass = [[NSObject class] class];
+```
+
+查看Class是否为meta-class
+
+```
+BOOL result = class_isMetaClass([NSObject class]);
+```
+
+## 对象内指针
+
+![image-20220531220610504](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220531220610504.png)
+
+### isa指针
+
+instance的isa指向class
+
+当调用对象方法时，通过instance的isa找到class，最后找到对象方法的实现进行调用
+
+class的isa指向meta-class
+
+当调用类方法时，通过class的isa找到meta-class，最后找到类方法的实现进行调用
+
+从64bit开始，isa需要进行一次位运算，才能计算出真实地址
+
+### class对象的superclass指针
+
+当Student的instance对象要调用Person的对象方法时，会先通过isa找到Student的class，然后通过superclass找到Person的class，最后找到对象方法的实现进行调用
+
+当Student的class要调用Person的类方法时，会先通过isa找到Student的meta-class，然后通过superclass找到Person的meta-class，最后找到类方法的实现进行调用
