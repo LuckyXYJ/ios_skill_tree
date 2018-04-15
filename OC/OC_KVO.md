@@ -97,5 +97,13 @@ for (NSString *keyPath in AFHTTPRequestSerializerObservedKeyPaths()) {
 
 - didChangeValueForKey:内部会调用observer的observeValueForKeyPath:ofObject:change:context:方法
 
+## KVO存在问题
 
+1、必须成对出现
+
+2、重复添加，重复几次，执行几次响应
+
+3、重复移除，移除超过添加次数后，**NSRangeException**报错。
+
+**在移除观察的时候NSKVONotifying_XXX 是否移除? + isa 是否会回来?**  答：不会
 
