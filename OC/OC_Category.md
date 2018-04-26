@@ -37,3 +37,82 @@
 - 如果分类实现了+initialize，就覆盖类本身的+initialize调用
 
 +load方法是根据方法地址直接调用，并不是经过objc_msgSend函数调用
+
+## 添加成员变量
+
+默认情况下，因为分类底层结构的限制，不能添加成员变量到分类中。但可以通过关联对象来间接实现
+
+关联对象提供了以下API：
+
+**添加关联对象**
+
+```
+void objc_setAssociatedObject(id object, const void * key, id value, objc_AssociationPolicy policy)
+```
+
+| **objc_AssociationPolicy**        | **对应的修饰符**  |
+| --------------------------------- | ----------------- |
+| OBJC_ASSOCIATION_ASSIGN           | assign            |
+| OBJC_ASSOCIATION_RETAIN_NONATOMIC | strong, nonatomic |
+| OBJC_ASSOCIATION_COPY_NONATOMIC   | copy, nonatomic   |
+| OBJC_ASSOCIATION_RETAIN           | strong, atomic    |
+| OBJC_ASSOCIATION_COPY             | copy, atomic      |
+
+**获得关联对象**
+
+```
+id objc_getAssociatedObject(id object, const void * key)
+```
+
+**移除所有的关联对象**
+
+```
+void objc_removeAssociatedObjects(id object)
+```
+
+### 关联对象key
+
+```objective-c
+static void *MyKey = &MyKey;
+
+objc_setAssociatedObject(obj, MyKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+objc_getAssociatedObject(obj, MyKey)
+
+
+static char MyKey;
+
+objc_setAssociatedObject(obj, &MyKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+objc_getAssociatedObject(obj, &MyKey)
+
+
+使用属性名作为key
+
+objc_setAssociatedObject(obj, @"property", value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+objc_getAssociatedObject(obj, @"property");
+
+
+使用get方法的@selecor作为key
+
+objc_setAssociatedObject(obj, @selector(getter), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+objc_getAssociatedObject(obj, @selector(getter))
+```
+
+## 关联对象原理
+
+实现关联对象技术的核心对象有
+
+- AssociationsManager
+- AssociationsHashMap
+- ObjectAssociationMap
+- ObjcAssociation
+
+![image-20220601193652103](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601193652103.png)
+
+关联对象并不是存储在被关联对象本身内存中
+
+关联对象存储在全局的统一的一个AssociationsManager中
+
+设置关联对象为nil，就相当于是移除关联对象
+
+![image-20220601193831823](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601193831823.png)
+
