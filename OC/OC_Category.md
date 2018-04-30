@@ -116,3 +116,15 @@ objc_getAssociatedObject(obj, @selector(getter))
 
 ![image-20220601193831823](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601193831823.png)
 
+## 分类与扩展
+
+分类 category:
+    1、专门给类添加新的方法
+    2、不能添加成员属性，添加了成员变量，也无法取到
+    3、可以通过runtime给分类添加属性
+    4、分类中用@property定义变量，只会生成变量的getter,setter方法的声明，不能生成方法实现和带下划线的成员变量
+
+扩展 extension:
+    1、是特殊的分类，也叫做匿名分类
+    2、可以给类添加成员属性，但是是私有变量
+    3、可以给类添加方法，也是私有方法
