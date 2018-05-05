@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DE1413F20A33CBE009823F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE1413E20A33CBE009823F3 /* main.m */; };
+		30E439E228488ECC001F7DEF /* XZPersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E439E128488ECC001F7DEF /* XZPersion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,8 @@
 		2DE1413B20A33CBE009823F3 /* OC_Block */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OC_Block; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE1413E20A33CBE009823F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DE1414520A33DD9009823F3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		30E439E028488ECC001F7DEF /* XZPersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XZPersion.h; sourceTree = "<group>"; };
+		30E439E128488ECC001F7DEF /* XZPersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZPersion.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				2DE1414520A33DD9009823F3 /* main.cpp */,
 				2DE1413E20A33CBE009823F3 /* main.m */,
+				30E439E028488ECC001F7DEF /* XZPersion.h */,
+				30E439E128488ECC001F7DEF /* XZPersion.m */,
 			);
 			path = OC_Block;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E439E228488ECC001F7DEF /* XZPersion.m in Sources */,
 				2DE1413F20A33CBE009823F3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
