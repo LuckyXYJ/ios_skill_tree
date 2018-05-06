@@ -184,3 +184,13 @@ _Block_object_dispose((void*)src->p, 3/*BLOCK_FIELD_IS_OBJECT*/);
 ## 解决循环引用问题 - MRC
 
 ![image-20220601230407473](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601230407473.png)
+
+## \__weak, __strong作用
+
+__weak typeof(self) wself = self;
+
+__strong typeof(self) sself = wself;
+
+__weak弱引用指针，避免循环引用
+
+__strong避免在使用过程中，对象被销毁
