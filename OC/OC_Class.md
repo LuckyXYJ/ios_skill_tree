@@ -1,10 +1,38 @@
 ## objc_class的结构
 
-![image-20220601103622311](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601103622311.png)
-
 objc_class 继承与 objc_object
 
 所有对象都是以objc_object为模板继承过来的
+
+![image-20220601103622311](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601103622311.png)
+
+### class_rw_t
+
+class_rw_t里面的methods、properties、protocols是二维数组，是可读可写的，包含了类的初始内容、分类的内容
+
+![image-20220605102634735](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220605102634735.png)
+
+### class_ro_t
+
+class_ro_t里面的baseMethodList、baseProtocols、ivars、baseProperties是一维数组，是只读的，包含了类的初始内容
+
+![image-20220605102834487](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220605102834487.png)
+
+### method_t是对方法\函数的封装
+
+![image-20220605102938675](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220605102938675.png)
+
+**IMP**代表函数的具体实现
+
+![image-20220605103206801](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220605103206801.png)
+
+**SEL**代表方法\函数名，一般叫做选择器，底层结构跟char *类似。可以通过@selector()和sel_registerName()获得；可以通过sel_getName()和NSStringFromSelector()转成字符串；不同类中相同名字的方法，所对应的方法选择器是相同的
+
+![image-20220605103214960](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220605103214960.png)
+
+**types**包含了函数返回值、参数编码的字符串
+
+![image-20220605103236384](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220605103236384.png)
 
 ## isKindOfClass 和 isMemberOfClass
 
