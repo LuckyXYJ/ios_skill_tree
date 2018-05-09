@@ -71,3 +71,29 @@ objc_msgSend的执行流程可以分为3大阶段
 - 消息发送
 - 动态方法解析
 - 消息转发
+
+## 消息发送
+
+![image-20220605123625460](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220605123625460.png)
+
+如果是从class_rw_t中查找方法
+
+- 已经排序的，二分查找
+- 没有排序的，遍历查找
+
+receiver通过**isa指针**找到receiverClass
+
+receiverClass通过**superclass指针**找到superClass
+
+## 动态方法解析
+
+![image-20220605123907793](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220605123907793.png)
+
+开发者可以实现以下方法，来动态添加方法实现
+
+- +resolveInstanceMethod:
+- +resolveClassMethod:
+
+动态解析过后，会重新走“消息发送”的流程
+
+“从receiverClass的cache中查找方法”这一步开始执行
