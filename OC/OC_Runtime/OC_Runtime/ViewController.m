@@ -25,8 +25,21 @@
     NSLog(@"%p", object_getClass([XZPerson class]));
     
     
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(20, 100, 100, 40);
+    [btn addTarget:self action:@selector(clickbutton) forControlEvents:UIControlEventTouchUpInside];
+    btn.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:btn];
+    
 }
 
+- (void)clickbutton {
+    
+    XZPerson *persion = [[XZPerson alloc]init];
+    
+    NSLog(@"%d", persion.isHandsome);
+    NSLog(@"%d", persion.isRich);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

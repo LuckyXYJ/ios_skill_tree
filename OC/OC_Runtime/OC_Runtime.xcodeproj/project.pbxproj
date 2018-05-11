@@ -14,6 +14,8 @@
 		2D170B1520ADCAFC008E03BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D170B1320ADCAFC008E03BF /* LaunchScreen.storyboard */; };
 		2D170B1820ADCAFC008E03BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D170B1720ADCAFC008E03BF /* main.m */; };
 		2DF93D7520ADCBC5001D659D /* XZPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF93D7420ADCBC5001D659D /* XZPerson.m */; };
+		30B741F6284DE04D000DE915 /* XZPerson_struct.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B741F5284DE04D000DE915 /* XZPerson_struct.m */; };
+		30B741F9284DE12C000DE915 /* XZPersion_union.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B741F8284DE12C000DE915 /* XZPersion_union.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		2D170B1720ADCAFC008E03BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DF93D7320ADCBC5001D659D /* XZPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XZPerson.h; sourceTree = "<group>"; };
 		2DF93D7420ADCBC5001D659D /* XZPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZPerson.m; sourceTree = "<group>"; };
+		30B741F4284DE04D000DE915 /* XZPerson_struct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XZPerson_struct.h; sourceTree = "<group>"; };
+		30B741F5284DE04D000DE915 /* XZPerson_struct.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZPerson_struct.m; sourceTree = "<group>"; };
+		30B741F7284DE12C000DE915 /* XZPersion_union.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XZPersion_union.h; sourceTree = "<group>"; };
+		30B741F8284DE12C000DE915 /* XZPersion_union.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZPersion_union.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,10 @@
 				2D170B1720ADCAFC008E03BF /* main.m */,
 				2DF93D7320ADCBC5001D659D /* XZPerson.h */,
 				2DF93D7420ADCBC5001D659D /* XZPerson.m */,
+				30B741F4284DE04D000DE915 /* XZPerson_struct.h */,
+				30B741F5284DE04D000DE915 /* XZPerson_struct.m */,
+				30B741F7284DE12C000DE915 /* XZPersion_union.h */,
+				30B741F8284DE12C000DE915 /* XZPersion_union.m */,
 			);
 			path = OC_Runtime;
 			sourceTree = "<group>";
@@ -147,9 +157,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B741F6284DE04D000DE915 /* XZPerson_struct.m in Sources */,
 				2D170B0D20ADCAFC008E03BF /* ViewController.m in Sources */,
 				2D170B1820ADCAFC008E03BF /* main.m in Sources */,
 				2D170B0A20ADCAFC008E03BF /* AppDelegate.m in Sources */,
+				30B741F9284DE12C000DE915 /* XZPersion_union.m in Sources */,
 				2DF93D7520ADCBC5001D659D /* XZPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
