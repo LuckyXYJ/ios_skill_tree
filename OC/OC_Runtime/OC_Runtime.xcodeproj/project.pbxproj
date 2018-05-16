@@ -17,6 +17,8 @@
 		30B741F6284DE04D000DE915 /* XZPerson_struct.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B741F5284DE04D000DE915 /* XZPerson_struct.m */; };
 		30B741F9284DE12C000DE915 /* XZPersion_union.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B741F8284DE12C000DE915 /* XZPersion_union.m */; };
 		30B741FE284E0176000DE915 /* ResolveMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B741FD284E0176000DE915 /* ResolveMethod.m */; };
+		30B74201284E2669000DE915 /* ForwardMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74200284E2669000DE915 /* ForwardMethod.m */; };
+		30B74204284E274E000DE915 /* ReceiveMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74203284E274E000DE915 /* ReceiveMethod.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,10 @@
 		30B741FB284DF1DF000DE915 /* XZClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZClassInfo.h; sourceTree = "<group>"; };
 		30B741FC284E0176000DE915 /* ResolveMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResolveMethod.h; sourceTree = "<group>"; };
 		30B741FD284E0176000DE915 /* ResolveMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResolveMethod.m; sourceTree = "<group>"; };
+		30B741FF284E2669000DE915 /* ForwardMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForwardMethod.h; sourceTree = "<group>"; };
+		30B74200284E2669000DE915 /* ForwardMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForwardMethod.m; sourceTree = "<group>"; };
+		30B74202284E274E000DE915 /* ReceiveMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiveMethod.h; sourceTree = "<group>"; };
+		30B74203284E274E000DE915 /* ReceiveMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiveMethod.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,10 @@
 				30B741F8284DE12C000DE915 /* XZPersion_union.m */,
 				30B741FC284E0176000DE915 /* ResolveMethod.h */,
 				30B741FD284E0176000DE915 /* ResolveMethod.m */,
+				30B741FF284E2669000DE915 /* ForwardMethod.h */,
+				30B74200284E2669000DE915 /* ForwardMethod.m */,
+				30B74202284E274E000DE915 /* ReceiveMethod.h */,
+				30B74203284E274E000DE915 /* ReceiveMethod.m */,
 			);
 			path = OC_Runtime;
 			sourceTree = "<group>";
@@ -164,9 +174,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B74201284E2669000DE915 /* ForwardMethod.m in Sources */,
 				30B741F6284DE04D000DE915 /* XZPerson_struct.m in Sources */,
 				2D170B0D20ADCAFC008E03BF /* ViewController.m in Sources */,
 				2D170B1820ADCAFC008E03BF /* main.mm in Sources */,
+				30B74204284E274E000DE915 /* ReceiveMethod.m in Sources */,
 				2D170B0A20ADCAFC008E03BF /* AppDelegate.m in Sources */,
 				30B741FE284E0176000DE915 /* ResolveMethod.m in Sources */,
 				30B741F9284DE12C000DE915 /* XZPersion_union.m in Sources */,

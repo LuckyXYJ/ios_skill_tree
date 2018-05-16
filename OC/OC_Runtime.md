@@ -96,4 +96,231 @@ receiverClass通过**superclass指针**找到superClass
 
 动态解析过后，会重新走“消息发送”的流程
 
-“从receiverClass的cache中查找方法”这一步开始执行
+- “从receiverClass的cache中查找方法”这一步开始执行
+
+```objective-c
+void c_other(id self, SEL _cmd) {
+    NSLog(@"c_other - %@ - %@", self, NSStringFromSelector(_cmd));
+}
+
+- (void)other {
+    NSLog(@"other - %s", __func__);
+}
+
++ (BOOL)resolveClassMethod:(SEL)sel
+{
+    if (sel == @selector(test)) {
+        // 第一个参数是object_getClass(self)
+        class_addMethod(object_getClass(self), sel, (IMP)c_other, "v16@0:8");
+        
+        return YES;
+    }
+    return [super resolveClassMethod:sel];
+}
+
++ (BOOL)resolveInstanceMethod:(SEL)sel
+{
+    if (sel == @selector(test)) {
+        // 动态添加test方法的实现
+//        class_addMethod(self, sel, (IMP)c_other, "v16@0:8");
+        
+        // 获取其他方法
+        Method method = class_getInstanceMethod(self, @selector(other));
+        // 动态添加test方法的实现
+        class_addMethod(self, sel,
+                        method_getImplementation(method),
+                        method_getTypeEncoding(method));
+  
+        // 返回YES代表有动态添加方法
+        return YES;
+    }
+    return [super resolveInstanceMethod:sel];
+}
+
+```
+
+## 消息转发
+
+![image-20220606195521004](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220606195521004.png)
+
+开发者可以在forwardInvocation:方法中自定义任何逻辑
+
+以上方法都有对象方法、类方法2个版本（前面可以是加号+，也可以是减号-）
+
+**NSMethodSignature**获取：
+
+```objective-c
+NSMethodSignature *signature = [NSMethodSignature signatureWithObjCTypes:"v16@0:8"];
+NSMethodSignature *signature = [[[ReceiveMethod alloc] init] methodSignatureForSelector:@selector(test)];
+```
+
+消息转发实现代码：
+
+```objective-c
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if (aSelector == @selector(test)) {
+        return [[ReceiveMethod alloc] init];
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
+
+// 方法签名：返回值类型、参数类型
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    if (aSelector == @selector(test1)) {
+        return [NSMethodSignature signatureWithObjCTypes:"v16@0:8"];
+    }
+    return [super methodSignatureForSelector:aSelector];
+}
+
+//// NSInvocation封装了一个方法调用，包括：方法调用者、方法名、方法参数
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    NSLog(@"%@", anInvocation);
+    NSLog(@"%s", anInvocation.selector);
+    NSLog(@"%@", anInvocation.target);
+}
+```
+
+## @dynamic
+
+提醒编译器不要自动生成setter和getter的实现、不要自动生成成员变量
+
+## super的本质
+
+super调用，底层会转换为objc_msgSendSuper2函数的调用，接收2个参数
+
+- struct objc_super2
+- SEL
+
+![image-20220606205831713](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220606205831713.png)
+
+- receiver是消息接收者
+- current_class是receiver的Class对象
+
+## runtime应用
+
+- 查看私有成员变量
+  - 设置UITextField占位文字的颜色
+- 字典转模型
+  - 利用Runtime遍历所有的属性或者成员变量
+  - 利用KVC设值
+- 替换方法实现
+  - class_replaceMethod
+  - method_exchangeImplementations
+
+## Runtime API
+
+类相关
+
+```objective-c
+// 动态创建一个类（参数：父类，类名，额外的内存空间）
+Class objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes)
+
+// 注册一个类（要在类注册之前添加成员变量）
+void objc_registerClassPair(Class cls) 
+
+// 销毁一个类
+void objc_disposeClassPair(Class cls)
+
+// 获取isa指向的Class
+Class object_getClass(id obj)
+
+// 设置isa指向的Class
+Class object_setClass(id obj, Class cls)
+
+// 判断一个OC对象是否为Class
+BOOL object_isClass(id obj)
+
+// 判断一个Class是否为元类
+BOOL class_isMetaClass(Class cls)
+
+// 获取父类
+Class class_getSuperclass(Class cls)
+```
+
+成员变量 
+
+```objective-c
+// 获取一个实例变量信息
+Ivar class_getInstanceVariable(Class cls, const char *name)
+
+// 拷贝实例变量列表（最后需要调用free释放）
+Ivar *class_copyIvarList(Class cls, unsigned int *outCount)
+
+// 设置和获取成员变量的值
+void object_setIvar(id obj, Ivar ivar, id value)
+id object_getIvar(id obj, Ivar ivar)
+
+// 动态添加成员变量（已经注册的类是不能动态添加成员变量的）
+BOOL class_addIvar(Class cls, const char * name, size_t size, uint8_t alignment, const char * types)
+
+// 获取成员变量的相关信息
+const char *ivar_getName(Ivar v)
+const char *ivar_getTypeEncoding(Ivar v)
+
+```
+
+属性
+
+```objective-c
+// 获取一个属性
+objc_property_t class_getProperty(Class cls, const char *name)
+
+// 拷贝属性列表（最后需要调用free释放）
+objc_property_t *class_copyPropertyList(Class cls, unsigned int *outCount)
+
+// 动态添加属性
+BOOL class_addProperty(Class cls, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount)
+
+// 动态替换属性
+void class_replaceProperty(Class cls, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount)
+
+// 获取属性的一些信息
+const char *property_getName(objc_property_t property)
+const char *property_getAttributes(objc_property_t property)
+
+```
+
+方法
+
+```objective-c
+// 获得一个实例方法、类方法
+Method class_getInstanceMethod(Class cls, SEL name)
+Method class_getClassMethod(Class cls, SEL name)
+
+// 方法实现相关操作
+IMP class_getMethodImplementation(Class cls, SEL name) 
+IMP method_setImplementation(Method m, IMP imp)
+void method_exchangeImplementations(Method m1, Method m2) 
+
+// 拷贝方法列表（最后需要调用free释放）
+Method *class_copyMethodList(Class cls, unsigned int *outCount)
+
+// 动态添加方法
+BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types)
+
+// 动态替换方法
+IMP class_replaceMethod(Class cls, SEL name, IMP imp, const char *types)
+
+// 获取方法的相关信息（带有copy的需要调用free去释放）
+SEL method_getName(Method m)
+IMP method_getImplementation(Method m)
+const char *method_getTypeEncoding(Method m)
+unsigned int method_getNumberOfArguments(Method m)
+char *method_copyReturnType(Method m)
+char *method_copyArgumentType(Method m, unsigned int index)
+  
+// 选择器相关
+const char *sel_getName(SEL sel)
+SEL sel_registerName(const char *str)
+
+// 用block作为方法实现
+IMP imp_implementationWithBlock(id block)
+id imp_getBlock(IMP anImp)
+BOOL imp_removeBlock(IMP anImp)
+
+```
+
+
+
+
+
