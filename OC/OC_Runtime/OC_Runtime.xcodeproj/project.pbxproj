@@ -19,6 +19,7 @@
 		30B741FE284E0176000DE915 /* ResolveMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B741FD284E0176000DE915 /* ResolveMethod.m */; };
 		30B74201284E2669000DE915 /* ForwardMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74200284E2669000DE915 /* ForwardMethod.m */; };
 		30B74204284E274E000DE915 /* ReceiveMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74203284E274E000DE915 /* ReceiveMethod.m */; };
+		30B7420D284F2401000DE915 /* UnKnowMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B7420C284F2401000DE915 /* UnKnowMethod.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		30B74200284E2669000DE915 /* ForwardMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForwardMethod.m; sourceTree = "<group>"; };
 		30B74202284E274E000DE915 /* ReceiveMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiveMethod.h; sourceTree = "<group>"; };
 		30B74203284E274E000DE915 /* ReceiveMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiveMethod.m; sourceTree = "<group>"; };
+		30B7420B284F2401000DE915 /* UnKnowMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnKnowMethod.h; sourceTree = "<group>"; };
+		30B7420C284F2401000DE915 /* UnKnowMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnKnowMethod.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,8 @@
 				30B74200284E2669000DE915 /* ForwardMethod.m */,
 				30B74202284E274E000DE915 /* ReceiveMethod.h */,
 				30B74203284E274E000DE915 /* ReceiveMethod.m */,
+				30B7420B284F2401000DE915 /* UnKnowMethod.h */,
+				30B7420C284F2401000DE915 /* UnKnowMethod.m */,
 			);
 			path = OC_Runtime;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				2D170B0A20ADCAFC008E03BF /* AppDelegate.m in Sources */,
 				30B741FE284E0176000DE915 /* ResolveMethod.m in Sources */,
 				30B741F9284DE12C000DE915 /* XZPersion_union.m in Sources */,
+				30B7420D284F2401000DE915 /* UnKnowMethod.m in Sources */,
 				2DF93D7520ADCBC5001D659D /* XZPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

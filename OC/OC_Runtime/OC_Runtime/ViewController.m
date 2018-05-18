@@ -11,6 +11,7 @@
 #import "XZPerson.h"
 #import "ResolveMethod.h"
 #import "ForwardMethod.h"
+#import "UnKnowMethod.h"
 
 @interface ViewController ()
 
@@ -87,13 +88,11 @@
 // 消息转发
 - (void)clickbutton3 {
     
-    ForwardMethod *persion = [[ForwardMethod alloc]init];
+    UnKnowMethod *persion = [[UnKnowMethod alloc]init];
     
+    [persion run];
     [persion test];
-    [persion test1];
-//    [persion unknowSelector];
-//    [ResolveMethod test];
-    [persion knowSelectot];
+    [persion other];
 }
 
 - (void)didReceiveMemoryWarning {
