@@ -20,6 +20,7 @@
 		30B74201284E2669000DE915 /* ForwardMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74200284E2669000DE915 /* ForwardMethod.m */; };
 		30B74204284E274E000DE915 /* ReceiveMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74203284E274E000DE915 /* ReceiveMethod.m */; };
 		30B7420D284F2401000DE915 /* UnKnowMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B7420C284F2401000DE915 /* UnKnowMethod.m */; };
+		30B74210284F24CC000DE915 /* NSObject+Method.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B7420F284F24CC000DE915 /* NSObject+Method.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		30B74203284E274E000DE915 /* ReceiveMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiveMethod.m; sourceTree = "<group>"; };
 		30B7420B284F2401000DE915 /* UnKnowMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnKnowMethod.h; sourceTree = "<group>"; };
 		30B7420C284F2401000DE915 /* UnKnowMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnKnowMethod.m; sourceTree = "<group>"; };
+		30B7420E284F24CC000DE915 /* NSObject+Method.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Method.h"; sourceTree = "<group>"; };
+		30B7420F284F24CC000DE915 /* NSObject+Method.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Method.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				30B74203284E274E000DE915 /* ReceiveMethod.m */,
 				30B7420B284F2401000DE915 /* UnKnowMethod.h */,
 				30B7420C284F2401000DE915 /* UnKnowMethod.m */,
+				30B7420E284F24CC000DE915 /* NSObject+Method.h */,
+				30B7420F284F24CC000DE915 /* NSObject+Method.m */,
 			);
 			path = OC_Runtime;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				30B741F6284DE04D000DE915 /* XZPerson_struct.m in Sources */,
 				2D170B0D20ADCAFC008E03BF /* ViewController.m in Sources */,
 				2D170B1820ADCAFC008E03BF /* main.mm in Sources */,
+				30B74210284F24CC000DE915 /* NSObject+Method.m in Sources */,
 				30B74204284E274E000DE915 /* ReceiveMethod.m in Sources */,
 				2D170B0A20ADCAFC008E03BF /* AppDelegate.m in Sources */,
 				30B741FE284E0176000DE915 /* ResolveMethod.m in Sources */,
