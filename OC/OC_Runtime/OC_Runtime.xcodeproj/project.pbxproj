@@ -51,6 +51,8 @@
 		30B7420C284F2401000DE915 /* UnKnowMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnKnowMethod.m; sourceTree = "<group>"; };
 		30B7420E284F24CC000DE915 /* NSObject+Method.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Method.h"; sourceTree = "<group>"; };
 		30B7420F284F24CC000DE915 /* NSObject+Method.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Method.m"; sourceTree = "<group>"; };
+		30B74211284F2C97000DE915 /* __forwarding__.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = __forwarding__.c; sourceTree = "<group>"; };
+		30B74212284F2C97000DE915 /* __forwarding__clean.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = __forwarding__clean.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,8 @@
 		2D170B0720ADCAFC008E03BF /* OC_Runtime */ = {
 			isa = PBXGroup;
 			children = (
+				30B74211284F2C97000DE915 /* __forwarding__.c */,
+				30B74212284F2C97000DE915 /* __forwarding__clean.c */,
 				30B741FB284DF1DF000DE915 /* XZClassInfo.h */,
 				2D170B0820ADCAFC008E03BF /* AppDelegate.h */,
 				2D170B0920ADCAFC008E03BF /* AppDelegate.m */,
