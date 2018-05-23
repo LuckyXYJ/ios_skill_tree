@@ -115,6 +115,34 @@ int main(int argc, const char * argv[]) {
         class_rw_t *personMetaClassData = personClass->metaClass()->data();
 
         NSLog(@"1111");
+        
+        
+        NSLog(@"%d", [[NSObject class] isKindOfClass:[NSObject class]]);
+        NSLog(@"%d", [[NSObject class] isMemberOfClass:[NSObject class]]);
+        NSLog(@"%d", [[MJPerson class] isKindOfClass:[MJPerson class]]);
+        NSLog(@"%d", [[MJPerson class] isMemberOfClass:[MJPerson class]]);
+        
+        
+        // 这句代码的方法调用者不管是哪个类（只要是NSObject体系下的），都返回YES
+        NSLog(@"%d", [NSObject isKindOfClass:[NSObject class]]); // 1
+        NSLog(@"%d", [NSObject isMemberOfClass:[NSObject class]]); // 0
+        NSLog(@"%d", [MJPerson isKindOfClass:[MJPerson class]]); // 0
+        NSLog(@"%d", [MJPerson isMemberOfClass:[MJPerson class]]); // 0
+        
+        
+        id person = [[MJPerson alloc] init];
+        
+        NSLog(@"%d", [person isMemberOfClass:[MJPerson class]]);
+        NSLog(@"%d", [person isMemberOfClass:[NSObject class]]);
+        
+        NSLog(@"%d", [person isKindOfClass:[MJPerson class]]);
+        NSLog(@"%d", [person isKindOfClass:[NSObject class]]);
+        
+        
+        NSLog(@"%d", [MJPerson isMemberOfClass:object_getClass([MJPerson class])]);
+        NSLog(@"%d", [MJPerson isKindOfClass:object_getClass([NSObject class])]);
+        
+        NSLog(@"%d", [MJPerson isKindOfClass:[NSObject class]]);
     }
     return 0;
 }

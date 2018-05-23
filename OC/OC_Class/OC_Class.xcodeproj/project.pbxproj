@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1163EF2D207233450030C79E /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1163EF2C207233450030C79E /* main.mm */; };
+		30B74215284F2EE0000DE915 /* XZPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74214284F2EE0000DE915 /* XZPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		1163EF29207233450030C79E /* OC_Class */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OC_Class; sourceTree = BUILT_PRODUCTS_DIR; };
 		1163EF2C207233450030C79E /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		30B74213284F2EE0000DE915 /* XZPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XZPerson.h; sourceTree = "<group>"; };
+		30B74214284F2EE0000DE915 /* XZPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZPerson.m; sourceTree = "<group>"; };
 		30E439DC28472ED6001F7DEF /* MJClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJClassInfo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +63,8 @@
 			children = (
 				30E439DC28472ED6001F7DEF /* MJClassInfo.h */,
 				1163EF2C207233450030C79E /* main.mm */,
+				30B74213284F2EE0000DE915 /* XZPerson.h */,
+				30B74214284F2EE0000DE915 /* XZPerson.m */,
 			);
 			path = OC_Class;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B74215284F2EE0000DE915 /* XZPerson.m in Sources */,
 				1163EF2D207233450030C79E /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
