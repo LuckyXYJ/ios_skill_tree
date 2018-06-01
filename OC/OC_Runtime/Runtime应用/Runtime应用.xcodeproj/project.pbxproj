@@ -13,6 +13,9 @@
 		2DCABCDE20BD935300BB1C89 /* NSObject+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCABCDD20BD935300BB1C89 /* NSObject+Json.m */; };
 		2DCABCE120BD951200BB1C89 /* XZStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCABCE020BD951200BB1C89 /* XZStudent.m */; };
 		30B74218284F3E24000DE915 /* XZMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74217284F3E24000DE915 /* XZMethod.m */; };
+		30B7421F284F7949000DE915 /* NSMutableDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B74219284F7949000DE915 /* NSMutableDictionary+Extension.m */; };
+		30B74220284F7949000DE915 /* NSMutableArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B7421D284F7949000DE915 /* NSMutableArray+Extension.m */; };
+		30B74221284F7949000DE915 /* UIControl+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B7421E284F7949000DE915 /* UIControl+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +43,12 @@
 		2DCABCE020BD951200BB1C89 /* XZStudent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZStudent.m; sourceTree = "<group>"; };
 		30B74216284F3E24000DE915 /* XZMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XZMethod.h; sourceTree = "<group>"; };
 		30B74217284F3E24000DE915 /* XZMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZMethod.m; sourceTree = "<group>"; };
+		30B74219284F7949000DE915 /* NSMutableDictionary+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Extension.m"; sourceTree = "<group>"; };
+		30B7421A284F7949000DE915 /* NSMutableDictionary+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Extension.h"; sourceTree = "<group>"; };
+		30B7421B284F7949000DE915 /* NSMutableArray+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Extension.h"; sourceTree = "<group>"; };
+		30B7421C284F7949000DE915 /* UIControl+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Extension.h"; sourceTree = "<group>"; };
+		30B7421D284F7949000DE915 /* NSMutableArray+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Extension.m"; sourceTree = "<group>"; };
+		30B7421E284F7949000DE915 /* UIControl+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +92,12 @@
 				2DCABCDD20BD935300BB1C89 /* NSObject+Json.m */,
 				30B74216284F3E24000DE915 /* XZMethod.h */,
 				30B74217284F3E24000DE915 /* XZMethod.m */,
+				30B7421B284F7949000DE915 /* NSMutableArray+Extension.h */,
+				30B7421D284F7949000DE915 /* NSMutableArray+Extension.m */,
+				30B7421A284F7949000DE915 /* NSMutableDictionary+Extension.h */,
+				30B74219284F7949000DE915 /* NSMutableDictionary+Extension.m */,
+				30B7421C284F7949000DE915 /* UIControl+Extension.h */,
+				30B7421E284F7949000DE915 /* UIControl+Extension.m */,
 			);
 			path = "Runtime应用";
 			sourceTree = "<group>";
@@ -143,12 +158,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B74221284F7949000DE915 /* UIControl+Extension.m in Sources */,
 				30B74218284F3E24000DE915 /* XZMethod.m in Sources */,
 				2DCABCB920BD845400BB1C89 /* XZCar.m in Sources */,
 				2DCABCAE20BD843E00BB1C89 /* main.m in Sources */,
 				2DCABCB620BD844B00BB1C89 /* XZPerson.m in Sources */,
 				2DCABCDE20BD935300BB1C89 /* NSObject+Json.m in Sources */,
+				30B7421F284F7949000DE915 /* NSMutableDictionary+Extension.m in Sources */,
 				2DCABCE120BD951200BB1C89 /* XZStudent.m in Sources */,
+				30B74220284F7949000DE915 /* NSMutableArray+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
