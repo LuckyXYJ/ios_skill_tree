@@ -14,6 +14,7 @@
 		2DB4FAB620C42B99000C44B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB4FAB420C42B99000C44B6 /* LaunchScreen.storyboard */; };
 		2DB4FAB920C42B99000C44B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4FAB820C42B99000C44B6 /* main.m */; };
 		2DC1276E20C6C80E00F498D0 /* XZPermenantThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1276D20C6C80E00F498D0 /* XZPermenantThread.m */; };
+		3057BF422850A652004CAF76 /* XYJPermenantThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3057BF412850A652004CAF76 /* XYJPermenantThread.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		2DB4FAB820C42B99000C44B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DC1276C20C6C80E00F498D0 /* XZPermenantThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XZPermenantThread.h; sourceTree = "<group>"; };
 		2DC1276D20C6C80E00F498D0 /* XZPermenantThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZPermenantThread.m; sourceTree = "<group>"; };
+		3057BF402850A652004CAF76 /* XYJPermenantThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYJPermenantThread.h; sourceTree = "<group>"; };
+		3057BF412850A652004CAF76 /* XYJPermenantThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYJPermenantThread.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				2DB4FAB820C42B99000C44B6 /* main.m */,
 				2DC1276C20C6C80E00F498D0 /* XZPermenantThread.h */,
 				2DC1276D20C6C80E00F498D0 /* XZPermenantThread.m */,
+				3057BF402850A652004CAF76 /* XYJPermenantThread.h */,
+				3057BF412850A652004CAF76 /* XYJPermenantThread.m */,
 			);
 			path = runloop_PermenantThread;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			files = (
 				2DC1276E20C6C80E00F498D0 /* XZPermenantThread.m in Sources */,
 				2DB4FAAE20C42B98000C44B6 /* ViewController.m in Sources */,
+				3057BF422850A652004CAF76 /* XYJPermenantThread.m in Sources */,
 				2DB4FAB920C42B99000C44B6 /* main.m in Sources */,
 				2DB4FAAB20C42B98000C44B6 /* AppDelegate.m in Sources */,
 			);

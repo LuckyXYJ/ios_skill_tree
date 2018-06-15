@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 #import "XZPermenantThread.h"
+#import "XYJPermenantThread.h"
 
 @interface ViewController ()
-@property (strong, nonatomic) XZPermenantThread *thread;
+//@property (strong, nonatomic) XZPermenantThread *thread;
+@property (strong, nonatomic) XYJPermenantThread *thread;
 @end
 
 @implementation ViewController
@@ -18,7 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.thread = [[XZPermenantThread alloc] init];
+//    self.thread = [[XZPermenantThread alloc] init];
+    self.thread = [[XYJPermenantThread alloc] init];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
