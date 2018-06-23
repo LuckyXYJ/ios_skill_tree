@@ -21,13 +21,22 @@
 
 ` dispatch_queue_t queue = dispatch_queue_create("myqueu2", DISPATCH_QUEUE_CONCURRENT);`
 
-` dispatch_queue_t queue1 = dispatch_get_global_queue(0, 0); `
+` dispatch_queue_t queue1 = dispatch_get_global_queue(intptr_t identifier, uintptr_t flags);; `
+
+**全局队列**有默认有四个，根据第一个参数**identifier**可以获取不同的全局队列。**flags**留作将来使用。传递除0以外的任何值都可能导致返回值为NULL。
+
+- \#define DISPATCH_QUEUE_PRIORITY_HIGH 2
+- #define DISPATCH_QUEUE_PRIORITY_DEFAULT 0
+- #define DISPATCH_QUEUE_PRIORITY_LOW (-2)
+- #define DISPATCH_QUEUE_PRIORITY_BACKGROUND INT16_MIN
 
 ### 串行队列：
 
 ` dispatch_queue_t queue = dispatch_queue_create("myqueu", DISPATCH_QUEUE_SERIAL); `
 
 ` dispatch_queue_t queue1 = dispatch_get_main_queue(); `
+
+**主队列是特殊的串行队列**
 
 ### 同步异步任务与并发串行队列
 
