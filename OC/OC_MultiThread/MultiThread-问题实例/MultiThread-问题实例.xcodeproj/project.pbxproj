@@ -13,6 +13,8 @@
 		2DC127A920C95DAB00F498D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC127A820C95DAB00F498D0 /* Assets.xcassets */; };
 		2DC127AC20C95DAB00F498D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC127AA20C95DAB00F498D0 /* LaunchScreen.storyboard */; };
 		2DC127AF20C95DAB00F498D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC127AE20C95DAB00F498D0 /* main.m */; };
+		3057BF4628521C1F004CAF76 /* GCDDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3057BF4528521C1F004CAF76 /* GCDDemo.m */; };
+		3057BF4928521D7F004CAF76 /* ThreadAndRunloop.m in Sources */ = {isa = PBXBuildFile; fileRef = 3057BF4828521D7F004CAF76 /* ThreadAndRunloop.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		2DC127AB20C95DAB00F498D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DC127AD20C95DAB00F498D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC127AE20C95DAB00F498D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3057BF4428521C1F004CAF76 /* GCDDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDDemo.h; sourceTree = "<group>"; };
+		3057BF4528521C1F004CAF76 /* GCDDemo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDDemo.m; sourceTree = "<group>"; };
+		3057BF4728521D7F004CAF76 /* ThreadAndRunloop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreadAndRunloop.h; sourceTree = "<group>"; };
+		3057BF4828521D7F004CAF76 /* ThreadAndRunloop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreadAndRunloop.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		2DC1279E20C95DAA00F498D0 /* MultiThread-问题实例 */ = {
 			isa = PBXGroup;
 			children = (
+				3057BF4328521BFE004CAF76 /* GCD多线程题目 */,
 				2DC1279F20C95DAA00F498D0 /* AppDelegate.h */,
 				2DC127A020C95DAA00F498D0 /* AppDelegate.m */,
 				2DC127A220C95DAA00F498D0 /* ViewController.h */,
@@ -69,6 +76,17 @@
 				2DC127AE20C95DAB00F498D0 /* main.m */,
 			);
 			path = "MultiThread-问题实例";
+			sourceTree = "<group>";
+		};
+		3057BF4328521BFE004CAF76 /* GCD多线程题目 */ = {
+			isa = PBXGroup;
+			children = (
+				3057BF4428521C1F004CAF76 /* GCDDemo.h */,
+				3057BF4528521C1F004CAF76 /* GCDDemo.m */,
+				3057BF4728521D7F004CAF76 /* ThreadAndRunloop.h */,
+				3057BF4828521D7F004CAF76 /* ThreadAndRunloop.m */,
+			);
+			path = "GCD多线程题目";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,7 +115,7 @@
 		2DC1279420C95DAA00F498D0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = xyj;
 				TargetAttributes = {
 					2DC1279B20C95DAA00F498D0 = {
@@ -144,6 +162,8 @@
 				2DC127A420C95DAA00F498D0 /* ViewController.m in Sources */,
 				2DC127AF20C95DAB00F498D0 /* main.m in Sources */,
 				2DC127A120C95DAA00F498D0 /* AppDelegate.m in Sources */,
+				3057BF4628521C1F004CAF76 /* GCDDemo.m in Sources */,
+				3057BF4928521D7F004CAF76 /* ThreadAndRunloop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +215,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -220,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -253,6 +274,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -272,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
