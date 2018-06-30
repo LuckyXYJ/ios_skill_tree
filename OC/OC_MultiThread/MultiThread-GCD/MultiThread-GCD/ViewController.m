@@ -25,7 +25,7 @@
     
     GroupDemo *demo = [[GroupDemo alloc]init];
     
-    [demo groutTest];
+    [demo groupTest2];
     
     
 }

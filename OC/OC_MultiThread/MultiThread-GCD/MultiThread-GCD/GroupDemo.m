@@ -10,7 +10,7 @@
 
 @implementation GroupDemo
 
-- (void)groutTest {
+- (void)groupTest {
     // 创建队列组
     dispatch_group_t group = dispatch_group_create();
     // 创建并发队列
@@ -58,6 +58,38 @@
             NSLog(@"任务4-%d-%@", i, [NSThread currentThread]);
         }
     });
+}
+
+- (void)groupTest2 {
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_enter(group);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        for (int i = 0; i < 3; i++) {
+            sleep(1);
+            NSLog(@"睡醒了");
+        }
+        dispatch_group_leave(group);
+    });
+    
+//    dispatch_group_enter(group);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        for (int i = 0; i < 6; i++) {
+            sleep(1);
+            NSLog(@"睡了么");
+        }
+//        dispatch_group_leave(group);
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        
+        
+        NSLog(@"结束了");
+    });
+    
 }
 
 @end

@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupDemo : NSObject
 
-- (void)groutTest;
+- (void)groupTest;
+
+- (void)groupTest2;
 
 @end
 
