@@ -10,6 +10,7 @@
 #import "XZBaseDemo.h"
 #import "OSSpinLockDemo.h"
 #import "OSSpinLockDemo2.h"
+#import "OSUnfairLockDemo.h"
 
 
 @interface ViewController ()
@@ -27,7 +28,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[OSSpinLockDemo alloc] init];
+    XZBaseDemo *demo = [[OSUnfairLockDemo alloc] init];
     [demo ticketTest];
     [demo moneyTest];
     [demo otherTest];
