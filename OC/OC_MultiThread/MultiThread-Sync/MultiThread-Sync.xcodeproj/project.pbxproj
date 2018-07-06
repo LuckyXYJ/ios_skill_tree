@@ -17,6 +17,7 @@
 		2DC1282120C977DB00F498D0 /* OSSpinLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1282020C977DB00F498D0 /* OSSpinLockDemo.m */; };
 		2DC1282420C9791200F498D0 /* OSSpinLockDemo2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1282320C9791200F498D0 /* OSSpinLockDemo2.m */; };
 		30219F4028531B81001918DE /* OSUnfairLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F3F28531B81001918DE /* OSUnfairLockDemo.m */; };
+		30219F4328531C2D001918DE /* MutexDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4228531C2D001918DE /* MutexDemo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		2DC1282320C9791200F498D0 /* OSSpinLockDemo2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSSpinLockDemo2.m; sourceTree = "<group>"; };
 		30219F3E28531B81001918DE /* OSUnfairLockDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUnfairLockDemo.h; sourceTree = "<group>"; };
 		30219F3F28531B81001918DE /* OSUnfairLockDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUnfairLockDemo.m; sourceTree = "<group>"; };
+		30219F4128531C2D001918DE /* MutexDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutexDemo.h; sourceTree = "<group>"; };
+		30219F4228531C2D001918DE /* MutexDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutexDemo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				2DC1282320C9791200F498D0 /* OSSpinLockDemo2.m */,
 				30219F3E28531B81001918DE /* OSUnfairLockDemo.h */,
 				30219F3F28531B81001918DE /* OSUnfairLockDemo.m */,
+				30219F4128531C2D001918DE /* MutexDemo.h */,
+				30219F4228531C2D001918DE /* MutexDemo.m */,
 			);
 			path = Locks;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				2DC1282420C9791200F498D0 /* OSSpinLockDemo2.m in Sources */,
 				2DC1281520C96ED700F498D0 /* main.m in Sources */,
 				2DC1281D20C976E800F498D0 /* XZBaseDemo.m in Sources */,
+				30219F4328531C2D001918DE /* MutexDemo.m in Sources */,
 				2DC1280720C96ED700F498D0 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
