@@ -11,7 +11,8 @@
 #import "OSSpinLockDemo.h"
 #import "OSSpinLockDemo2.h"
 #import "OSUnfairLockDemo.h"
-#import "MutexDemo.h"
+#import "MutexDemo.h" // pthread_mutex_t默认锁
+#import "MutexDemo2.h" // pthread_mutex_t递归锁
 
 
 @interface ViewController ()
@@ -29,7 +30,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[MutexDemo alloc] init];
+    XZBaseDemo *demo = [[MutexDemo2 alloc] init];
     [demo ticketTest];
     [demo moneyTest];
     [demo otherTest];
