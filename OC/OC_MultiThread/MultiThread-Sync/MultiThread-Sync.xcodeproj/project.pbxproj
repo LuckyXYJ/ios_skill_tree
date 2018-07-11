@@ -19,6 +19,7 @@
 		30219F4028531B81001918DE /* OSUnfairLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F3F28531B81001918DE /* OSUnfairLockDemo.m */; };
 		30219F4328531C2D001918DE /* MutexDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4228531C2D001918DE /* MutexDemo.m */; };
 		30219F4628531DF9001918DE /* MutexDemo2.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4428531DF9001918DE /* MutexDemo2.m */; };
+		30219F4928532098001918DE /* MutexDemo3.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4828532098001918DE /* MutexDemo3.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		30219F4228531C2D001918DE /* MutexDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutexDemo.m; sourceTree = "<group>"; };
 		30219F4428531DF9001918DE /* MutexDemo2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutexDemo2.m; sourceTree = "<group>"; };
 		30219F4528531DF9001918DE /* MutexDemo2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutexDemo2.h; sourceTree = "<group>"; };
+		30219F4728532098001918DE /* MutexDemo3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutexDemo3.h; sourceTree = "<group>"; };
+		30219F4828532098001918DE /* MutexDemo3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutexDemo3.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				30219F4228531C2D001918DE /* MutexDemo.m */,
 				30219F4528531DF9001918DE /* MutexDemo2.h */,
 				30219F4428531DF9001918DE /* MutexDemo2.m */,
+				30219F4728532098001918DE /* MutexDemo3.h */,
+				30219F4828532098001918DE /* MutexDemo3.m */,
 			);
 			path = Locks;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30219F4928532098001918DE /* MutexDemo3.m in Sources */,
 				30219F4028531B81001918DE /* OSUnfairLockDemo.m in Sources */,
 				2DC1280A20C96ED700F498D0 /* ViewController.m in Sources */,
 				2DC1282120C977DB00F498D0 /* OSSpinLockDemo.m in Sources */,

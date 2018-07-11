@@ -13,6 +13,7 @@
 #import "OSUnfairLockDemo.h"
 #import "MutexDemo.h" // pthread_mutex_t默认锁
 #import "MutexDemo2.h" // pthread_mutex_t递归锁
+#import "MutexDemo3.h" // pthread_mutex_t 条件🔐
 
 
 @interface ViewController ()
@@ -30,9 +31,9 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[MutexDemo2 alloc] init];
-    [demo ticketTest];
-    [demo moneyTest];
+    XZBaseDemo *demo = [[MutexDemo3 alloc] init];
+//    [demo ticketTest];
+//    [demo moneyTest];
     [demo otherTest];
 }
 
