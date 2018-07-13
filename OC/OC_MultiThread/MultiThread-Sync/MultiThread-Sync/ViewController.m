@@ -15,6 +15,8 @@
 #import "MutexDemo2.h" // pthread_mutex_t递归锁
 #import "MutexDemo3.h" // pthread_mutex_t 条件🔐
 
+#import "NSLockDemo.h" // NSLock
+
 
 @interface ViewController ()
 @property (strong, nonatomic) XZBaseDemo *demo;
@@ -31,10 +33,10 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[MutexDemo3 alloc] init];
-//    [demo ticketTest];
-//    [demo moneyTest];
-    [demo otherTest];
+    XZBaseDemo *demo = [[NSLockDemo alloc] init];
+    [demo ticketTest];
+    [demo moneyTest];
+//    [demo otherTest];
 }
 
 @end

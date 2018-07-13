@@ -20,6 +20,7 @@
 		30219F4328531C2D001918DE /* MutexDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4228531C2D001918DE /* MutexDemo.m */; };
 		30219F4628531DF9001918DE /* MutexDemo2.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4428531DF9001918DE /* MutexDemo2.m */; };
 		30219F4928532098001918DE /* MutexDemo3.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4828532098001918DE /* MutexDemo3.m */; };
+		30219F4C285322EC001918DE /* NSLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4A285322EC001918DE /* NSLockDemo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		30219F4528531DF9001918DE /* MutexDemo2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutexDemo2.h; sourceTree = "<group>"; };
 		30219F4728532098001918DE /* MutexDemo3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutexDemo3.h; sourceTree = "<group>"; };
 		30219F4828532098001918DE /* MutexDemo3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutexDemo3.m; sourceTree = "<group>"; };
+		30219F4A285322EC001918DE /* NSLockDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLockDemo.m; sourceTree = "<group>"; };
+		30219F4B285322EC001918DE /* NSLockDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLockDemo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				30219F4428531DF9001918DE /* MutexDemo2.m */,
 				30219F4728532098001918DE /* MutexDemo3.h */,
 				30219F4828532098001918DE /* MutexDemo3.m */,
+				30219F4B285322EC001918DE /* NSLockDemo.h */,
+				30219F4A285322EC001918DE /* NSLockDemo.m */,
 			);
 			path = Locks;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 				2DC1281D20C976E800F498D0 /* XZBaseDemo.m in Sources */,
 				30219F4328531C2D001918DE /* MutexDemo.m in Sources */,
 				2DC1280720C96ED700F498D0 /* AppDelegate.m in Sources */,
+				30219F4C285322EC001918DE /* NSLockDemo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
