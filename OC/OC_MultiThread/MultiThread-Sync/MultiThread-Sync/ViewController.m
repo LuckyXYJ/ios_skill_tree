@@ -16,6 +16,7 @@
 #import "MutexDemo3.h" // pthread_mutex_t 条件🔐
 
 #import "NSLockDemo.h" // NSLock
+#import "NSConditionDemo.h" // NSCondition
 
 
 @interface ViewController ()
@@ -33,7 +34,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[NSLockDemo alloc] init];
+    XZBaseDemo *demo = [[NSConditionDemo alloc] init];
     [demo ticketTest];
     [demo moneyTest];
 //    [demo otherTest];

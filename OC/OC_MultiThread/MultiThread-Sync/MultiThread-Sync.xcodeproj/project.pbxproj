@@ -21,6 +21,7 @@
 		30219F4628531DF9001918DE /* MutexDemo2.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4428531DF9001918DE /* MutexDemo2.m */; };
 		30219F4928532098001918DE /* MutexDemo3.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4828532098001918DE /* MutexDemo3.m */; };
 		30219F4C285322EC001918DE /* NSLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4A285322EC001918DE /* NSLockDemo.m */; };
+		30219F4F28532392001918DE /* NSConditionDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4D28532392001918DE /* NSConditionDemo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		30219F4828532098001918DE /* MutexDemo3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutexDemo3.m; sourceTree = "<group>"; };
 		30219F4A285322EC001918DE /* NSLockDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLockDemo.m; sourceTree = "<group>"; };
 		30219F4B285322EC001918DE /* NSLockDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLockDemo.h; sourceTree = "<group>"; };
+		30219F4D28532392001918DE /* NSConditionDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSConditionDemo.m; sourceTree = "<group>"; };
+		30219F4E28532392001918DE /* NSConditionDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSConditionDemo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				30219F4828532098001918DE /* MutexDemo3.m */,
 				30219F4B285322EC001918DE /* NSLockDemo.h */,
 				30219F4A285322EC001918DE /* NSLockDemo.m */,
+				30219F4E28532392001918DE /* NSConditionDemo.h */,
+				30219F4D28532392001918DE /* NSConditionDemo.m */,
 			);
 			path = Locks;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 				2DC1280A20C96ED700F498D0 /* ViewController.m in Sources */,
 				2DC1282120C977DB00F498D0 /* OSSpinLockDemo.m in Sources */,
 				30219F4628531DF9001918DE /* MutexDemo2.m in Sources */,
+				30219F4F28532392001918DE /* NSConditionDemo.m in Sources */,
 				2DC1282420C9791200F498D0 /* OSSpinLockDemo2.m in Sources */,
 				2DC1281520C96ED700F498D0 /* main.m in Sources */,
 				2DC1281D20C976E800F498D0 /* XZBaseDemo.m in Sources */,
