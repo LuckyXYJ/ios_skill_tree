@@ -18,6 +18,8 @@
 #import "NSLockDemo.h" // NSLock
 #import "NSConditionDemo.h" // NSCondition
 
+#import "NSConditionLockDemo.h" // NSConditionLock
+
 
 @interface ViewController ()
 @property (strong, nonatomic) XZBaseDemo *demo;
@@ -34,10 +36,10 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[NSConditionDemo alloc] init];
-    [demo ticketTest];
-    [demo moneyTest];
-//    [demo otherTest];
+    XZBaseDemo *demo = [[NSConditionLockDemo alloc] init];
+//    [demo ticketTest];
+//    [demo moneyTest];
+    [demo otherTest];
 }
 
 @end
