@@ -23,6 +23,7 @@
 		30219F4C285322EC001918DE /* NSLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4A285322EC001918DE /* NSLockDemo.m */; };
 		30219F4F28532392001918DE /* NSConditionDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4D28532392001918DE /* NSConditionDemo.m */; };
 		30219F5228532424001918DE /* NSConditionLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F5028532424001918DE /* NSConditionLockDemo.m */; };
+		30219F55285324BB001918DE /* SerialQueueDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F53285324BB001918DE /* SerialQueueDemo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		30219F4E28532392001918DE /* NSConditionDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSConditionDemo.h; sourceTree = "<group>"; };
 		30219F5028532424001918DE /* NSConditionLockDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSConditionLockDemo.m; sourceTree = "<group>"; };
 		30219F5128532424001918DE /* NSConditionLockDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSConditionLockDemo.h; sourceTree = "<group>"; };
+		30219F53285324BB001918DE /* SerialQueueDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialQueueDemo.m; sourceTree = "<group>"; };
+		30219F54285324BB001918DE /* SerialQueueDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialQueueDemo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 				30219F4D28532392001918DE /* NSConditionDemo.m */,
 				30219F5128532424001918DE /* NSConditionLockDemo.h */,
 				30219F5028532424001918DE /* NSConditionLockDemo.m */,
+				30219F54285324BB001918DE /* SerialQueueDemo.h */,
+				30219F53285324BB001918DE /* SerialQueueDemo.m */,
 			);
 			path = Locks;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30219F55285324BB001918DE /* SerialQueueDemo.m in Sources */,
 				30219F4928532098001918DE /* MutexDemo3.m in Sources */,
 				30219F5228532424001918DE /* NSConditionLockDemo.m in Sources */,
 				30219F4028531B81001918DE /* OSUnfairLockDemo.m in Sources */,

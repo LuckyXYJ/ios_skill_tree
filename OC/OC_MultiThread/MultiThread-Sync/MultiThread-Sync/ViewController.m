@@ -20,6 +20,8 @@
 
 #import "NSConditionLockDemo.h" // NSConditionLock
 
+#import "SerialQueueDemo.h" // DISPATCH_QUEUE_SERIAL
+
 
 @interface ViewController ()
 @property (strong, nonatomic) XZBaseDemo *demo;
@@ -36,10 +38,10 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[NSConditionLockDemo alloc] init];
-//    [demo ticketTest];
-//    [demo moneyTest];
-    [demo otherTest];
+    XZBaseDemo *demo = [[SerialQueueDemo alloc] init];
+    [demo ticketTest];
+    [demo moneyTest];
+//    [demo otherTest];
 }
 
 @end
