@@ -21,6 +21,7 @@
 #import "NSConditionLockDemo.h" // NSConditionLock
 
 #import "SerialQueueDemo.h" // DISPATCH_QUEUE_SERIAL
+#import "SemaphoreDemo.h" // dispatch_semaphore_t
 
 
 @interface ViewController ()
@@ -38,7 +39,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[SerialQueueDemo alloc] init];
+    XZBaseDemo *demo = [[SemaphoreDemo alloc] init];
     [demo ticketTest];
     [demo moneyTest];
 //    [demo otherTest];

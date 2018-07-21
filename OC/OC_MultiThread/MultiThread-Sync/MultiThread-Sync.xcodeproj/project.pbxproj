@@ -24,6 +24,7 @@
 		30219F4F28532392001918DE /* NSConditionDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F4D28532392001918DE /* NSConditionDemo.m */; };
 		30219F5228532424001918DE /* NSConditionLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F5028532424001918DE /* NSConditionLockDemo.m */; };
 		30219F55285324BB001918DE /* SerialQueueDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F53285324BB001918DE /* SerialQueueDemo.m */; };
+		30219F582853255B001918DE /* SemaphoreDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F572853255B001918DE /* SemaphoreDemo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		30219F5128532424001918DE /* NSConditionLockDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSConditionLockDemo.h; sourceTree = "<group>"; };
 		30219F53285324BB001918DE /* SerialQueueDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialQueueDemo.m; sourceTree = "<group>"; };
 		30219F54285324BB001918DE /* SerialQueueDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialQueueDemo.h; sourceTree = "<group>"; };
+		30219F562853255B001918DE /* SemaphoreDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemaphoreDemo.h; sourceTree = "<group>"; };
+		30219F572853255B001918DE /* SemaphoreDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemaphoreDemo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				30219F5028532424001918DE /* NSConditionLockDemo.m */,
 				30219F54285324BB001918DE /* SerialQueueDemo.h */,
 				30219F53285324BB001918DE /* SerialQueueDemo.m */,
+				30219F562853255B001918DE /* SemaphoreDemo.h */,
+				30219F572853255B001918DE /* SemaphoreDemo.m */,
 			);
 			path = Locks;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				2DC1280A20C96ED700F498D0 /* ViewController.m in Sources */,
 				2DC1282120C977DB00F498D0 /* OSSpinLockDemo.m in Sources */,
 				30219F4628531DF9001918DE /* MutexDemo2.m in Sources */,
+				30219F582853255B001918DE /* SemaphoreDemo.m in Sources */,
 				30219F4F28532392001918DE /* NSConditionDemo.m in Sources */,
 				2DC1282420C9791200F498D0 /* OSSpinLockDemo2.m in Sources */,
 				2DC1281520C96ED700F498D0 /* main.m in Sources */,
