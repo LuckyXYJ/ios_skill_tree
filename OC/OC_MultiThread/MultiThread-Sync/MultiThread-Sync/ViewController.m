@@ -22,7 +22,7 @@
 
 #import "SerialQueueDemo.h" // DISPATCH_QUEUE_SERIAL
 #import "SemaphoreDemo.h" // dispatch_semaphore_t
-
+#import "SynchronizedDemo.h"  //@synchronized
 
 @interface ViewController ()
 @property (strong, nonatomic) XZBaseDemo *demo;
@@ -39,7 +39,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    XZBaseDemo *demo = [[SemaphoreDemo alloc] init];
+    XZBaseDemo *demo = [[SynchronizedDemo alloc] init];
     [demo ticketTest];
     [demo moneyTest];
 //    [demo otherTest];

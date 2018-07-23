@@ -25,6 +25,7 @@
 		30219F5228532424001918DE /* NSConditionLockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F5028532424001918DE /* NSConditionLockDemo.m */; };
 		30219F55285324BB001918DE /* SerialQueueDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F53285324BB001918DE /* SerialQueueDemo.m */; };
 		30219F582853255B001918DE /* SemaphoreDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F572853255B001918DE /* SemaphoreDemo.m */; };
+		30219F5B285325EA001918DE /* SynchronizedDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219F5A285325EA001918DE /* SynchronizedDemo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,8 @@
 		30219F54285324BB001918DE /* SerialQueueDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialQueueDemo.h; sourceTree = "<group>"; };
 		30219F562853255B001918DE /* SemaphoreDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemaphoreDemo.h; sourceTree = "<group>"; };
 		30219F572853255B001918DE /* SemaphoreDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemaphoreDemo.m; sourceTree = "<group>"; };
+		30219F59285325EA001918DE /* SynchronizedDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynchronizedDemo.h; sourceTree = "<group>"; };
+		30219F5A285325EA001918DE /* SynchronizedDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynchronizedDemo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				30219F53285324BB001918DE /* SerialQueueDemo.m */,
 				30219F562853255B001918DE /* SemaphoreDemo.h */,
 				30219F572853255B001918DE /* SemaphoreDemo.m */,
+				30219F59285325EA001918DE /* SynchronizedDemo.h */,
+				30219F5A285325EA001918DE /* SynchronizedDemo.m */,
 			);
 			path = Locks;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 			files = (
 				30219F55285324BB001918DE /* SerialQueueDemo.m in Sources */,
 				30219F4928532098001918DE /* MutexDemo3.m in Sources */,
+				30219F5B285325EA001918DE /* SynchronizedDemo.m in Sources */,
 				30219F5228532424001918DE /* NSConditionLockDemo.m in Sources */,
 				30219F4028531B81001918DE /* OSUnfairLockDemo.m in Sources */,
 				2DC1280A20C96ED700F498D0 /* ViewController.m in Sources */,
