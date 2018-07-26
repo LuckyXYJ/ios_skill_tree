@@ -82,3 +82,292 @@ semaphore叫做”信号量”
 信号量的初始值为1，代表同时只允许1条线程访问资源，保证线程同步
 
 ![image-20220609101052133](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220609101052133.png)
+
+## 多线程安全
+
+1块资源可能会被多个线程共享，也就是**多个线程可能会访问同一块资源**，同一个对象、同一个变量、同一个文件
+
+当多个线程访问同一块资源时，很容易引发**数据错乱和数据安全**问题
+
+解决方案：使用线程**同步技术**，如：**加锁**
+
+### OSSpinLock
+
+OSSpinLock叫做”自旋锁”，等待锁的线程会处于**忙等**（busy-wait）状态，一直占用着CPU资源
+
+目前已经**不再安全**，从iOS10开始不支持，可能会出现**优先级反转问题**。如果等待锁的线程优先级较高，它会一直占用着CPU资源，优先级低的线程就无法释放锁
+
+需要导入头文件#import <libkern/OSAtomic.h>
+
+```objective-c
+// 初始化
+OSSpinLock lock = OS_SPINLOCK_INIT;
+// 尝试加锁，需要等待就不加锁，直接返回FALSE，不需要等待就加锁，返回true
+bool res = OSSpinLockTry(&lock);
+// 加锁
+OSSpinLockLock(&lock);
+// 解锁
+OSSpinLockUnlock(&lock);
+```
+
+### os_unfair_lock
+
+os_unfair_lock用于取代不安全的OSSpinLock ，从iOS10开始才支持
+
+等待os_unfair_lock锁的线程会处于**休眠状态**，并非忙等
+
+需要导入头文件#import <os/lock.h>
+
+```objective-c
+// 初始化
+os_unfair_lock lock = OS_UNFAIR_LOCK_INIT;
+// 尝试加锁
+os_unfair_lock_trylock(&lock)
+// 加锁
+os_unfair_lock_lock(&lock);
+// 解锁
+os_unfair_lock_unlock(&lock);
+```
+
+### pthread_mutex
+
+mutex叫做”互斥锁”，等待锁的线程会处于**休眠状态**
+
+需要导入头文件#import <pthread.h>
+
+pthread_mutex 锁类型
+
+- #define PTHREAD_MUTEX_NORMAL		0
+- #define PTHREAD_MUTEX_ERRORCHECK	1
+- #define PTHREAD_MUTEX_RECURSIVE		2    递归锁
+- #define PTHREAD_MUTEX_DEFAULT		PTHREAD_MUTEX_NORMAL
+
+普通锁
+
+```objective-c
+// 初始化属性
+pthread_mutexattr_t attr;
+pthread_mutexattr_init(&attr);
+pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_DEFAULT);
+
+// 初始化锁
+pthread_mutex_t mutex;
+pthread_mutex_init(&mutex, &attr);
+
+// 尝试加锁
+pthread_mutex_trylock(&mutex);
+
+// 加锁
+pthread_mutex_lock(&mutex);
+    
+// 解锁
+pthread_mutex_unlock(&mutex);
+
+// 销毁相关资源
+pthread_mutexattr_destroy(&attr);
+pthread_mutex_destroy(&mutex);
+
+```
+
+递归锁
+
+```objective-c
+// 初始化属性
+pthread_mutexattr_t attr;
+pthread_mutexattr_init(&attr);
+pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+
+// 初始化锁
+pthread_mutex_t mutex;
+pthread_mutex_init(&mutex, &attr);
+```
+
+条件锁。等待进入休眠，放开mutex锁；被唤醒后，会再次对mutex加锁
+
+```objective-c
+// 初始化锁
+pthread_mutex_t mutex;
+// NULL代表使用默认属性
+pthread_mutex_init(&mutex, NULL);
+
+// 初始化条件
+pthread_cond_t cond;
+pthread_cond_init(&cond, NULL);
+
+// 等待条件（进入休眠，放开mutex锁；被唤醒后，会再次对mutex加锁）
+pthread_cond_wait(&cond, &mutex);
+
+// 激活一个等待该条件的线程
+pthread_cond_signal(&cond);
+
+// 激活所有等待该条件的线程
+pthread_cond_broadcast(&cond);
+
+// 销毁资源
+pthread_mutex_destroy(&mutex);
+pthread_cond_destroy(&cond);
+```
+
+### dispatch_semaphore
+
+semaphore叫做”信号量”
+
+信号量的初始值，可以用来控制线程并发访问的最大数量
+
+信号量的初始值为1，代表同时只允许1条线程访问资源，保证线程同步
+
+```objective-c
+int value = 1;
+
+dispatch_semaphore_t semaphore = dispatch_semaphore_create(value);
+
+// 信号量值 <= 0，进入休眠等待，知道信号量 > 0
+// 信号量 > 0, 就 - 1，然后往下执行后面的代码
+dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+// 信号量值 + 1
+dispatch_semaphore_signal(semaphore);
+```
+
+
+
+### dispatch_queue(DISPATCH_QUEUE_SERIAL)
+
+GCD串行队列
+
+```objective-c
+dispatch_queue_t queue = dispatch_queue_create("lock", DISPATCH_QUEUE_SERIAL);
+dispatch_sync(queue, ^{
+
+});
+```
+
+### NSLock
+
+NSLock是对mutex普通锁的封装，面向对象
+
+```objective-c
+@protocol NSLocking
+
+- (void)lock;
+- (void)unlock;
+
+@end
+
+@interface NSLock : NSObject <NSLocking> {
+@private
+    void *_priv;
+}
+
+- (BOOL)tryLock;
+- (BOOL)lockBeforeDate:(NSDate *)limit;
+
+@property (nullable, copy) NSString *name API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));
+
+@end
+```
+
+### NSRecursiveLock
+
+NSRecursiveLock是对mutex递归锁的封装，API与NSLock基本一致
+
+### NSCondition
+
+NSCondition 是对 mutex条件锁的封装
+
+```objective-c
+@interface NSCondition : NSObject <NSLocking> {
+@private
+    void *_priv;
+}
+
+- (void)wait;
+- (BOOL)waitUntilDate:(NSDate *)limit;
+- (void)signal;
+- (void)broadcast;
+
+@property (nullable, copy) NSString *name API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));
+
+@end
+```
+
+### NSConditionLock
+
+NSConditionLock是对NSCondition的进一步封装，可以设置具体的条件值
+
+```objective-c
+@interface NSConditionLock : NSObject <NSLocking> {
+@private
+    void *_priv;
+}
+
+- (instancetype)initWithCondition:(NSInteger)condition NS_DESIGNATED_INITIALIZER;
+
+@property (readonly) NSInteger condition;
+- (void)lockWhenCondition:(NSInteger)condition;
+- (BOOL)tryLock;
+- (BOOL)tryLockWhenCondition:(NSInteger)condition;
+- (void)unlockWithCondition:(NSInteger)condition;
+- (BOOL)lockBeforeDate:(NSDate *)limit;
+- (BOOL)lockWhenCondition:(NSInteger)condition beforeDate:(NSDate *)limit;
+
+@property (nullable, copy) NSString *name API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));
+
+@end
+```
+
+### @synchronized
+
+@synchronized是对mutex递归锁的封装
+
+@synchronized(obj)内部会生成obj对应的递归锁，然后进行加锁、解锁操作
+
+```objective-c
+@synchronized(obj) { // objc_sync_enter
+		
+}
+```
+
+## 线程同步方案对比
+
+**性能**方面，性能从高到低排序
+
+- os_unfair_lock
+- OSSpinLock
+- dispatch_semaphore
+- pthread_mutex
+- dispatch_queue(DISPATCH_QUEUE_SERIAL)
+- NSLock
+- NSCondition
+- pthread_mutex(recursive)
+- NSRecursiveLock
+- NSConditionLock
+- @synchronized
+
+**如何选择？**
+
+开发方便考虑 GCD信号量，串行线程。
+
+面向对象考虑 NSLock，NSRecursiveLock，NSCondition，NSConditionLock 
+
+追求性能考虑 os_unfair_lock
+
+代码简单考虑 @synchronized
+
+## 自旋锁互斥锁对比
+
+什么情况使用自旋锁比较划算？
+
+- 预计线程等待锁的时间很短
+- 加锁的代码（临界区）经常被调用，但竞争情况很少发生
+- CPU资源不紧张
+- 多核处理器
+
+什么情况使用互斥锁比较划算？
+
+- 预计线程等待锁的时间较长
+- 单核处理器
+- 临界区有IO操作
+- 临界区代码复杂或者循环量大
+- 临界区竞争非常激烈
+

@@ -19,6 +19,8 @@
 - (instancetype)init
 {
     if (self = [super init]) {
+        
+        NSRecursiveLock
         self.ticketLock = [[NSLock alloc] init];
         self.moneyLock = [[NSLock alloc] init];
     }

@@ -31,6 +31,7 @@ static OSSpinLock moneyLock_;
 
 - (void)__saveMoney
 {
+    bool res = OSSpinLockTry(<#volatile OSSpinLock *__lock#>)
     OSSpinLockLock(&moneyLock_);
     
     [super __saveMoney];
