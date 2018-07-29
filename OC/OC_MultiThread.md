@@ -371,3 +371,67 @@ NSConditionLock是对NSCondition的进一步封装，可以设置具体的条件
 - 临界区代码复杂或者循环量大
 - 临界区竞争非常激烈
 
+## atomic
+
+atomic用于保证属性setter、getter的原子性操作，相当于在getter和setter内部加了线程同步的锁
+
+可以参考源码objc4的objc-accessors.mm
+
+它并不能保证使用属性的过程是线程安全的
+
+## iOS读写安全方案
+
+读写安全，需要多读单写。常见的方案有：
+
+- pthread_rwlock：读写锁
+- dispatch_barrier_async：异步栅栏调用
+
+### pthread_rwlock
+
+等待的线程会进入休眠
+
+```objective-c
+pthread_rwlock_t lock;
+// 初始化锁
+pthread_rwlock_init(&lock, NULL);
+
+// 读 加锁
+pthread_rwlock_rdlock(&lock);
+
+// 读 尝试加锁
+pthread_rwlock_tryrdlock(&lock);
+
+// 写 加锁
+pthread_rwlock_wrlock(&lock);
+
+// 写 尝试加锁
+pthread_rwlock_trywrlock(&lock);
+
+// 解锁
+pthread_rwlock_unlock(&lock);
+
+// 销毁
+pthread_rwlock_destroy(&_lock);
+
+```
+
+### dispatch_barrier_async
+
+这个函数传入的并发队列必须是自己通过dispatch_queue_cretate创建的
+
+如果传入的是一个串行或是一个全局的并发队列，那这个函数便等同于dispatch_async函数的效果
+
+```objective-c
+dispatch_queue_t queue = dispatch_queue_create("rw_queue", DISPATCH_QUEUE_CONCURRENT);
+
+// 读
+dispatch_async(queue, ^{
+   
+});
+        
+// 写
+dispatch_barrier_async(queue, ^{
+
+});
+```
+
