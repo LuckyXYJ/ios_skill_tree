@@ -21,16 +21,14 @@
     // 静态初始化
     //        pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
     
-    // 初始化属性
-    pthread_mutexattr_t attr;
-    pthread_mutexattr_init(&attr);
-    pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_DEFAULT);
+//    // 初始化属性
+//    pthread_mutexattr_t attr;
+//    pthread_mutexattr_init(&attr);
+//    pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_DEFAULT);
 //    // 初始化锁
-    pthread_mutex_init(mutex, &attr);
+//    pthread_mutex_init(mutex, &attr);
 //    // 销毁属性
 //    pthread_mutexattr_destroy(&attr);
-    
-    pthread_mutex_trylock(<#pthread_mutex_t * _Nonnull#>)
     
     // 初始化属性
 //    pthread_mutexattr_t attr;

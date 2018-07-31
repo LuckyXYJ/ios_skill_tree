@@ -2,7 +2,7 @@
 //  NSLockDemo.m
 //  MultiThread-Sync
 //
-//  Created by xyj on 2018/7/13.
+//  Created by xyj on 2018/6/11.
 //  Copyright © 2018年 xyj. All rights reserved.
 //
 
@@ -19,8 +19,6 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        
-        NSRecursiveLock
         self.ticketLock = [[NSLock alloc] init];
         self.moneyLock = [[NSLock alloc] init];
     }
