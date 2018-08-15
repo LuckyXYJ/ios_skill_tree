@@ -27,9 +27,22 @@
 
 **内核区**：交给系统进行内核处理的区域
 
+## OC对象内存管理
 
+在iOS中，使用**引用计数**来管理OC对象的内存
 
-## Tagged Pointer
+一个新创建的OC对象引用计数默认是1，当引用计数减为0，OC对象就会销毁，释放其占用的内存空间
+
+调用retain会让OC对象的引用计数+1，调用release会让OC对象的引用计数-1
+
+内存管理的经验总结
+当调用alloc、new、copy、mutableCopy方法返回了一个对象，在不需要这个对象时，要调用release或者autorelease来释放它
+想拥有某个对象，就让它的引用计数+1；不想再拥有某个对象，就让它的引用计数-1
+
+可以通过以下私有函数来查看自动释放池的情况
+extern void _objc_autoreleasePoolPrint(void);
+
+### Tagged Pointer
 
 Tagged Pointer技术，用于优化NSNumber、NSDate、NSString等小对象的存储。将数据直接存储在了指针中
 
@@ -64,20 +77,56 @@ for (int i = 0; i < 1000; i++) {
 }
 ```
 
-## OC对象内存管理
+### 引用计数的存储
 
-在iOS中，使用**引用计数**来管理OC对象的内存
+在64bit中，引用计数可以直接存储在优化过的isa指针中，也可能存储在SideTable类中
 
-一个新创建的OC对象引用计数默认是1，当引用计数减为0，OC对象就会销毁，释放其占用的内存空间
+![image-20220612111616435](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220612111616435.png)
 
-调用retain会让OC对象的引用计数+1，调用release会让OC对象的引用计数-1
+refcnts是一个存放着对象引用计数的散列表
 
-内存管理的经验总结
-当调用alloc、new、copy、mutableCopy方法返回了一个对象，在不需要这个对象时，要调用release或者autorelease来释放它
-想拥有某个对象，就让它的引用计数+1；不想再拥有某个对象，就让它的引用计数-1
+#### delloc
 
-可以通过以下私有函数来查看自动释放池的情况
-extern void _objc_autoreleasePoolPrint(void);
+当一个对象要释放时，会自动调用dealloc，接下的调用轨迹是
+
+- dealloc
+- _objc_rootDealloc
+- rootDealloc
+- object_dispose
+- objc_destructInstance、free
+
+![image-20220612111758693](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220612111758693.png)
+
+### 自动释放池
+
+自动释放池的主要底层数据结构是：__AtAutoreleasePool、AutoreleasePoolPage
+
+调用了autorelease的对象最终都是通过AutoreleasePoolPage对象来管理的
+
+源码分析：clang重写@autoreleasepool，objc4源码：NSObject.mm
+
+![image-20220612111132711](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220612111132711.png)
+
+每个AutoreleasePoolPage对象占用4096字节内存，除了用来存放它内部的成员变量，剩下的空间用来存放autorelease对象的地址
+
+所有的AutoreleasePoolPage对象通过双向链表的形式连接在一起
+
+![image-20220612111405594](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220612111405594.png)
+
+调用push方法会将一个POOL_BOUNDARY入栈，并且返回其存放的内存地址
+
+调用pop方法时传入一个POOL_BOUNDARY的内存地址，会从最后一个入栈的对象开始发送release消息，直到遇到这个POOL_BOUNDARY
+
+id *next指向了下一个能存放autorelease对象地址的区域 
+
+#### RunLoop 和 Autorelease
+
+iOS在主线程的Runloop中注册了2个Observer
+
+- 第1个Observer监听了kCFRunLoopEntry事件，会调用objc_autoreleasePoolPush()
+- 第2个Observer
+  - 监听了kCFRunLoopBeforeWaiting事件，会调用objc_autoreleasePoolPop()、objc_autoreleasePoolPush()
+  - 监听了kCFRunLoopBeforeExit事件，会调用objc_autoreleasePoolPop()
 
 ## Copy 和 mutableCopy
 
@@ -90,3 +139,38 @@ extern void _objc_autoreleasePoolPrint(void);
 | NSDictionary        | NSDictionary  浅拷贝 | NSMutableDictionary  深拷贝 |
 | NSMutableDictionary | NSDictionary  深拷贝 | NSMutableDictionary  深拷贝 |
 
+## Block，NSTimer循环引用区别与解决方案
+
+block解决方案：
+1、__block修饰，并在里面手动释放
+2、unsafe_unretain
+2、__weak 修饰
+
+NSTimer:
+1、在合适的时机手动停止NSTimer并置空，- (void)didMoveToParentViewController:(UIViewController *)parent
+2、第三方中介者+方法交换，delloc中调用NSTimer释放和置空
+3、自定义Timer作为第三方中介，内部常见NSTimer，原理同方法2
+4、NSProxy作为第三方中介， 消息转发。
+
+timer循环引用：self -> timer -> weakSelf -> self,当前的timer捕获的是B界面的内存，即vc对象的内存，即weakSelf表示的是vc对象
+
+Block循环引用：self -> block -> weakSelf -> self，当前的block捕获的是指针地址，即weakSelf表示的是指向self的临时变量的指针地址
+
+## ARC，MRC属性关键字
+
+retain 
+    引用计数+1,如果引用计数出现上溢出，那么我们开始分开存储，一半存到散列表
+relase 
+    引用计数-1,如果引用计数出现下溢出，就去散列表借来的引用计数 - 1,存到extra_rc release 就算借散列表的引用计数过来，还是下溢出，那么就调用dealloc
+dealloc 
+    根据当前对象的状态是否直接调用free()释放
+    是否存在C++的析构函数、移除这个对象的关联属性
+    将指向该对象的弱引用指针置为nil
+    从弱引用表中擦除对该对象的引用计数
+weak 
+    首先我们知道有一个非常牛逼的家伙-sideTable
+    得到sideTable的weakTable 弱引用表
+    创建一个weak_entry_t
+    把referent加入到weak_entry_t的数组inline_referrers
+    把weak_table扩容一下
+    把new_entry加入到weak_table中
