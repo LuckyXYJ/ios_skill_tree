@@ -130,6 +130,18 @@ iOS在主线程的Runloop中注册了2个Observer
 
 ## Copy 和 mutableCopy
 
+ iOS提供了2个拷贝方法
+
+ 1.copy，不可变拷贝，产生不可变副本 
+
+ 2.mutableCopy，可变拷贝，产生可变副本
+
+ 深拷贝和浅拷贝
+
+ 1.深拷贝：内容拷贝，产生新的对象
+
+ 2.浅拷贝：指针拷贝，没有产生新的对象
+
 |                     | copy                 | mutableCopy                 |
 | ------------------- | -------------------- | --------------------------- |
 | NSString            | NSString  浅拷贝     | NSMutableString  深拷贝     |
