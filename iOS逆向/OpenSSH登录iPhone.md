@@ -141,5 +141,19 @@ chmod 755 ~/.ssh
 
 chmod 644 ~/.ssh/authorized_keys
 
+## 通过USB进行SSH登录
+
+默认情况下，由于SSH走的是TCP协议，Mac是通过网络连接的方式SSH登录到iPhone，要求iPhone连接WiFi
+
+为了加快传输速度，也可以通过USB连接的方式进行SSH登录
+
+Mac上有个服务程序usbmuxd（它会开机自动启动），可以将Mac的数据通过USB传输到iPhone
+
+/System/Library/PrivateFrameworks/MobileDevice.framework/Resources/usbmuxd
+
+![image-20220615144420689](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220615144420689.png)
+
+
+
 
 
