@@ -153,6 +153,59 @@ Mac上有个服务程序usbmuxd（它会开机自动启动），可以将Mac的�
 
 ![image-20220615144420689](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220615144420689.png)
 
+### usbmuxd的使用
+
+1、下载usbmuxd工具包（下载v1.0.8版本，主要用到里面的一个python脚本：tcprelay.py）
+
+https://cgit.sukimashita.com/usbmuxd.git/snapshot/usbmuxd-1.0.8.tar.gz
+
+2、将iPhone的22端口（SSH端口）映射到Mac本地的10010端口
+
+`cd ~/Documents/usbmuxd-1.0.8/python-client`
+
+`python tcprelay.py -t 22:10010`
+
+加上-t参数是为了能够同时支持多个SSH连接
+
+不一定非要10010端口，只要不是保留端口就行
+
+**注意**：要想保持端口映射状态，不能终止此命令行（如果要执行其他终端命令行，请新开一个终端界面）
+
+3、端口映射完毕后，以后如果想跟iPhone的22端口通信，直接跟Mac本地的10010端口通信就可以了
+
+新开一个终端界面，SSH登录到Mac本地的10010端口（以下方式2选1）
+
+```
+ssh root@localhost -p 10010
+ssh root@127.0.0.1 -p 10010
+```
+
+usbmuxd会将Mac本地10010端口的TCP协议数据，通过USB连接转发到iPhone的22端口
+
+**远程拷贝**文件也可以直接跟Mac本地的10010端口通信
+
+`scp -P 10010 ~/Desktop/1.txt root@localhost:~/test`
+
+将Mac上的~/Desktop/1.txt文件，拷贝到iPhone上的~/test路径
+
+**注意**：scp的端口号参数是大写的-P
+
+## iOS终端的中文乱码问题
+
+默认情况下，iOS终端不支持中文输入和显示
+
+解决方案：新建一个~/.inputrc文件，文件内容是
+
+- 不将中文字符转化为转义序列
+  `set convert-meta off` 
+- 允许向终端输出中文
+  `set output-meta on`
+- 允许向终端输入中文
+  `set meta-flag on` 
+  `set input-meta on`
+
+如果是想在终端编辑文件内容，可以通过Cydia安装一个vim（软件源http://apt.saurik.com）
+
 
 
 
