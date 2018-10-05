@@ -127,7 +127,7 @@
 				Base,
 			);
 			mainGroup = 2DC127F920C96ED700F498D0;
-			productRefGroup = 2DC1280320C96ED700F498D0 /* Products */;
+			productRefGroup = 2DC127F920C96ED700F498D0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

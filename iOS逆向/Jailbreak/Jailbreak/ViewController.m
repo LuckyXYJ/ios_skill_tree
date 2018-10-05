@@ -18,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    button.backgroundColor = [UIColor blueColor];
+    button.frame = CGRectMake(30, 200, 300, 50);
+    [self.view addSubview:button];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
