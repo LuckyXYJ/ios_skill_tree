@@ -119,3 +119,13 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 5、可以对游戏项目进行tweak。但是很难，有混淆，多由c++实现
 
+## logify.pl 注意点
+
+logify.pl生成的.x文件，很多时候编译不通过，需要进行一些处理
+
+- 删掉__weak
+- 删掉inout
+- 删掉协议，或者生命一下协议信息`@protocol XXTestDelegate`
+- 删掉`\- (void).cxx_destruct { %log; %orig; }`
+- 删掉`HBLogDebug(@" = 0x%x", (unsigned int)r);`
+- 替换类名为void，比如将`* XXPerson` 替换为 `* void`，或者生命一下类信息`@class XXPerson`
