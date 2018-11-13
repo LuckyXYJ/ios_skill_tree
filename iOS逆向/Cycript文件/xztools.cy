@@ -1,9 +1,16 @@
 (function(exports) {
-    exports.rootVc = function() {
-        return UIApp.keyWindow.rootViewController;
-    };
+    
+    // app id
+	XZAppId = [NSBundle mainBundle].bundleIdentifier;
 
-    keyWin = function() {
-        return UIApp.keyWindow;
-    };
+	// mainBundlePath
+	XZAppPath = [NSBundle mainBundle].bundlePath;
+
+	// document path
+	XZDocPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+
+	// caches path
+	XZCachesPath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0]; 
+
+
 })(exports);
