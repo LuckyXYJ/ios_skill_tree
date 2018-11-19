@@ -96,11 +96,7 @@ make
 
 ## theos资料查询
 
-目录结构：https://github.com/theos/theos/wiki/Structure
-
-环境变量：http://iphonedevwiki.net/index.php/Theos
-
-logos语法：http://iphonedevwiki.net/index.php/Logos
+文档：https://theos.dev/docs/structure
 
 - **%hook**，**%end**：hook一个类的开始和结束
 
