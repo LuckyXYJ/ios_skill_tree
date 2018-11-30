@@ -1,8 +1,8 @@
-
-    
+#import "Model/XZPerson.h"
+   
 #define XZDefaults [NSUserDefaults standardUserDefaults]
 #define XZAutoKey @"xz_auto_key"
-#define XZFile(path) @"/Library/PreferenceLoader/Preferences/XZWeChat/" #path
+#define XZFile(path) @"/Library/Caches/XZWeChat/" #path
 
 %hook FindFriendEntryViewController
 
@@ -98,6 +98,11 @@
 		// 终止进程
 		abort();
 	}
+
+
+	XZPerson *p = [[XZPerson alloc] init];
+	p.age = 10;
+	NSLog(@"age is %d", p.age);
 }
 
 %end
