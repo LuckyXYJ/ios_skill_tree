@@ -23,5 +23,32 @@ GUI 工具
 
 2、[iReSign](https://github.com/maciekish/iReSign/)
 
+## 动态库注入
 
+可以使用[insert_dylib](https://github.com/Tyilo/insert_dylib)库将动态库注入到Mach-O文件中
 
+用法：` insert_dylib 动态库加载路径 Mach-O文件`
+
+两个参数选项：` --weak`，即使找不到动态库也不会报错；` --all-yes` 后面所有的选择都为yes
+
+inser_dylib的本质是往动态库Mach-O文件的Load Commands 中添加了一个**LC_LOAD_DYLIB** 或**LC_LOAD_WEAK_DYLIB**
+
+可以通过otool查看Mach-O的**动态库依赖信息**
+
+` otool -L Mach-O文件`
+
+## 更改动态库加载地址
+
+可以通过install_name_tool 修改Mach-O中动态库的加载地址
+
+` install_name_tool -change 旧地址 新地址 Mach-O文件`
+
+通过Theos开发的动态库插件（dylib）
+
+- 默认都依赖于/library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate
+- 如果要将动态库插件打包到ipa中，也需要将CydiaSubstrate打包到ipa中，并且修改CydiaSubstrate的加载地址
+
+两个常用的环境变量
+
+- ` @executable_path`代表可执行文件所在的目录
+- ` @load_path`代表动态库所在的目录
