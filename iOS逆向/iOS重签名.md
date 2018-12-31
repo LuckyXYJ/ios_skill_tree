@@ -1,3 +1,16 @@
+## 重签名
+
+如果希望将破坏了签名的安装包，安装到非越狱的手机上，需要对安装包进行重签名操作
+
+安装包中的可执行文件必须是经过脱壳的，重签名才有效
+
+.app包内部的所有动态库（.framework、.dylib）、APPExtension（PlugIns文件夹，拓展名是appex）、WatchApp（Watch文件夹）都需要重新签名
+
+查看设备的日志信息
+
+- window -> Devices and Simulators -> view device logs
+- window -> Devices and Simulators -> open Console
+
 ## codesign重签名
 
 1. 准备embedded.mobileprovision文件，并放入app包中
