@@ -131,7 +131,33 @@ void SpecialKeys(int key, int x, int y){
         blockX += stepSize;
     }
 
-
+    //触碰到边界（4个边界）的处理
+    
+    //当正方形移动超过最左边的时候
+    if (blockX < -1.0f) {
+        blockX = -1.0f;
+    }
+    
+    //当正方形移动到最右边时
+    //1.0 - blockSize * 2 = 总边长 - 正方形的边长 = 最左边点的位置
+    if (blockX > (1.0 - blockSize * 2)) {
+        blockX = 1.0f - blockSize * 2;
+    }
+    
+    //当正方形移动到最下面时
+    //-1.0 - blockSize * 2 = Y（负轴边界） - 正方形边长 = 最下面点的位置
+    if (blockY < -1.0f + blockSize * 2 ) {
+        
+        blockY = -1.0f + blockSize * 2;
+    }
+    
+    //当正方形移动到最上面时
+    if (blockY > 1.0f) {
+        
+        blockY = 1.0f;
+        
+    }
+    
     printf("blockX = %f\n",blockX);
     printf("blockY = %f\n",blockY);
     
