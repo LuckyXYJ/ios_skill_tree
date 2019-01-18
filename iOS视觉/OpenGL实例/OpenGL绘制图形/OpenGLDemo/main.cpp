@@ -94,6 +94,49 @@ void drawCircle() {
     glFlush();
 }
 
+void drawPentagon() {
+    // ------------------------五角形-----------------------------
+    
+    /*
+     设五角星的五个顶点分布位置关系如下：
+     A
+     E       B
+    
+     D   C
+     首先，根据余弦定理列方程，计算五角星的中心到顶点的距离a
+     （假设五角星对应正五边形的边长为.0）
+     a = 1 / (2-2*cos(72*Pi/180));
+     然后，根据正弦和余弦的定义，计算B的x坐标bx和y坐标by，以及C的y坐标
+     （假设五角星的中心在坐标原点）
+     bx = a * cos(18 * Pi/180);
+     by = a * sin(18 * Pi/180);
+     cy = -a * cos(18 * Pi/180);
+     五个点的坐标就可以通过以上四个量和一些常数简单的表示出来
+     */
+    const GLfloat Pi = 3.1415926536f;
+    GLfloat a = 1 / (2-2*cos(72*Pi/180));
+    GLfloat bx = a * cos(18 * Pi/180);
+    GLfloat by = a * sin(18 * Pi/180);
+    GLfloat cy = -a * cos(18 * Pi/180);
+    GLfloat
+    PointA[2] = { 0, a },
+    PointB[2] = { bx, by },
+    PointC[2] = { 0.5, cy },
+    PointD[2] = { -0.5, cy },
+    PointE[2] = { -bx, by };
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    // 按照A->C->E->B->D->A的顺序，可以一笔将五角星画出
+    glBegin(GL_LINE_LOOP);
+    glVertex2fv(PointA);
+    glVertex2fv(PointC);
+    glVertex2fv(PointE);
+    glVertex2fv(PointB);
+    glVertex2fv(PointD);
+    glEnd();
+    glFlush();
+}
+
 int main(int argc,char* argv[]) {
     
     //1.初始化一个GLUT库
@@ -104,8 +147,9 @@ int main(int argc,char* argv[]) {
     
     //3.注册一个绘图函数，操作系统在必要时刻就会对窗体进行重绘制操作
     //它设置了一个显示回调（diplay callback），即GLUT在每次更新窗口内容的时候回自动调用该例程
-    glutDisplayFunc(draw);
-    glutDisplayFunc(drawCircle);
+//    glutDisplayFunc(draw);
+//    glutDisplayFunc(drawCircle);
+    glutDisplayFunc(drawPentagon);
     
     //这是一个无限执行的循环，它会负责一直处理窗口和操作系统的用户输入等操作。（注意：不会执行在glutMainLoop()之后的所有命令。）
     glutMainLoop();
