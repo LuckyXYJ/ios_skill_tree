@@ -92,6 +92,23 @@ void drawCircle() {
  
     //强制刷新缓存区，保证绘制命令得以执行
     glFlush();
+    
+    const GLfloat factor = 0.1f;
+    GLfloat x;
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_LINES);
+    glVertex2f(-1.0f, 0.0f);
+    glVertex2f(1.0f, 0.0f);        // 以上两个点可以画x轴
+    glVertex2f(0.0f, -1.0f);
+    glVertex2f(0.0f, 1.0f);        // 以上两个点可以画y轴
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    for(x=-1.0f/factor; x<1.0f/factor; x+=0.01f)
+    {
+        glVertex2f(x*factor, sin(x)*factor);
+    }
+    glEnd();
+    glFlush();
 }
 
 void drawPentagon() {
@@ -137,6 +154,32 @@ void drawPentagon() {
     glFlush();
 }
 
+void drawSin() {
+//----------- 画出正弦函数的图形---------------
+    /*
+     由于OpenGL默认坐标值只能从-1到1，（可以修改，但方法留到以后讲）
+     所以我们设置一个因子factor，把所有的坐标值等比例缩小，
+     这样就可以画出更多个正弦周期
+     试修改factor的值，观察变化情况
+     */
+    const GLfloat factor = 0.1f;
+    GLfloat x;
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_LINES);
+    glVertex2f(-1.0f, 0.0f);
+    glVertex2f(1.0f, 0.0f);        // 以上两个点可以画x轴
+    glVertex2f(0.0f, -1.0f);
+    glVertex2f(0.0f, 1.0f);        // 以上两个点可以画y轴
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    for(x=-1.0f/factor; x<1.0f/factor; x+=0.01f)
+    {
+        glVertex2f(x*factor, sin(x)*factor);
+    }
+    glEnd();
+    glFlush();
+}
+
 int main(int argc,char* argv[]) {
     
     //1.初始化一个GLUT库
@@ -149,8 +192,8 @@ int main(int argc,char* argv[]) {
     //它设置了一个显示回调（diplay callback），即GLUT在每次更新窗口内容的时候回自动调用该例程
 //    glutDisplayFunc(draw);
 //    glutDisplayFunc(drawCircle);
-    glutDisplayFunc(drawPentagon);
-    
+//    glutDisplayFunc(drawPentagon);
+    glutDisplayFunc(drawSin);
     //这是一个无限执行的循环，它会负责一直处理窗口和操作系统的用户输入等操作。（注意：不会执行在glutMainLoop()之后的所有命令。）
     glutMainLoop();
     
