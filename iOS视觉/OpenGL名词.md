@@ -135,3 +135,100 @@ OpenGL中着色编程的语言
 三缓冲区解决问题：使⽤了双缓冲区和垂直同步技术之后，由于总是要等待缓冲区交换之后再进⾏下⼀帧的渲染。
 
 在等待垂直同步时，来回交替渲染两个离屏的缓冲区，⽽垂直同步发⽣时，屏幕缓冲区和最近渲染完成的离屏缓冲区交换，实现充分利⽤硬件性能的⽬的
+
+## 2D/3D笛卡尔坐标系
+
+![img](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/2-20220708143139089.png)
+
+![img](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/2-20220708143139089.png)
+
+**坐标裁剪：**`窗口是以像素为单位进行度量的`。开始在窗口中绘制点、线和形状之前，要把指定的笛卡尔坐标对翻译成屏幕坐标，我们可以通过指定占据窗口的笛卡尔区域来转换，这个区域叫做**裁剪区域**
+
+**左右手坐标系：**
+
+![image-20220708144710519](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220708144710519.png)
+
+## 视口
+
+视口（viewport）就是浏览器显示页面内容的屏幕区域。
+
+视口可以分为布局视口、视觉视口和理想视口
+
+在OpenGL中，视口就是窗口内部用于绘制裁剪区域的客户区域、
+
+坐标系统从笛卡尔坐标到物理屏幕像素的映射是通过视口(viewport)的设置来指定
+
+```
+// 视口的设定通过glViewport()函数实现的：
+void glViewport(GLint x,GLint y,GLint width,GLint ehignt);
+//它设置窗口的左下角，以及宽度和高度。
+```
+
+视口一般和窗口是等比的
+
+## 投影
+
+透视投影和正投影
+
+![image-20220708143945494](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220708143945494.png)
+
+正投影(Orthographics Projection)或平行投影
+
+- 视景体：正方形/长方形
+- 不存在近大远小
+- 适合平面图形/2D图形渲染
+
+透视投影
+
+- 视景体：平截体
+- 近大远小
+- 适合使3D图像渲染
+
+## 坐标系
+
+OpenGL里每个顶点的x,y,z都应该在−1到1之间，超出这个范围的顶点将是不可见
+
+共有5中比较重要的坐标系系统
+
+- **局部空间(Local Space，或者称为物体空间(Object Space))**
+- **世界空间(World Space)**
+- **观察空间(View Space，或者称为视觉空间(Eye Space))**
+- **裁剪空间(Clip Space)**
+- **屏幕空间(Screen Space)**
+
+坐标转换过程
+
+![image-20220708151652305](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220708151652305.png)
+
+### Model Matrix
+
+模型变化，物体坐标转换为世界坐标，需要经历旋转+平移两个过程，为了方便其中加入了惯性坐标系。整个过程分为两步
+
+1、物体坐标旋转后变成惯性坐标
+
+2、惯性坐标平移后变成世界坐标
+
+![img](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/70.jpeg)
+
+### View Matrix
+
+视变换，世界坐标转换为观察者坐标
+
+### Projection Matrix
+
+投影变换，观察者坐标转换为裁剪坐标
+
+### ViewPort Transform
+
+视口变换，裁剪坐标转换为屏幕坐标
+
+其中分为两步：
+
+1、perspective divide透视算法，将裁剪坐标转换为规范化设备坐标
+
+2、viewport mapping 视口变化，将规范化设备坐标转换为屏幕坐标
+
+### 开发者可操作部分
+
+![image-20220708153135169](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220708153135169.png)
+
