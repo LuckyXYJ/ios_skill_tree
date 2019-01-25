@@ -75,7 +75,7 @@ OpenGL中着色编程的语言
 
 开发者可以使用该语言，自定义着色器
 
-## 光栅化
+## 光栅化Rasterization
 
 是把顶点数据转换为⽚元的过程。
 
@@ -231,4 +231,3 @@ OpenGL里每个顶点的x,y,z都应该在−1到1之间，超出这个范围的�
 ### 开发者可操作部分
 
 ![image-20220708153135169](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220708153135169.png)
-
