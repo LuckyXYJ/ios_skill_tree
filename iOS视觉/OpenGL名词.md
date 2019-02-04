@@ -178,11 +178,35 @@ void glViewport(GLint x,GLint y,GLint width,GLint ehignt);
 - 不存在近大远小
 - 适合平面图形/2D图形渲染
 
+```
+GLFrustum::SetOrthographic(GLfloat xMin, GLfloat xMax, GLfloat yMin, GLfloat yMax, GLfloat zMin, GLfloat zMax)
+```
+
 透视投影
 
 - 视景体：平截体
 - 近大远小
 - 适合使3D图像渲染
+
+```
+GLFrustum::SetPerspective(**float** fFov, **float** fAspect, **float** fNear, **float** fFar)
+```
+
+setPerspective ⽅方法为我们构建⼀一个平截头体
+
+![image-20220714174625193](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220714174625193.png)
+
+参数：
+
+- fFov:垂直⽅方向上的视场⻆角度 
+
+- fAspect:窗⼝口的宽度与⾼高度的纵横⽐
+
+- fNear:近裁剪⾯面距离 
+
+- fFar:远裁剪⾯面距离
+
+  纵横⽐ = 宽(w)/⾼高(h)
 
 ## 坐标系
 
