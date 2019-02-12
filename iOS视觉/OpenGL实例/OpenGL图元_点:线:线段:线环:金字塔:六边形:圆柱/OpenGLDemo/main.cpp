@@ -11,17 +11,52 @@
  */
 #include "GLShaderManager.h"
 
+/*
+ GLTool.h头⽂件包含了⼤部分GLTool中类似C语⾔的独⽴函数
+ */
 #include "GLTools.h"
 
+/*
+ 矩阵的⼯具类.可以利于 GLMatrixStack 加载单元矩阵/矩阵/矩阵相乘/压栈/出栈/缩放/平移/旋转
+ */
 #include "GLMatrixStack.h"
+
+/*
+ 矩阵工具类,表示位置.通过设置vOrigin, vForward ,vUp
+ */
 #include "GLFrame.h"
+
+/*
+ 矩阵工具类，用来快速设置正/透视投影矩阵，完成坐标从3D-->2D映射过程
+ */
 #include "GLFrustum.h"
+
+/*
+ 三⻆角形批次类,帮助类,利用它可以传输顶点/光照/纹理理/颜⾊数据到存储着⾊器中.
+ */
 #include "GLBatch.h"
+
+/*
+ 变换管道类,⽤来快速在代码中传输视图矩阵/投影矩阵/视图投影变换矩阵等.
+ */
 #include "GLGeometryTransform.h"
 
+/*
+ 数学库
+ */
 #include <math.h>
 
-#include <glut/glut.h>
+/*
+ 在Mac 系统下，`#include<glut/glut.h>`
+ 在Windows 和 Linux上，我们使⽤用freeglut的静
+ 态库版本并且需要添加⼀一个宏
+ */
+#ifdef __APPLE__
+#include "glut/glut.h"
+#else
+#define FREEGLUT_STATIC
+#include <GL/glut.h>
+#endif
 
 /*
  GLMatrixStack 变化管线使用矩阵堆栈
@@ -33,13 +68,13 @@
  void GLMatrixStack::LoadMatrix(const M3DMatrix44f m);
  */
 // 各种需要的类
-GLShaderManager        shaderManager;
-GLMatrixStack        modelViewMatrix;
-GLMatrixStack        projectionMatrix;
-GLFrame                cameraFrame;
-GLFrame             objectFrame;
+GLShaderManager        shaderManager;   // 着色管理器
+GLMatrixStack        modelViewMatrix;   // 模型视图矩阵
+GLMatrixStack        projectionMatrix;  // 投影矩阵
+GLFrame                cameraFrame;     // 设置观察者视图坐标
+GLFrame             objectFrame;        // 设置图形环绕时，视图坐标
 //投影矩阵
-GLFrustum            viewFrustum;
+GLFrustum            viewFrustum;       // 设置图元绘制时的投影方式
 
 //容器类（7种不同的图元对应7种容器对象）
 GLBatch                pointBatch;
@@ -51,7 +86,7 @@ GLBatch             triangleStripBatch;
 GLBatch             triangleFanBatch;
 
 //几何变换的管道
-GLGeometryTransform    transformPipeline;
+GLGeometryTransform    transformPipeline;   // 变换管道，存储投影/视图/投影视图变换矩阵
 
 GLfloat vGreen[] = { 0.0f, 1.0f, 0.0f, 1.0f };
 GLfloat vBlack[] = { 0.0f, 0.0f, 0.0f, 1.0f };
@@ -60,7 +95,12 @@ GLfloat vBlack[] = { 0.0f, 0.0f, 0.0f, 1.0f };
 // 跟踪效果步骤
 int nStep = 0;
 
-
+/*
+ 设置窗口背景颜色
+ 初始化存储着色器
+ 设置图形顶点数据
+ 利用GLBatch 三角形批次类，将数据传递到着色器
+ */
 void SetupRC()
 {
     // 灰色的背景
@@ -216,6 +256,14 @@ void SetupRC()
     triangleStripBatch.End();
 }
 
+/*
+ 为图形之间增加间隔
+ 
+ 1、填充图形部分
+ 2、绘制边框部分
+    多边形偏移，颜色混合，绘制边框
+ 3、将设置的属性还原
+ */
 void DrawWireFramedBatch(GLBatch* pBatch)
 {
     /*------------画绿色部分----------------*/
@@ -280,7 +328,15 @@ void DrawWireFramedBatch(GLBatch* pBatch)
     
 }
 
-// 召唤场景
+/*
+ 触发：
+    1、系统自己触发
+    2、开发者手动调用函数触发
+ 处理业务
+    1、清理缓存区（颜色，深度，模板缓存区）
+    2、使用存储着色器
+    3、绘制图形
+ */
 void RenderScene()
 {
     // Clear the window with current clearing color
@@ -353,6 +409,7 @@ void RenderScene()
 
 
 //特殊键位处理（上、下、左、右移动）
+// 计算出围绕X/Y坐标轴上下左右旋转的视觉坐标系.
 void SpecialKeys(int key, int x, int y)
 {
     
@@ -411,6 +468,7 @@ void KeyPressFunc(unsigned char key, int x, int y)
             break;
     }
     
+    // 手动触发重新渲染
     glutPostRedisplay();
 }
 
@@ -439,13 +497,20 @@ int main(int argc, char* argv[])
     glutInitWindowSize(800, 600);
     //创建window的名称
     glutCreateWindow("DNF");
+    
     //注册回调函数（改变尺寸）
+    //当屏幕⼤小发生变化/或者第一次创建窗口时,会调⽤该函数调整窗⼝大⼩/视⼝大⼩.
+    // 设置视口，设置投影方式
     glutReshapeFunc(ChangeSize);
+    
     //点击空格时，调用的函数
     glutKeyboardFunc(KeyPressFunc);
+    
     //特殊键位函数（上下左右）
     glutSpecialFunc(SpecialKeys);
+    
     //显示函数
+    // 当屏幕发生变化/或者开发者主动渲染会调用此函数，用来实现数据->渲染过程
     glutDisplayFunc(RenderScene);
     
     //判断一下是否能初始化glew库，确保项目能正常使用OpenGL 框架
@@ -456,6 +521,7 @@ int main(int argc, char* argv[])
     }
     
     //绘制
+    // 自定义幻术，设置需要渲染的图形的相关顶点数据/颜色数据等数据装备工作
     SetupRC();
     
     //runloop运行循环
