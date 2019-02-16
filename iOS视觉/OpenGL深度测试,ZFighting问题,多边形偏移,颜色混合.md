@@ -37,6 +37,13 @@ void glDepthFunc(GLEnum mode);
 
 ![image-20220720180520742](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220720180520742.png)
 
+4、打开/阻断深度缓存区写入
+
+```
+void glDepthMask(GLBool value);
+value : GL_TURE 开启深度缓冲区写⼊入; GL_FALSE 关闭深度缓冲区写⼊入
+```
+
 
 
 ```
