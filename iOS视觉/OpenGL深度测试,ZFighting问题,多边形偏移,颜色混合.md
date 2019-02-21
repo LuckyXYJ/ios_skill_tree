@@ -118,3 +118,85 @@ Depth Offset = (DZ * factor) + (r * units);
 glDisable(GL_POLYGON_OFFSET_FILL)
 ```
 
+## 混合
+
+当开启深度测试后，两个重叠的图层中，如果有一个图层是半透明的，另一个是非半透明，此时就不能通过深度值比较，来进行颜色值的覆盖，而是需要将两个颜色进行混合，然后存入颜色缓冲区。
+
+混合函数经常用于实现在不透明的物体前⾯绘制⼀个透明物体的效果
+
+### 目标颜色
+
+已经存储在颜色缓存区的颜色值
+
+### 源颜色
+
+作为当前渲染命令结果进入颜色缓存区的颜色值
+
+### 开启混合
+
+```
+glEnable(GL_BlEND);
+```
+
+### 颜色混合方式
+
+选择混合⽅方程式的函数:
+
+```
+glbBlendEquation(GLenum mode);
+```
+
+![image-20220720203425222](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220720203425222.png)
+
+默认混合方式：
+
+```
+Cf = (Cs * S) + (Cd * D)
+```
+
+- Cf :最终计算参数的颜色 
+- Cs : 源颜色
+- Cd :⽬目标颜色 
+- S:源混合因⼦ 
+- D:⽬标混合因⼦
+
+### 设置混合因子
+
+```
+//- S:源混合因⼦ , - D:⽬标混合因⼦
+glBlendFunc(GLenum S,GLenum D);
+
+//strRGB: 源颜⾊的混合因⼦
+//dstRGB: ⽬标颜色的混合因⼦ 
+//strAlpha: 源颜色的Alpha因⼦ 
+//dstAlpha: 目标颜⾊的Alpha因⼦
+void glBlendFuncSeparate(GLenum strRGB,GLenum dstRGB ,GLenum strAlpha,GLenum dstAlpha);
+
+//glBlendFunc 指定源和⽬标RGBA值的混合函数;
+//但是glBlendFuncSeparate函数则允许为RGB 和 Alpha 成分单独指定混合函数。
+```
+
+![image-20220720203852834](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220720203852834.png)
+
+表中R、G、B、A 分别代表 红、绿、蓝、alpha。 
+
+表中下标S、D，分别代表源、⽬标
+
+表中C 代表常量颜⾊(默认⿊色)
+
+GL_CONSTANT_COLOR，GL_ONE_MINUS_CONSTANT_COLOR，GL_CONSTANT_ALPHA，GL_ONE_MINUS_CONSTANT值允许混合⽅程式中引入⼀个常量混合颜⾊
+
+常量混合颜⾊：默认为黑色(0.0f,0.0f,0.0f,0.0f)
+
+```
+// 可以修改这个常量混合颜色。
+void glBlendColor(GLclampf red ,GLclampf green ,GLclampf blue ,GLclampf alpha );
+```
+
+### 总结
+
+- 在颜色缓冲区中，每个像素点只能存储一种颜色
+- 颜色混合主要用于实现在不透明物体前绘制透明物体的效果
+- 只有上面图层是透明时，才需要开启颜色混合，如果不是，则没有必要开启颜色混合
+- 新颜色的alpha值越高，添加的新颜色成分就越高，旧颜色值值就保留的越少
+
