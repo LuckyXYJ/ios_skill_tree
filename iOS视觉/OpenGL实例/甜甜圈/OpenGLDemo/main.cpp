@@ -68,6 +68,16 @@ void RenderScene()
     //可以给学员演示一下不清空颜色/深度缓冲区时.渲染会造成什么问题. 残留数据
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    //开启/关闭正背面剔除功能
+    if (iCull) {
+        glEnable(GL_CULL_FACE);
+        glFrontFace(GL_CCW);
+        glCullFace(GL_BACK);
+    }else
+    {
+        glDisable(GL_CULL_FACE);
+    }
+    
     //2.把摄像机矩阵压入模型矩阵中
     modelViewMatix.PushMatrix(viewFrame);
     
@@ -165,6 +175,33 @@ void ChangeSize(int w, int h)
     transformPipeline.SetMatrixStacks(modelViewMatix, projectionMatrix);
 }
 
+void ProcessMenu(int value)
+{
+    switch(value)
+    {
+        case 1:
+            iDepth = !iDepth;
+            break;
+            
+        case 2:
+            iCull = !iCull;
+            break;
+            
+        case 3:
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            break;
+            
+        case 4:
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            break;
+            
+        case 5:
+            glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+            break;
+    }
+    
+    glutPostRedisplay();
+}
 
 int main(int argc, char* argv[])
 {
@@ -177,6 +214,16 @@ int main(int argc, char* argv[])
     glutReshapeFunc(ChangeSize);
     glutSpecialFunc(SpecialKeys);
     glutDisplayFunc(RenderScene);
+    
+    //添加右击菜单栏
+    // Create the Menu
+    glutCreateMenu(ProcessMenu);
+    glutAddMenuEntry("Toggle depth test",1);
+    glutAddMenuEntry("Toggle cull backface",2);
+    glutAddMenuEntry("Set Fill Mode", 3);
+    glutAddMenuEntry("Set Line Mode", 4);
+    glutAddMenuEntry("Set Point Mode", 5);
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
     
     GLenum err = glewInit();
     if (GLEW_OK != err) {
