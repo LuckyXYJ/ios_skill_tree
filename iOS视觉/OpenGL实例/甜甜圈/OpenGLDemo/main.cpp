@@ -78,6 +78,12 @@ void RenderScene()
         glDisable(GL_CULL_FACE);
     }
     
+    //根据设置iDepth标记来判断是否开启深度测试
+    if(iDepth)
+        glEnable(GL_DEPTH_TEST);
+    else
+        glDisable(GL_DEPTH_TEST);
+    
     //2.把摄像机矩阵压入模型矩阵中
     modelViewMatix.PushMatrix(viewFrame);
     
