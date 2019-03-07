@@ -57,6 +57,7 @@ GLMatrixStack       projectionMatrix;
 GLGeometryTransform transformPipeline;
 GLShaderManager     shaderManager;
 
+GLFrame                cameraFrame;
 //标记：背面剔除、深度测试
 int iCull = 0;
 int iDepth = 0;
@@ -85,7 +86,15 @@ void RenderScene()
         glDisable(GL_DEPTH_TEST);
     
     //2.把摄像机矩阵压入模型矩阵中
-    modelViewMatix.PushMatrix(viewFrame);
+//    modelViewMatix.PushMatrix(viewFrame); // 等同于下面一块
+    
+    modelViewMatix.PushMatrix();
+    M3DMatrix44f mCamera;
+    cameraFrame.GetCameraMatrix(mCamera);
+    modelViewMatix.MultMatrix(mCamera);
+    M3DMatrix44f mObjectFrame;
+    viewFrame.GetMatrix(mObjectFrame);
+    modelViewMatix.MultMatrix(mObjectFrame);
     
     //3.设置绘图颜色
     GLfloat vRed[] = { 1.0f, 0.0f, 0.5f, 1.0f };
@@ -124,7 +133,8 @@ void SetupRC()
     shaderManager.InitializeStockShaders();
     
     //3.将相机向后移动7个单元：肉眼到物体之间的距离
-    viewFrame.MoveForward(7.0);
+//    viewFrame.MoveForward(7.0);  // 等同于下面一块
+    cameraFrame.MoveForward(-7.0);
     
     //4.创建一个甜甜圈
     //void gltMakeTorus(GLTriangleBatch& torusBatch, GLfloat majorRadius, GLfloat minorRadius, GLint numMajor, GLint numMinor);

@@ -1,4 +1,4 @@
-## math3d库
+## math3d库向量
 
 math3d库包含两个数据类型
 
@@ -36,7 +36,7 @@ M3DVector3f vVerts[] = {
 
 **几何意义：**
 
-点乘的几何意义是可以用来表征或计算两个向量之间的夹角，以及在b向量在a向量方向上的投影
+点乘的几何意义是可以用来表征或计算两个向量之间的**夹角**，以及在b向量在a向量方向上的投影
 
 **公式：**
 
@@ -80,4 +80,11 @@ float m3dGetAngleBetweenVector3(const M3DVector3f u,const M3DVector3f v);
 ```
 void m3dCrossProduct3(M3DVector3f result,const M3DVector3f u ,const M3DVector3f v);
 ```
+
+## OpenGL 矩阵
+
+- typedef float M3DMatrix33f[9];
+- typedef float M3DMatrix44f[16];
+
+![image-20220726074901432](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220726074901432.png)
 
