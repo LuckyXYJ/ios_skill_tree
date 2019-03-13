@@ -92,7 +92,8 @@ void SetupRC()
     glEnable(GL_DEPTH_TEST);
 
     //将物体向屏幕外移动15.0
-    objectFrame.MoveForward(15.0f);
+//    objectFrame.MoveForward(15.0f);
+    cameraFrame.MoveForward(-15.0f);
 
     //4.利用三角形批次类构造图形对象
     // 球
@@ -205,8 +206,22 @@ void RenderScene(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
     //2.模型视图矩阵栈堆，压栈
-    modelViewMatrix.PushMatrix(objectFrame);
+//    modelViewMatrix.PushMatrix(objectFrame);
     
+    //2.模型视图矩阵栈堆，压栈
+    modelViewMatrix.PushMatrix();
+    //获取摄像头矩阵
+    M3DMatrix44f mCamera;
+    //从camereaFrame中获取矩阵到mCamera
+    cameraFrame.GetCameraMatrix(mCamera);
+    //模型视图堆栈的 矩阵与mCamera矩阵 相乘之后，存储到modelViewMatrix矩阵堆栈中
+    modelViewMatrix.MultMatrix(mCamera);
+    //创建矩阵mObjectFrame
+    M3DMatrix44f mObjectFrame;
+    //从ObjectFrame 获取矩阵到mOjectFrame中
+    objectFrame.GetMatrix(mObjectFrame);
+    //将modelViewMatrix 的堆栈中的矩阵 与 mOjbectFrame 矩阵相乘，存储到modelViewMatrix矩阵堆栈中
+    modelViewMatrix.MultMatrix(mObjectFrame);
     
     //3.判断你目前是绘制第几个图形
     switch(nStep) {
