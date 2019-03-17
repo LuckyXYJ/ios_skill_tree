@@ -109,8 +109,8 @@ void SetupRC()
     glEnable(GL_DEPTH_TEST);
     //设置变换管线以使用两个矩阵堆栈
     transformPipeline.SetMatrixStacks(modelViewMatrix, projectionMatrix);
-    cameraFrame.MoveForward(-15.0f);
-    
+//    cameraFrame.MoveForward(-15.0f);
+    objectFrame.MoveForward(15.0f);
     /*
      常见函数：
      void GLBatch::Begin(GLenum primitive,GLuint nVerts,GLuint nTextureUnits = 0);
@@ -343,19 +343,22 @@ void RenderScene()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
    
     //压栈
-    modelViewMatrix.PushMatrix();
-    M3DMatrix44f mCamera;
-    cameraFrame.GetCameraMatrix(mCamera);
+//    modelViewMatrix.PushMatrix();
+//    M3DMatrix44f mCamera;
+//    cameraFrame.GetCameraMatrix(mCamera);
+//    
+//    //矩阵乘以矩阵堆栈的顶部矩阵，相乘的结果随后简存储在堆栈的顶部
+//    modelViewMatrix.MultMatrix(mCamera);
+//    
+//    M3DMatrix44f mObjectFrame;
+//    //只要使用 GetMatrix 函数就可以获取矩阵堆栈顶部的值，这个函数可以进行2次重载。用来使用GLShaderManager 的使用。或者是获取顶部矩阵的顶点副本数据
+//    objectFrame.GetMatrix(mObjectFrame);
+//    
+//    //矩阵乘以矩阵堆栈的顶部矩阵，相乘的结果随后简存储在堆栈的顶部
+//    modelViewMatrix.MultMatrix(mObjectFrame);
     
-    //矩阵乘以矩阵堆栈的顶部矩阵，相乘的结果随后简存储在堆栈的顶部
-    modelViewMatrix.MultMatrix(mCamera);
     
-    M3DMatrix44f mObjectFrame;
-    //只要使用 GetMatrix 函数就可以获取矩阵堆栈顶部的值，这个函数可以进行2次重载。用来使用GLShaderManager 的使用。或者是获取顶部矩阵的顶点副本数据
-    objectFrame.GetMatrix(mObjectFrame);
-    
-    //矩阵乘以矩阵堆栈的顶部矩阵，相乘的结果随后简存储在堆栈的顶部
-    modelViewMatrix.MultMatrix(mObjectFrame);
+    modelViewMatrix.PushMatrix(objectFrame);
     
     /* GLShaderManager 中的Uniform 值——平面着色器
      参数1：平面着色器
