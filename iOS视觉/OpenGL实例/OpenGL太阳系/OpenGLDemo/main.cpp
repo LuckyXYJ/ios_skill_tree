@@ -89,13 +89,20 @@ void SetupRC()
     floorBatch.End();
     
    
+    //4.设置大球模型
+    gltMakeSphere(torusBatch, 0.4f, 40, 80);
 }
 
 //进行调用以绘制场景
 void RenderScene(void)
 {
     //1.颜色值(地板,大球,小球颜色)
-    static GLfloat vFloorColor[] = { 0.0f, 1.0f, 0.0f, 1.0f};
+    static GLfloat vFloorColor[] = { 0.0f, 1.0f, 0.0f, 1.0f };
+    static GLfloat vTorusColor[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+    
+    //2.基于时间动画
+    static CStopWatch    rotTimer;
+    float yRot = rotTimer.GetElapsedSeconds() * 60.0f;
 
     //2.清除颜色缓存区和深度缓冲区
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -106,6 +113,22 @@ void RenderScene(void)
                                  vFloorColor);
     floorBatch.Draw();
     
+    
+    //4.获取光源位置
+    M3DVector4f vLightPos = {0.0f,10.0f,5.0f,1.0f};
+   
+    //5.使得大球位置平移(3.0)向屏幕里面
+    modelViewMatrix.Translate(0.0f, 0.0f, -3.0f);
+    //6.压栈(复制栈顶)
+    modelViewMatrix.PushMatrix();
+    //7.大球自转
+    modelViewMatrix.Rotate(yRot, 0.0f, 1.0f, 0.0f);
+    //8.指定合适的着色器(点光源着色器)
+    shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(),
+                                 transformPipeline.GetProjectionMatrix(), vLightPos, vTorusColor);
+    torusBatch.Draw();
+    //9.绘制完毕则Pop
+    modelViewMatrix.PopMatrix();
     
     //4.执行缓存区交换
     glutSwapBuffers();
