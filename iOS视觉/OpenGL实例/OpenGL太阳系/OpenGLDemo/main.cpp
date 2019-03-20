@@ -91,6 +91,21 @@ void SetupRC()
    
     //4.设置大球模型
     gltMakeSphere(torusBatch, 0.4f, 40, 80);
+    
+    //5. 设置小球球模型
+    gltMakeSphere(sphereBatch, 0.1f, 26, 13);
+    
+    //6. 随机位置放置小球球
+    for (int i = 0; i < NUM_SPHERES; i++) {
+        
+        //y轴不变，X,Z产生随机值
+        GLfloat x = ((GLfloat)((rand() % 400) - 200 ) * 0.1f);
+        GLfloat z = ((GLfloat)((rand() % 400) - 200 ) * 0.1f);
+        
+        //在y方向，将球体设置为0.0的位置，这使得它们看起来是飘浮在眼睛的高度
+        //对spheres数组中的每一个顶点，设置顶点数据
+        spheres[i].SetOrigin(x, 0.0f, z);
+    }
 }
 
 //进行调用以绘制场景
@@ -99,6 +114,8 @@ void RenderScene(void)
     //1.颜色值(地板,大球,小球颜色)
     static GLfloat vFloorColor[] = { 0.0f, 1.0f, 0.0f, 1.0f };
     static GLfloat vTorusColor[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+    static GLfloat vSphereColor[] = { 0.0f, 0.0f, 1.0f, 1.0f };
+    
     
     //2.基于时间动画
     static CStopWatch    rotTimer;
@@ -129,6 +146,17 @@ void RenderScene(void)
     torusBatch.Draw();
     //9.绘制完毕则Pop
     modelViewMatrix.PopMatrix();
+    
+    //11.画小球
+    for (int i = 0; i < NUM_SPHERES; i++) {
+        modelViewMatrix.PushMatrix();
+        modelViewMatrix.MultMatrix(spheres[i]);
+        shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(),
+                                     transformPipeline.GetProjectionMatrix(), vLightPos, vSphereColor);
+        sphereBatch.Draw();
+        modelViewMatrix.PopMatrix();
+        
+    }
     
     //4.执行缓存区交换
     glutSwapBuffers();
