@@ -197,6 +197,33 @@ void ChangeSize(int nWidth, int nHeight)
 }
 
 
+void SpeacialKeys(int key,int x,int y){
+    
+    //移动步长
+    float linear = 0.1f;
+    //旋转度数
+    float angular = float(m3dDegToRad(5.0f));
+    
+    if (key == GLUT_KEY_UP) {
+        
+        //MoveForward 平移
+        cameraFrame.MoveForward(linear);
+    }
+    if (key == GLUT_KEY_DOWN) {
+        cameraFrame.MoveForward(-linear);
+    }
+    
+    if (key == GLUT_KEY_LEFT) {
+        //RotateWorld 旋转
+        cameraFrame.RotateWorld(angular, 0.0f, 1.0f, 0.0f);
+    }
+    
+    if (key == GLUT_KEY_RIGHT) {
+        cameraFrame.RotateWorld(-angular, 0.0f, 1.0f, 0.0f);
+    }
+    
+
+}
 
 
 
@@ -212,6 +239,7 @@ int main(int argc, char* argv[])
     
     glutReshapeFunc(ChangeSize);
     glutDisplayFunc(RenderScene);
+    glutSpecialFunc(SpeacialKeys);
     
     GLenum err = glewInit();
     if (GLEW_OK != err) {
