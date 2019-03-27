@@ -63,6 +63,7 @@ GLBatch                floorBatch;          //地板
 
 //角色帧 照相机角色帧
 GLFrame             cameraFrame;
+GLFrame             objectFrame;
 
 //**4、添加附加随机球
 #define NUM_SPHERES 50
@@ -73,6 +74,8 @@ void SetupRC()
     //1.初始化
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     shaderManager.InitializeStockShaders();
+    
+    objectFrame.MoveForward(5.0f);
     
     //2.开启深度测试
     glEnable(GL_DEPTH_TEST);
@@ -125,9 +128,12 @@ void RenderScene(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     //4.加入观察者
-    M3DMatrix44f mCamera;
-    cameraFrame.GetCameraMatrix(mCamera);
-    modelViewMatrix.PushMatrix(mCamera);
+//    M3DMatrix44f mCamera;
+//    cameraFrame.GetCameraMatrix(mCamera);
+//    modelViewMatrix.PushMatrix(mCamera);
+//
+    //加入objectFrame
+    modelViewMatrix.PushMatrix(objectFrame);
     
     //3.绘制地面
     shaderManager.UseStockShader(GLT_SHADER_FLAT,
@@ -207,19 +213,24 @@ void SpeacialKeys(int key,int x,int y){
     if (key == GLUT_KEY_UP) {
         
         //MoveForward 平移
-        cameraFrame.MoveForward(linear);
+//        cameraFrame.MoveForward(linear);
+        objectFrame.MoveForward(linear);
+
     }
     if (key == GLUT_KEY_DOWN) {
-        cameraFrame.MoveForward(-linear);
+//        cameraFrame.MoveForward(-linear);
+        objectFrame.MoveForward(-linear);
     }
     
     if (key == GLUT_KEY_LEFT) {
         //RotateWorld 旋转
-        cameraFrame.RotateWorld(angular, 0.0f, 1.0f, 0.0f);
+//        cameraFrame.RotateWorld(angular, 0.0f, 1.0f, 0.0f);
+        objectFrame.RotateWorld(angular, 0.0f, 1.0f, 0.0f);
     }
     
     if (key == GLUT_KEY_RIGHT) {
-        cameraFrame.RotateWorld(-angular, 0.0f, 1.0f, 0.0f);
+//        cameraFrame.RotateWorld(-angular, 0.0f, 1.0f, 0.0f);
+        objectFrame.RotateWorld(-angular, 0.0f, 1.0f, 0.0f);
     }
     
 
