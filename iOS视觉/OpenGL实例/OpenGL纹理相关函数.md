@@ -203,3 +203,160 @@ glTextParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAR_T,GL_CLAMP_TO_EDGE);
   - GL_CLAMP_TO_EDGE环绕模式强制对范围之外的纹理坐标沿着合法的纹理单元的最后⼀行或者最后⼀列来进行采样。 
   - GL_CLAMP_TO_BORDER:在纹理坐标在0.0到1.0范围之外的只使⽤边界纹理单元。边界纹理单元是作为围绕基本图像的额外的行和列，并与基本纹理图像⼀起加载的。
 
+## 绘制金字塔
+
+![image-20220729174042249](/Users/xyj/Library/Application Support/typora-user-images/image-20220729174042249.png)
+
+```
+三⻆角形X的坐标如下: 
+vBackLeft(-1.0,-1.0,-1.0)
+vBackRight(1.0,-1.0,-1.0) 
+vFrontRight(1.0,-1.0,1.0)
+
+三⻆角形Y的坐标如下: 
+vFrontLeft(-1.0,-1.0,1.0)
+vBackLeft(-1.0,-1.0,-1.0) 
+vFrontRight(1.0,-1.0,1.0)
+
+顶点坐标:
+VBackLeft (-1.0,-1.0,-1.0) 
+VBackRight (1.0,-1.0,-1.0) 
+vFrontLeft (-1.0,-1.0,1.0) 
+VFrontRight(1.0,-1.0,1.0) 
+vApex (0,1.0,0)
+
+纹理理坐标! 
+VBackLeft ( 0,0,0)
+VBackRight (0,1,0) 
+vFrontLeft (0,0,1) 
+VFrontRight (0,1,1) 
+vApex (0,0.5,1)
+```
+
+## 设置Mip贴图
+
+```
+//设置mip贴图基层 
+glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_BASE_LEVEL,0); 
+
+//设置mip贴图最⼤大层 
+glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_BASE_LEVEL,0);
+```
+
+| 常量量                    | 描述  |
+| ----| ---- |
+| GL_NEAREST                | 在Mip基层上执行最邻近过滤  |
+| GL_LINEAR                 | 在Mip基层执行线性过滤  |
+| GL_NEAREST_MIPMAP_NEAREST | 在最邻近Mip层，并执行最邻近过滤  |
+| GL_NEAREST_MIPMAP_LINEAR  | 在Mip层之间执⾏线性插补，并执⾏最邻近过滤 |
+| GL_LINEAR_MIPMAP_NEAREST  | 选择最邻近Mip层，并执⾏线性过滤 |
+| GL_LINEAR_MIPMAP_LINEAR   | 在Mip层之间执⾏线性插补，并执⾏线性过滤，⼜称三线性Mip贴图 |
+
+## 压缩纹理
+
+通用压缩纹理格式
+
+| 压缩格式 | 基本内部格式 |
+| ----| ---- |
+| GL_COMPRESSED_RGB        | GL_RGB       |
+| GL_COMPRESSED_RGBA       | GL_RGBA      |
+| GL_COMPRESSED_SRGB       | GL_RGB       |
+| GL_COMPRESSED_SRGB_ALPHA | GL_RGBA      |
+| GL_COMPRESSED_RED        | GL_RED       |
+| GL_COMPRESSED_RG         | GL_RG        |
+
+### 判断压缩与选择压缩方式
+
+```
+GLint comFlag;
+//判断纹理理是否被成功压缩 
+glGetTexLevelParameteriv(GL_TEXTURE_2D,0,GL_TEXTURE_COMPRESSED,&comFlag);
+
+//根据选择的压缩纹理理格式，选择最快、最优、⾃自⾏行行选择的算法⽅方式选择压缩格式。 glHint(GL_TEXTURE_COMPRESSION_HINT,GL_FASTEST);
+glHint(GL_TEXTURE_COMPRESSION_HINT,GL_NICEST);
+glHint(GL_TEXTURE_COMPRESSION_HINT,GL_DONT_CARE);
+```
+
+### 加载压缩纹理
+
+```c
+void glCompressedTexImage1D(GLenum target,GLint level,GLenum internalFormat,GLsizei width,GLint border,GLsizei imageSize,void *data);
+ 
+void glCompressedTexImage2D(GLenum target,GLint level,GLenum internalFormat,GLsizei width,GLint heigth,GLint border,GLsizei imageSize,void *data);
+
+void glCompressedTexImage3D(GLenum target,GLint level,GLenum internalFormat,GLsizei width,GLsizei heigth,GLsizei depth,GLint border,GLsizei imageSize,void *data);
+```
+
+- target:`GL_TEXTURE_1D`、`GL_TEXTURE_2D`、`GL_TEXTURE_3D`。
+- Level:指定所加载的mip贴图层次。一般我们都把这个参数设置为0。 
+- internalformat:每个纹理单元中存储多少颜色成分。 
+- width、height、depth参数:指加载纹理的宽度、⾼度、深度。
+- border参数:允许为纹理贴图指定一个边界宽度。 
+- format、type、data参数:与我们在讲glDrawPixels 函数对于的参数相同
+
+**glGetTexLevelParameter** 函数提取的压缩纹理格式
+
+| 参数  | 返回   |
+| ---- | ---- |
+| GL_TEXTURE_COMPRESSED             | 如果纹理理被压缩，返回1，否则返回0 |
+| GL_TEXTURE_COMPRESSED_IMAGE_SIZE  | 压缩后的纹理理的⼤大⼩小(以字节为单位)  |
+| GL_TEXTURE_INTERNAL_FORMAT        | 所使⽤用的压缩格式  |
+| GL_NUM_COMPRESSED_TEXTURE_FORMATS | 受⽀支持的压缩纹理理格式数量量 |
+| GL_COMPRESSED_TEXTURE_FORMATS     | ⼀一个包含了了⼀一些常量量值的数组，每个常量量值对应于⼀一种受⽀支持的压缩纹理理格式 |
+| GL_TEXTURE_COMPRESSION_HINT       | 压缩纹理理提示的值(GL/NICEST/GL_FASTEST)                     |
+
+**GL_EXT_texture_compression_s3tc**压缩格式
+
+| 格式 | 描述 |
+| ---- | ---- |
+| GL_COMPRESSED_RGB_S3TC_DXT1  | RGB数据被压缩，alpha值始终是1.0                 |
+| GL_COMPRESSED_RGBA_S3TC_DXT1 | RGBA数据被压缩，alpha值返回1.0或者0.0           |
+| GL_COMPRESSED_RGAB_S3TC_DXT3 | RGB值被压缩，alpha值⽤用4位存储                 |
+| GL_COMPRESSED_RGBA_SETC_DXT5 | RGB数据被压缩，alpha值是⼀一些8位值的加权平均值 |
+
+## 使用纹理
+
+```
+//1. 读取文件!
+void glReadPixels(GLint x,GLint y,GLSizei width,GLSizei height, GLenu m format, GLenum type,const void * pixels);
+
+//2. 载入纹理
+void glTexImage2D(GLenum target,GLint level,GLint internalformat,GLsi zei width,GLsizei height,GLint border,GLenum format,GLenum type,void * data);
+
+//3. 纹理对象
+// 使用函数分配纹理对象
+// 指定纹理对象的数量和指针（指针指向一个无符号整形数组，由纹理对象标识符填充）
+void glGenTextures(GLsizei n,GLuint * textTures);
+
+//绑定纹理对象
+//参数target:GL_TEXTURE_1D、GL_TEXTURE_2D、GL_TEXTURE_3D 
+//参数texture:需要绑定的纹理对象
+void glBindTexture(GLenum target,GLunit texture);
+
+//删除绑定纹理对象
+//纹理对象 以及 纹理对象指针（指针指向一个无符号整形数组，由纹理对象标识符填充）
+void glDeleteTextures(GLsizei n,GLuint *textures);
+
+//测试纹理对象是否有效 
+//如果texture是一个以及分配空间的纹理对象，那么这个函数会返回GL_TRUE,否者会返回GL_FALSE
+GLboolean glIsTexture(GLuint texture);
+
+//设置纹理的相关参数!
+//放大/缩小过滤(临近过滤,线性过滤) 
+glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST); glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+
+//设置X轴/Y轴上的环绕方式.
+//x,y,z,w
+//s,t,r,q 
+glTextParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAR_S,GL_CLAMP_TO_EDGE); glTextParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAR_T,GL_CLAMP_TO_EDGE);
+```
+
+
+
+
+
+
+
