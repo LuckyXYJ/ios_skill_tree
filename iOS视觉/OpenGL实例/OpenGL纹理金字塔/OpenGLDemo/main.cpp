@@ -67,7 +67,31 @@ GLGeometryTransform     transformPipeline;
 M3DMatrix44f            shadowMatrix;
 
 void MakePyramid(GLBatch& pyramidBatch) {
+    
+    /*通过pyramidBatch组建三角形批次
+      参数1：类型
+      参数2：顶点数
+      参数3：这个批次中将会应用1个纹理
+      注意：如果不写这个参数，默认为0。
+     */
     pyramidBatch.Begin(GL_TRIANGLES, 18, 1);
+    
+    /**
+     设置纹理坐标
+     void MultiTexCoord2f(GLuint texture, GLclampf s, GLclampf t);
+     参数1：texture，纹理层次，对于使用存储着色器来进行渲染，设置为0
+     参数2：s：对应顶点坐标中的x坐标
+     参数3：t:对应顶点坐标中的y
+     (s,t,r,q对应顶点坐标的x,y,z,w)
+     
+     pyramidBatch.MultiTexCoord2f(0,s,t);
+     
+     void Vertex3f(GLfloat x, GLfloat y, GLfloat z);
+     void Vertex3fv(M3DVector3f vVertex);
+     向三角形批次类添加顶点数据(x,y,z);
+      pyramidBatch.Vertex3f(-1.0f, -1.0f, -1.0f);
+    
+     */
     
     // 金字塔顶点
     M3DVector3f vApex = { 0.0f, 1.0f, 0.0f };
@@ -226,7 +250,16 @@ bool LoadTGATexture(const char *szFileName, GLenum minFilter, GLenum magFilter, 
     //使用完毕释放pBits
     free(pBits);
     
-    
+
+    //只有minFilter 等于以下四种模式，才可以生成Mip贴图
+    //GL_NEAREST_MIPMAP_NEAREST具有非常好的性能，并且闪烁现象非常弱
+    //GL_LINEAR_MIPMAP_NEAREST常常用于对游戏进行加速，它使用了高质量的线性过滤器
+    //GL_LINEAR_MIPMAP_LINEAR 和GL_NEAREST_MIPMAP_LINEAR 过滤器在Mip层之间执行了一些额外的插值，以消除他们之间的过滤痕迹。
+    //GL_LINEAR_MIPMAP_LINEAR 三线性Mip贴图。纹理过滤的黄金准则，具有最高的精度。
+    if(minFilter == GL_LINEAR_MIPMAP_LINEAR ||
+       minFilter == GL_LINEAR_MIPMAP_NEAREST ||
+       minFilter == GL_NEAREST_MIPMAP_LINEAR ||
+       minFilter == GL_NEAREST_MIPMAP_NEAREST)
     //4.加载Mip,纹理生成所有的Mip层
     //参数：GL_TEXTURE_1D、GL_TEXTURE_2D、GL_TEXTURE_3D
     glGenerateMipmap(GL_TEXTURE_2D);
@@ -294,6 +327,15 @@ void RenderScene() {
     //4.绑定纹理，因为我们的项目中只有一个纹理。如果有多个纹理。绑定纹理很重要
     glBindTexture(GL_TEXTURE_2D, textureID);
     
+    
+    //5.纹理替换矩阵着色器
+     /*
+     参数1：GLT_SHADER_TEXTURE_REPLACE（着色器标签）
+     参数2：模型视图投影矩阵
+     参数3：纹理层
+     */
+//    shaderManager.UseStockShader(GLT_SHADER_TEXTURE_REPLACE, transformPipeline.GetModelViewProjectionMatrix(), 0);
+    
     /*5.点光源着色器
      参数1：GLT_SHADER_TEXTURE_POINT_LIGHT_DIFF（着色器标签）
      参数2：模型视图矩阵
@@ -335,12 +377,19 @@ void SpecialKeys(int key, int x, int y) {
 
 void ChangeSize(int width, int height) {
     
+    //1.设置视口
     glViewport(0, 0, width, height);
     
+    //2.创建投影矩阵
     viewFrustum.SetPerspective(35.0f, float(width)/float(height), 1.0f, 500.0f);
     
+    //viewFrustum.GetProjectionMatrix()  获取viewFrustum投影矩阵
+    //并将其加载到投影矩阵堆栈上
     projectionMatrix.LoadMatrix(viewFrustum.GetProjectionMatrix());
     
+    //3.设置变换管道以使用两个矩阵堆栈（变换矩阵modelViewMatrix ，投影矩阵projectionMatrix）
+    //初始化GLGeometryTransform 的实例transformPipeline.通过将它的内部指针设置为模型视图矩阵堆栈 和 投影矩阵堆栈实例，来完成初始化
+    //当然这个操作也可以在SetupRC 函数中完成，但是在窗口大小改变时或者窗口创建时设置它们并没有坏处。而且这样可以一次性完成矩阵和管线的设置。
     transformPipeline.SetMatrixStacks(modelViewMatrix, projectionMatrix);
 }
 
