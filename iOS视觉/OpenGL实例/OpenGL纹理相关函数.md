@@ -1,4 +1,6 @@
-## 像素存储方式
+## 像素图
+
+**像素存储方式**
 
 //改变像素存储方式
 void glPixelStorei(GLenum pname,GLint param);
@@ -14,7 +16,37 @@ void glPixelStoref(GLenum pname,GLfloat param);
 glPixelStorei(GL_UNPACK_ALIGNMENT,1);
 ```
 
-## 从颜⾊色缓存区内容作为像素图直接读取
+**OpenGL 的像素格式**：
+
+| 常量量 | 描述 |
+| :--: | :--: |
+| GL_RGB             | 描述红、绿、蓝顺序排列的颜⾊       |
+| GL_RGBA            | 按照红、绿、蓝、Alpha顺序排列的颜⾊ |
+| GL_BGR             | 按照蓝、绿、红顺序排列颜⾊  |
+| GL_BGRA            | 按照蓝、绿、红、Alpha顺序排列颜⾊	|
+| GL_RED             | 每个像素只包含了一个红色分量  |
+| GL_GREEN           | 每个像素只包含了一个绿⾊分量  |
+| GL_BLUE            | 每个像素只包含了一个蓝⾊分量	 |
+| GL_RG              | 每个像素依次包含了一个红色和绿⾊的分量	|
+| GL_RED_INTEGER     | 每个像素包含了一个整数形式的红色分量	 |
+| GL_GREEN_INTEGER   | 每个像素包含了一个整数形式的绿色分量  |
+| GL_BLUE_INTEGER    | 每个像素包含了一个整数形式的蓝⾊分量	 |
+| GL_RG_INTEGER      | 每个像素依次包含了一个整数形式的红⾊、绿⾊分量  |
+| GL_RGB_INTEGER     | 每个像素包含了一个整数形式的红色、蓝色、绿⾊分量	 |
+| GL_RGBA_INTEGER    | 每个像素包含了一个整数形式的红色、蓝色、绿⾊、Alpah分量 |
+| GL_BGR_INTEGER     | 每个像素包含了一个整数形式的蓝色、绿色、红色分量	 |
+| GL_BGRA_INTEGER    | 每个像素包含了一个整数形式的蓝色、绿色、红色、Alpah分量 |
+| GL_STENCIL_INDEX   | 每个像素只包含了一个模板值 	|
+| GL_DEPTH_COMPONENT | 每个像素值包含⼀个深度值  |
+| GL_DEPTH_STENCIL   | 每个像素包含一个深度值和⼀个模板值 |
+
+**像素数据的数据类型**：
+
+![image-20220729154923497](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220729154923497.png)
+
+指定分量RGBA的排列顺序根据format参数确定。分量是按照分量高位到低位排列
+
+### 从颜⾊色缓存区读取像素图
 
 **glReadPixels**
 
@@ -34,35 +66,21 @@ glReadBuffer(mode);—> 指定读取的缓存
 glWriteBuffer(mode);—> 指定写⼊入的缓存
 ```
 
-OpenGL 的像素格式：
+### 从TGA⽂件中读取像素图
 
-| 常量量 | 描述 |
-| :--: | :--: |
-| GL_RGB             | 描述红、绿、蓝顺序排列的颜⾊       |
-| GL_RGBA            | 按照红、绿、蓝、Alpha顺序排列的颜⾊ |
-| GL_BGR             | 按照蓝、绿、红顺序排列颜⾊  |
-| GL_BGRA            | 按照蓝、绿、红、Alpha顺序排列颜⾊	|
-| GL_RED             | 每个像素只包含了一个红色分量  |
-| GL_GREEN           | 每个像素只包含了一个绿⾊分量  |
-| GL_BLUE            | 每个像素只包含了一个蓝⾊分量	 |
-| GL_RG              | 每个像素依次包含了一个红色和绿⾊的分量	|
-| GL_RED_INTEGER     | 每个像素包含了一个整数形式的红色分量	 |
-| GL_GREEN_INTEGER   | 每个像素包含了一个整数形式的绿色分量  |
-| GL_BLUE_INTEGER    | 每个像素包含了一个整数形式的蓝⾊分量	 |
-| GL_RG_INTEGER      | 每个像素依次包含了一个整数形式的红⾊、绿⾊分量  |
-| GL_RGB_INTEGER     | 每个像素包含了一个整数形式的红色、蓝色、绿⾊分量	 |
-| GL_RGBA_INTEGER    | 每个像素包含了一个整数形式的红色、蓝色、绿⾊、Alpah分量 |
-| GL_BGR_INTEGER     | 每个像素包含了一个整数形式的蓝色、绿色、红色分量	 |
-| GL_BGRA_INTEGER    | 每个像素包含了一个整数形式的蓝色、绿色、红色、Alpah分量 |
-| GL_STENCIL_INDEX   | 每个像素只包含了一个模板值 	|
-| GL_DEPTH_COMPONENT | 每个像素值包含⼀个深度值  |
-| GL_DEPTH_STENCIL   | 每个像素包含一个深度值和⼀个模板值 |
+gltReadTGABits
 
-像素数据的数据类型：
+```
+参数1: 纹理文件名称
+参数2: ⽂件宽度地址 
+参数3: ⽂件高度地址 
+参数4: ⽂件组件地址 
+参数5: ⽂件格式地址 
+返回值:pBits,指向图像数据的指针
 
-![image-20220729154923497](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220729154923497.png)
-
-指定分量RGBA的排列顺序根据format参数确定。分量是按照分量高位到低位排列
+GLbyte *gltReadTGABits(const char *szFileName, GLint *iWidth, GLint *iHeight, GLint
+*iComponents, GLenum *eFormat);
+```
 
 ## 载入纹理
 
@@ -203,6 +221,7 @@ glTextParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAR_T,GL_CLAMP_TO_EDGE);
   - GL_CLAMP_TO_EDGE环绕模式强制对范围之外的纹理坐标沿着合法的纹理单元的最后⼀行或者最后⼀列来进行采样。 
   - GL_CLAMP_TO_BORDER:在纹理坐标在0.0到1.0范围之外的只使⽤边界纹理单元。边界纹理单元是作为围绕基本图像的额外的行和列，并与基本纹理图像⼀起加载的。
 
+
 ## 绘制金字塔
 
 ![image-20220729174042249](/Users/xyj/Library/Application Support/typora-user-images/image-20220729174042249.png)
@@ -242,14 +261,15 @@ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_BASE_LEVEL,0);
 //设置mip贴图最⼤大层 
 glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_BASE_LEVEL,0);
 ```
+经过Mip贴图的纹理过滤
 
-| 常量量                    | 描述  |
-| ----| ---- |
-| GL_NEAREST                | 在Mip基层上执行最邻近过滤  |
-| GL_LINEAR                 | 在Mip基层执行线性过滤  |
-| GL_NEAREST_MIPMAP_NEAREST | 在最邻近Mip层，并执行最邻近过滤  |
-| GL_NEAREST_MIPMAP_LINEAR  | 在Mip层之间执⾏线性插补，并执⾏最邻近过滤 |
-| GL_LINEAR_MIPMAP_NEAREST  | 选择最邻近Mip层，并执⾏线性过滤 |
+| 常量量                    | 描述                                                       |
+| ------------------------- | ---------------------------------------------------------- |
+| GL_NEAREST                | 在Mip基层上执行最邻近过滤                                  |
+| GL_LINEAR                 | 在Mip基层执行线性过滤                                      |
+| GL_NEAREST_MIPMAP_NEAREST | 在最邻近Mip层，并执行最邻近过滤                            |
+| GL_NEAREST_MIPMAP_LINEAR  | 在Mip层之间执⾏线性插补，并执⾏最邻近过滤                  |
+| GL_LINEAR_MIPMAP_NEAREST  | 选择最邻近Mip层，并执⾏线性过滤                            |
 | GL_LINEAR_MIPMAP_LINEAR   | 在Mip层之间执⾏线性插补，并执⾏线性过滤，⼜称三线性Mip贴图 |
 
 ## 压缩纹理
