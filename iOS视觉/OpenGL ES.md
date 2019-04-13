@@ -8,9 +8,23 @@ OpenGL ES是OpenGL的简化版本，它消除了冗余功能，提供了一个�
 
 OpenGL ES允许应⽤程序利用**底层图形处理器**的强⼤功能。iOS设备上的GPU可以执行复杂的2D和3D绘图，以及最终图像中每个像素的复杂着色计算
 
+OpenGL ES 命令需要**渲染上下⽂**和**绘制表面**才能完成图形图像的绘制
+
+渲染上下文: 存储相关OpenGL ES 状态.
+
+绘制表⾯: 是⽤于绘制图元的表面,它指定渲染所需要的缓存区类型,例如颜⾊缓存区,深度缓冲区和模板缓存区.
+
+### EGL (Embedded Graphics Library )
+
+OpenGL ES API 并没有提供如何创建渲染上下文或者上下⽂如何连接到原⽣窗口系统. EGL 是Khronos 渲染API(如OpenGL ES) 和原生窗⼝系统之间的接口. 唯⼀支持 OpenGL ES 却不支持EGL 的平台是iOS. Apple 提供⾃己的EGL API的iOS实现,称为EAGL.
+
+因为每个窗⼝系统都有不同的定义,所以EGL提供基本的不透明类型—EGLDisplay, 这个类型封装了所有系统相关性,⽤于和原生窗口系统接⼝.
+
 ## OpenGL ES 3.0图形管线
 
 ![image-20220802135104291](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220802135104291.png)
+
+![img](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/677.png)
 
 ## 顶点着色器
 
@@ -127,3 +141,12 @@ void main ()
 
 **抖动：**抖动可用于最小化因为使用有限精度在帧缓冲区中保存颜色值而产生的伪像。
 
+## OpenGL ES 动画
+
+动画循环
+
+![update_display_loop_2x.png](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/update_display_loop_2x.png)
+
+显示器执行动画的应用程序流程
+
+![img](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/application_design_2x.png)
