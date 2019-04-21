@@ -16,9 +16,31 @@ OpenGL ES 命令需要**渲染上下⽂**和**绘制表面**才能完成图形�
 
 ### EGL (Embedded Graphics Library )
 
-OpenGL ES API 并没有提供如何创建渲染上下文或者上下⽂如何连接到原⽣窗口系统. EGL 是Khronos 渲染API(如OpenGL ES) 和原生窗⼝系统之间的接口. 唯⼀支持 OpenGL ES 却不支持EGL 的平台是iOS. Apple 提供⾃己的EGL API的iOS实现,称为EAGL.
+OpenGL ES API 并没有提供如何创建渲染上下文或者上下⽂如何连接到原⽣窗口系统. EGL 是Khronos 渲染API(如OpenGL ES) 和原生窗⼝系统之间的接口. 唯⼀支持 OpenGL ES 却不支持EGL 的平台是iOS. Apple 提供⾃己的EGL API的iOS实现,称为**EAGL**.
 
 因为每个窗⼝系统都有不同的定义,所以EGL提供基本的不透明类型—EGLDisplay, 这个类型封装了所有系统相关性,⽤于和原生窗口系统接⼝.
+
+EGL的主要功能：
+
+1. 和本地窗口系统(native windowing system)通讯;
+2. 查询可用的配置;
+3. 创建OpenGL ES可用的“绘图表面”(drawing surface);
+4. 同步不同类别的API之间的渲染，⽐如在OpenGL ES和OpenVG之间同步，或者在OpenGL和本地窗口的绘图命令之间
+5. 管理“渲染资源”，⽐如纹理映射(rendering map)。
+
+### OpenGLES 错误处理
+
+如果不正确使⽤OpenGL ES 命令,应⽤程序就会产⽣一个错误编码. 这个错误编码将被记录,可以用glGetError查询. 在应⽤程序用glGetError查询第⼀个错误代码之前,不会记录其他错误代码. 一旦查询到错误代码,当前错误代码便复位为GL_NO_ERROR
+
+| 错误代码 | 描述 |
+| ---- | ---- |
+| GL_NO_ERROR | 从上⼀次调用glGetError 以来没有生成任何错误 |
+| GL_INVALID_ENUM | GLenum 参数超出范围，忽略生成错误命令 |
+| GL_INVALID_VALUE | 数值型 参数超出范围，忽略生成错误命令 |
+| GL_INVALID_OPERATION | 特定命令在当前OpenGL ES 状态⽆法执⾏ |
+| GL_OUT_OF_MEMORY | 内存不⾜时执⾏该命令,如果遇到这个错误,除⾮当前错误代码,否则OpenGL ES 管线的状态被认为未定义 |
+
+
 
 ## OpenGL ES 3.0图形管线
 
@@ -150,3 +172,4 @@ void main ()
 显示器执行动画的应用程序流程
 
 ![img](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/application_design_2x.png)
+
