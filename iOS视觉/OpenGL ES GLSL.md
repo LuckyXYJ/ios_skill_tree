@@ -89,7 +89,7 @@ void main(){
 } 
 ```
 
-## 着色器与程序
+## 着色器与程序 的编译 与链接
 
 需要创建2个基本对象才能使用着色器进行传染：着色器对象和程序对象
 
@@ -203,7 +203,7 @@ void glGetPorgramInfoLog( GLuint program ,GLSizei maxLength, GLSizei *length , G
 // maxLength : 存储信息⽇志的缓存区⼤小
 // length : 写⼊的信息日志⻓度(减去null 终⽌止符),如果不需要知道长度,这个参数可以为Null. infoLog : 指向存储信息⽇志的字符缓存区的指针
 
-// 实用程序
+// 使用程序
 void glUseProgram(GLuint program) 
 // program: 设置为活动程序的程序对象句柄.
 ```
