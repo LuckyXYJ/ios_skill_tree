@@ -97,6 +97,33 @@ void main()
 }
 ```
 
+### 顶点着色器内建特殊变量
+
+gl_VertexID gl_InstanceID gl_Position gl_PointSize gl_FrontFacing
+
+### 顶点着色器内建uniform
+
+```
+struct gl_DepthRangeParameters {
+	highp float near; //near z 
+	highp float far; //near far 
+	highp float diff; //far - near
+}
+uniform gl_DepthRangeParameters gl_DepthRange;
+```
+
+### 顶点着色器内建常量
+
+```
+const mediump int gl_MaxVertexAttribs = 16;
+const mediump int gl_MaxVertexUniformVectors = 256; 
+const mediump int gl_MaxVertexOutputVectors = 16;
+const mediump int gl_MaxVertexTextureImageUnits = 16; 
+const mediump int gl_MaxCombinedTextureImageUnits = 32;
+```
+
+
+
 ## 图元装配
 
 图元(Primitive): 点,线,三⻆形等.
@@ -148,6 +175,61 @@ void main ()
   fragColor = v_color;
 }
 ```
+
+### 片元着色器 内建特殊变量
+
+gl_FragCoord gl_FrontFacing gl_PointCoord gl_FragDepth
+
+### 片元着色器内建常量
+
+```
+const mediump int gl_MaxFragmentInputVectors = 15;
+const mediump int gl_MaxTextureImageUnits = 16;
+const mediump int gl_MaxFragmentUniformVectors = 224;
+const mediump int gl_MaxDrawBuffers = 4;
+```
+
+多个纹理单元渲染（服务器）
+
+```
+// 片元着色器代码
+attribute vec2 v_texCoord;
+uniform sampler2D s_baseMap;
+uniform sampler2D s_SecondMap;
+void main()
+{
+  vec4 baseColor;
+  vec4 secondColor;
+  baseColor = texture(s_baseMap ,v_texCoord);
+  secondColor = texture(s_SecondMap ,v_texCoord);
+  gl_FragColor = baseColor * secondColor;
+}
+```
+
+多个纹理单元渲染（客户端）
+
+```
+// 客户端代码: 将各个纹理理对象绑定到纹理理单元0和1,为采样器器设置数 值,将采集器器绑定到对应的纹理理单元
+glActiveTexutre(GL_TEXTURE0);
+glBindTeture(GL_TEXTURE_2D ,baseMapTexId);
+glUniformli(baseMapTexId,0);
+glActiveTexutre(GL_TEXTURE1);
+glBindTeture(GL_TEXTURE_2D ,secondMapTexId);
+glUniformli(secondMapTexId,1);
+```
+
+### 片元着色器内建函数
+
+```
+常⽤用内建函数:
+dot :点乘
+cross :叉乘
+texture2D :⽤用于对纹理理采样
+normalize :对⼀一个向量量规格化
+clamp :将⼀一个向量量固定在⼀一个最⼩小值和最⼤大值之间
+```
+
+![内建函数](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220813211052518.png)
 
 ## 逐片段操作
 
