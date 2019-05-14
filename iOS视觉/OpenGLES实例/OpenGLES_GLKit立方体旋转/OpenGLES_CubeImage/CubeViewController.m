@@ -214,7 +214,7 @@ static NSInteger const kCoordCount = 36;
     //1.计算旋转度数
     self.angle = (self.angle + 5) % 360;
     //2.修改baseEffect.transform.modelviewMatrix
-    self.baseEffect.transform.modelviewMatrix = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(self.angle), 0, 1, 0);
+    self.baseEffect.transform.modelviewMatrix = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(self.angle), 0.4, 0.5, 0.6);
     //3.重新渲染
     [self.glkView display];
 }
