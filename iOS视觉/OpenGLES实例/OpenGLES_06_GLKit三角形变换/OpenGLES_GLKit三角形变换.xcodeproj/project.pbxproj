@@ -1,0 +1,325 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		304DB81D28AA553900708A46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69FF10C1FF61CD9000E0939 /* AppDelegate.m */; };
+		304DB81E28AA553900708A46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69FF1091FF61CD9000E0939 /* main.m */; };
+		304DB81F28AA553900708A46 /* XZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69FF13C1FF61E8A000E0939 /* XZViewController.m */; };
+		304DB82228AA553900708A46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69FF1161FF61CD9000E0939 /* LaunchScreen.storyboard */; };
+		304DB82328AA553900708A46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D69FF1141FF61CD9000E0939 /* Assets.xcassets */; };
+		304DB82428AA553900708A46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69FF1111FF61CD9000E0939 /* Main.storyboard */; };
+		304DB82528AA553900708A46 /* cTest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D69FF1421FF63524000E0939 /* cTest.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		304DB82928AA553900708A46 /* OpenGLES_GLKit三角形变换.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenGLES_GLKit三角形变换.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D69FF1091FF61CD9000E0939 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D69FF10B1FF61CD9000E0939 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D69FF10C1FF61CD9000E0939 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D69FF1121FF61CD9000E0939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D69FF1141FF61CD9000E0939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D69FF1171FF61CD9000E0939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D69FF1191FF61CD9000E0939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D69FF13B1FF61E8A000E0939 /* XZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZViewController.h; sourceTree = "<group>"; };
+		D69FF13C1FF61E8A000E0939 /* XZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZViewController.m; sourceTree = "<group>"; };
+		D69FF1421FF63524000E0939 /* cTest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cTest.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		304DB82028AA553900708A46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D69FF0FC1FF61CD9000E0939 = {
+			isa = PBXGroup;
+			children = (
+				D69FF1071FF61CD9000E0939 /* OpenGLES_GLKit三角形变换 */,
+				D69FF1061FF61CD9000E0939 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D69FF1061FF61CD9000E0939 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				304DB82928AA553900708A46 /* OpenGLES_GLKit三角形变换.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D69FF1071FF61CD9000E0939 /* OpenGLES_GLKit三角形变换 */ = {
+			isa = PBXGroup;
+			children = (
+				D69FF10B1FF61CD9000E0939 /* AppDelegate.h */,
+				D69FF10C1FF61CD9000E0939 /* AppDelegate.m */,
+				D69FF13B1FF61E8A000E0939 /* XZViewController.h */,
+				D69FF13C1FF61E8A000E0939 /* XZViewController.m */,
+				D69FF1111FF61CD9000E0939 /* Main.storyboard */,
+				D69FF1421FF63524000E0939 /* cTest.jpg */,
+				D69FF1141FF61CD9000E0939 /* Assets.xcassets */,
+				D69FF1161FF61CD9000E0939 /* LaunchScreen.storyboard */,
+				D69FF1191FF61CD9000E0939 /* Info.plist */,
+				D69FF1081FF61CD9000E0939 /* Supporting Files */,
+			);
+			path = "OpenGLES_GLKit三角形变换";
+			sourceTree = "<group>";
+		};
+		D69FF1081FF61CD9000E0939 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D69FF1091FF61CD9000E0939 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		304DB81B28AA553900708A46 /* OpenGLES_GLKit三角形变换 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 304DB82628AA553900708A46 /* Build configuration list for PBXNativeTarget "OpenGLES_GLKit三角形变换" */;
+			buildPhases = (
+				304DB81C28AA553900708A46 /* Sources */,
+				304DB82028AA553900708A46 /* Frameworks */,
+				304DB82128AA553900708A46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OpenGLES_GLKit三角形变换";
+			productName = "002--GLKit三角形变换";
+			productReference = 304DB82928AA553900708A46 /* OpenGLES_GLKit三角形变换.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D69FF0FD1FF61CD9000E0939 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = xyj;
+				TargetAttributes = {
+					304DB81B28AA553900708A46 = {
+						DevelopmentTeam = H6FNQWD7A9;
+					};
+				};
+			};
+			buildConfigurationList = D69FF1001FF61CD9000E0939 /* Build configuration list for PBXProject "OpenGLES_GLKit三角形变换" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = D69FF0FC1FF61CD9000E0939;
+			productRefGroup = D69FF1061FF61CD9000E0939 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				304DB81B28AA553900708A46 /* OpenGLES_GLKit三角形变换 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		304DB82128AA553900708A46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				304DB82228AA553900708A46 /* LaunchScreen.storyboard in Resources */,
+				304DB82328AA553900708A46 /* Assets.xcassets in Resources */,
+				304DB82428AA553900708A46 /* Main.storyboard in Resources */,
+				304DB82528AA553900708A46 /* cTest.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		304DB81C28AA553900708A46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				304DB81D28AA553900708A46 /* AppDelegate.m in Sources */,
+				304DB81E28AA553900708A46 /* main.m in Sources */,
+				304DB81F28AA553900708A46 /* XZViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D69FF1111FF61CD9000E0939 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D69FF1121FF61CD9000E0939 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D69FF1161FF61CD9000E0939 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D69FF1171FF61CD9000E0939 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		304DB82728AA553900708A46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H6FNQWD7A9;
+				INFOPLIST_FILE = "OpenGLES_GLKit三角形变换/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xyj.xxx;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		304DB82828AA553900708A46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H6FNQWD7A9;
+				INFOPLIST_FILE = "OpenGLES_GLKit三角形变换/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xyj.xxx;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D69FF1301FF61CD9000E0939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D69FF1311FF61CD9000E0939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		304DB82628AA553900708A46 /* Build configuration list for PBXNativeTarget "OpenGLES_GLKit三角形变换" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				304DB82728AA553900708A46 /* Debug */,
+				304DB82828AA553900708A46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D69FF1001FF61CD9000E0939 /* Build configuration list for PBXProject "OpenGLES_GLKit三角形变换" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D69FF1301FF61CD9000E0939 /* Debug */,
+				D69FF1311FF61CD9000E0939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D69FF0FD1FF61CD9000E0939 /* Project object */;
+}
