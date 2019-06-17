@@ -116,3 +116,6 @@ id<MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderW
 - 绘制图形
 - 调用`endEncoding（）`方法以终止渲染命令编码器。
 
+## Metal 支持的采样器状态和默认值
+
+![采样器状态和默认值](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220819163141761.png)
