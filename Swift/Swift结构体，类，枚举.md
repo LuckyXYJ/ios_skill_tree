@@ -309,8 +309,6 @@ print(p[1]) // 22.2
 
 ```
 
-
-
 subscript可以没有set方法，但必须要有get方法 
 
 如果只有get方法，可以省略get
