@@ -133,7 +133,7 @@ print(circle.radius)// 10.5
 
 **计算实例属性**（Computed Instance Property）
 
-**类型属性**（Type Property）：只能通过类型去访问 
+类型属性（Type Property）：只能通过类型去访问 
 
 **存储类型属性**（Stored Type Property）：整个程序运行过程中，就只有1份内存（类似于全局变量） 
 
