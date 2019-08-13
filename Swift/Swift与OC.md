@@ -88,3 +88,75 @@ struct Student {
 
 ![main](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/main.png)
 
+## Swift调用OC
+
+新建1个桥接头文件，文件名格式默认为：{targetName}-Bridging-Header.h
+
+在 {targetName}-Bridging-Header.h 文件中 #import OC需要暴露给Swift的内容
+
+## Swift调用OC – @_silgen_name
+
+如果C语言暴露给Swift的函数名跟Swift中的其他函数名冲突了 
+
+可以在Swift中使用 @_silgen_name 修改C函数名
+
+```swift
+// C语言 int sum(int a, int b) { return a + b; }
+
+// Swift 
+@_silgen_name("sum") func swift_sum(_ v1: Int32, _ v2: Int32) -> Int32 
+print(swift_sum(10, 20)) // 30 
+print(sum(10, 20)) // 30
+```
+
+## OC调用Swift
+
+Xcode已经默认生成一个用于OC调用Swift的头文件，文件名格式是： {targetName}-Swift.h
+
+Swift暴露给OC的类最终继承自NSObject
+
+使用@objc修饰需要暴露给OC的成员
+
+使用@objcMembers修饰类 :1、代表默认所有成员都会暴露给OC（包括扩展中定义的成员） 2、最终是否成功暴露，还需要考虑成员自身的访问级别
+
+Xcode会根据Swift代码生成对应的OC声明，写入 {targetName}-Swift.h 文件
+
+可以通过 @objc 重命名Swift暴露给OC的符号名（类名、属性名、函数名等）
+
+Swift
+
+```swift
+@objc(MYCar) 
+@objcMembers class Car: NSObject {
+  var price: Double 
+  @objc(name) 
+  var band: String 
+  init(price: Double, band: String) {
+    self.price = price
+    self.band = band 
+  } 
+  @objc(drive) 
+  func run() { print(price, band, "run") } 
+  static func run() { print("Car run") }
+} 
+extension Car {
+  @objc(exec:v2:)
+  func test() { 
+    print(price, band, "test") 
+  } 
+}
+
+```
+
+OC
+
+```objective-c
+MYCar *c = [[MYCar alloc] initWithPrice:10.5 band:@"BMW"];
+c.name = @"Bently";
+c.price = 100.00;
+[c drive]; // 100.00 Bently run
+[c exec:10 v2:20]; // 100.00 Bently test 
+[MYCar run]; // Car run
+  
+```
+
