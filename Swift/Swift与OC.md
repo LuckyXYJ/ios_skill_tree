@@ -160,3 +160,165 @@ c.price = 100.00;
   
 ```
 
+## 选择器（Selector）
+
+Swift中依然可以使用选择器，使用#selector(name)定义一个选择器 
+
+必须是被@objcMembers或@objc修饰的方法才可以定义选择器
+
+```swift
+@objcMembers class Person: NSObject {
+  func test1(v1: Int) { print("test1") } 
+  func test2(v1: Int, v2: Int) { print("test2(v1:v2:)") } 
+  func test2(_ v1: Double, _ v2: Double) { print("test2(_:_:)") }
+  func run() { 
+    perform(#selector(test1)) 
+    perform(#selector(test1(v1:))) 
+    perform(#selector(test2(v1:v2:))) 
+    perform(#selector(test2(_:_:)))
+    perform(#selector(test2 as (Double, Double) -> Void))
+  }
+}
+```
+
+## String
+
+Swift的字符串类型String，跟OC的NSString，在API设计上还是有较大差异
+
+```swift
+// 空字符串 
+var emptyStr1 = "" 
+var emptyStr2 = String()
+
+var str: String = "1" 
+// 拼接，
+jack_rose str.append("_2") 
+// 重载运算符 + 
+str = str + "_3" 
+// 重载运算符 
++= str += "_4" 
+// \()插值 
+str = "\(str)_5" 
+// 长度，9，1_2_3_4_5 
+print(str.count)
+
+var str = "123456" 
+print(str.hasPrefix("123")) // true 
+print(str.hasSuffix("456")) // true
+```
+
+String的插入和删除
+
+```swift
+var str = "1_2" 
+// 1_2_ 
+str.insert("_", at: str.endIndex) 
+// 1_2_3_4 
+str.insert(contentsOf: "3_4", at: str.endIndex) 
+// 1666_2_3_4 
+str.insert(contentsOf: "666", at: str.index(after: str.startIndex)) 
+// 1666_2_3_8884 
+str.insert(contentsOf: "888", at: str.index(before: str.endIndex)) 
+// 1666hello_2_3_8884 
+str.insert(contentsOf: "hello", at: str.index(str.startIndex, offsetBy: 4))
+
+// 666hello_2_3_8884 
+str.remove(at: str.firstIndex(of: "1")!)
+
+// hello_2_3_8884 
+str.removeAll { $0 == "6" } 
+var range = str.index(str.endIndex, offsetBy: -4)..<str.index(before: str.endIndex) 
+// hello_2_3_4 
+str.removeSubrange(range)
+```
+
+## Substring
+
+String可以通过下标、 prefix、 suffix等截取子串，子串类型不是String，而是Substring
+
+```swift
+var str = "1_2_3_4_5" 
+// 1_2 
+var substr1 = str.prefix(3) 
+// 4_5 
+var substr2 = str.suffix(3) 
+// 1_2 
+var range = str.startIndex..<str.index(str.startIndex, offsetBy: 3) 
+var substr3 = str[range]
+
+// 最初的String，1_2_3_4_5 
+print(substr3.base)
+
+// Substring -> String 
+var str2 = String(substr3)
+```
+
+Substring和它的base，共享字符串数据 
+
+Substring发生修改 或者 转为String时，会分配新的内存存储字符串数据
+
+## String 与 Character
+
+```swift
+for c in "jack" { 
+  // c是Character类型 
+  print(c) 
+}
+
+var str = "jack" 
+// c是Character类型 
+var c = str[str.startIndex]
+```
+
+## String相关的协议
+
+```swift
+BidirectionalCollection 协议包含的部分内容 
+startIndex 、 endIndex 属性、index 方法 
+String、Array 都遵守了这个协议
+
+RangeReplaceableCollection 协议包含的部分内容 
+append、insert、remove 方法 
+String、Array 都遵守了这个协议
+
+Dictionary、Set 也有实现上述协议中声明的一些方法，只是并没有遵守上述协议
+```
+
+## 多行String
+
+**"""**三引号表示多行
+
+如果要显示3引号，至少转义1个引号
+
+缩进以结尾的3引号为对齐线
+
+## String 与 NSString
+
+String 与 NSString 之间可以随时随地桥接转换 
+
+如果你觉得String的API过于复杂难用，可以考虑将String转为NSString
+
+比较字符串内容是否等价 : String使用 == 运算符 ; NSString使用isEqual方法，也可以使用 == 运算符（本质还是调用了isEqual方法）
+
+## Swift、OC桥接转换表
+
+| String     | ⇌    | NSString            |
+| ---------- | ---- | ------------------- |
+| String     | ←    | NSMutableString     |
+| Array      | ⇌    | NSArray             |
+| Array      | ←    | NSMutableArray      |
+| Dictionary | ⇌    | NSDictionary        |
+| Dictionary | ←    | NSMutableDictionary |
+| Set        | ⇌    | NSSet               |
+| Set        | ←    | NSMutableSet        |
+
+## 只能被class继承的协议
+
+被 @objc 修饰的协议，还可以暴露给OC去遵守实现
+
+```swift
+protocol Runnable1: AnyObject {} 
+protocol Runnable2: class {} 
+@objc protocol Runnable3 {}
+```
+
