@@ -322,3 +322,116 @@ protocol Runnable2: class {}
 @objc protocol Runnable3 {}
 ```
 
+## 可选协议
+
+可以通过 @objc 定义可选协议，这种协议只能被 class 遵守
+
+```swift
+@objc protocol Runnable { 
+	func run1() 
+  @objc optional func run2() 
+  func run3() 
+}
+
+class Dog: Runnable { 
+  func run3() { print("Dog run3") } 
+  func run1() { print("Dog run1") } 
+} 
+var d = Dog() 
+d.run1() // Dog run1 
+d.run3() // Dog run3
+```
+
+## dynamic
+
+被 @objc dynamic 修饰的内容会具有动态性，比如调用方法会走runtime那一套流程
+
+```swift
+class Dog: NSObject { 
+  @objc dynamic func test1() {} 
+  func test2() {} 
+} 
+var d = Dog() 
+d.test1() 
+d.test2()
+```
+
+## KVC\KVO
+
+Swift 支持 KVC \ KVO 的条件
+
+- 属性所在的类、监听器最终继承自 NSObject
+- 用 @objc dynamic 修饰对应的属性
+
+```swift
+class Observer: NSObject {
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) { 
+    print("observeValue", change?[.newKey] as Any) 
+  }
+}
+
+class Person: NSObject {
+  @objc dynamic var age: Int = 0 
+  var observer: Observer = Observer() 
+  override init() {
+    super.init()
+    self.addObserver(observer, forKeyPath: "age", options: .new, context: nil) 
+  } 
+  deinit {
+    self.removeObserver(observer, forKeyPath: "age") 
+  }
+} 
+var p = Person() 
+// observeValue Optional(20) 
+p.age = 20 
+// observeValue Optional(25) 
+p.setValue(25, forKey: "age")
+```
+
+## block方式的KVO
+
+```swift
+class Person: NSObject {
+  @objc dynamic var age: Int = 0 
+  var observation: NSKeyValueObservation?
+  override init() { 
+    super.init() 
+    observation = observe(\Person.age, options: .new) { 
+      (person, change) in 
+      print(change.newValue as Any) 
+    }
+  }
+} 
+var p = Person() // Optional(20) 
+p.age = 20 // Optional(25) 
+p.setValue(25, forKey: "age")
+```
+
+## 关联对象（Associated Object）
+
+在Swift中，class依然可以使用关联对象 
+
+默认情况，extension不可以增加存储属性 
+
+借助关联对象，可以实现类似extension为class增加存储属性的效果
+
+```swift
+class Person {} extension Person {
+  private static var AGE_KEY: Void?
+  var age: Int { 
+    get { 
+      (objc_getAssociatedObject(self, &Self.AGE_KEY) as? Int) ?? 0 
+    } 
+    set { 
+      objc_setAssociatedObject(self, &Self.AGE_KEY, newValue, .OBJC_ASSOCIATION_ASSIGN)
+    }
+  }
+}
+
+var p = Person() 
+print(p.age) // 0 
+p.age = 10 
+print(p.age) // 10
+
+```
+
