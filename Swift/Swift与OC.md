@@ -504,3 +504,110 @@ enum R {
 }
 ```
 
+## 多线程开发 – 异步
+
+```swift
+public typealias Task = () -> Void
+
+public static func async(_ task: @escaping Task) { _async(task) }
+
+public static func async(_ task: @escaping Task, _ mainTask: @escaping Task) { _async(task, mainTask) }
+
+private static func _async(_ task: @escaping Task, _ mainTask: Task? = nil) { 
+  let item = DispatchWorkItem(block: task) 
+  DispatchQueue.global().async(execute: item) 
+  if let main = mainTask { 
+    item.notify(queue: DispatchQueue.main, execute: main)
+  }
+}
+```
+
+## 多线程开发 – 延迟
+
+```swift
+@discardableResult 
+public static func delay(_ seconds: Double, _ block: @escaping Task) -> DispatchWorkItem { 
+  let item = DispatchWorkItem(block: block) 
+  DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds, execute: item) 
+  return item
+}
+```
+
+## 多线程开发 – 异步延迟
+
+```swift
+@discardableResult 
+public static func asyncDelay(_ seconds: Double, _ task: @escaping Task) -> DispatchWorkItem { 
+  return _asyncDelay(seconds, task) 
+}
+
+@discardableResult 
+public static func asyncDelay(_ seconds: Double, _ task: @escaping Task, _ mainTask: @escaping Task) -> DispatchWorkItem { 
+  return _asyncDelay(seconds, task, mainTask) 
+}
+
+private static func _asyncDelay(_ seconds: Double, _ task: @escaping Task, _ mainTask: Task? = nil) -> DispatchWorkItem { 
+  let item = DispatchWorkItem(block: task) 
+  DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + seconds, execute: item) 
+  if let main = mainTask { 
+    item.notify(queue: DispatchQueue.main, execute: main) 
+  } 
+  return item
+}
+```
+
+## 多线程开发 – once
+
+dispatch_once在Swift中已被废弃，取而代之 
+
+可以用类型属性或者全局变量\常量 
+
+默认自带 lazy + dispatch_once 效果
+
+```swift
+fileprivate let initTask2: Void = { print("initTask2---------") }()
+
+class ViewController: UIViewController { 
+  static let initTask1: Void = { print("initTask1---------") }()
+  override func viewDidLoad() { 
+    super.viewDidLoad()
+    let _ = Self.initTask1
+    let _ = initTask2
+  }
+}
+```
+
+## 多线程开发 – 加锁
+
+gcd信号量
+
+```swift
+class Cache {
+  private static var data = [String: Any]() 
+  private static var lock = DispatchSemaphore(value: 1) 
+  static func set(_ key: String, _ value: Any) {
+    lock.wait()
+    defer { lock.signal() }
+    data[key] = value
+  }
+}
+```
+
+Foundation
+
+```swift
+private static var lock = NSLock() 
+static func set(_ key: String, _ value: Any) {
+  lock.lock()
+  defer { 
+    lock.unlock() 
+  } 
+}
+
+private static var lock = NSRecursiveLock() 
+static func set(_ key: String, _ value: Any) {
+	lock.lock()
+	defer { lock.unlock() } 
+}
+```
+
