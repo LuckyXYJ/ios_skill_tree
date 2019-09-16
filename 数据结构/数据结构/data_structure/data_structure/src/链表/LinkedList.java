@@ -2,6 +2,9 @@ package 链表;
 
 import com.xyj.list.AbstractList;
 
+/*
+    记录首位两个结点的链表
+ */
 public class LinkedList<E> extends AbstractList<E> {
 
     private Node<E> first;
