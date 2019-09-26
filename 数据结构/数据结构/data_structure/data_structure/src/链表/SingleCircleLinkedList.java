@@ -2,6 +2,9 @@ package 链表;
 
 import com.xyj.list.AbstractList;
 
+/*
+    单向循环链表
+ */
 public class SingleCircleLinkedList<E> extends AbstractList<E> {
     private Node<E> first;
 
