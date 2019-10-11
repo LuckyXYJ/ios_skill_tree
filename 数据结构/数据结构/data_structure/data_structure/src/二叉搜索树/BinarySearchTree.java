@@ -3,6 +3,8 @@ package 二叉搜索树;
 import com.xyj.tree.BinaryTreeInfo;
 
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BinarySearchTree<E> implements BinaryTreeInfo {
 
@@ -192,6 +194,13 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         }
     }
 
+    public static abstract class Visitor<E> {
+        boolean stop;
+        /**
+         * @return 如果返回true，就代表停止遍历
+         */
+        public abstract boolean visit(E element);
+    }
     private static class Node<E> {
         E element;
         Node<E> left;
@@ -234,5 +243,157 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             parentString = myNode.parent.element.toString();
         }
         return myNode.element + "_p(" + parentString + ")";
+    }
+
+    /**
+     * 二叉搜索树高度
+     * @return
+     */
+    public int height() {
+        if (root == null) return 0;
+
+        // 树的高度
+        int height = 0;
+        // 存储着每一层的元素数量
+        int levelSize = 1;
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            Node<E> node = queue.poll();
+            levelSize--;
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+
+            if (levelSize == 0) { // 意味着即将要访问下一层
+                levelSize = queue.size();
+                height++;
+            }
+        }
+
+        return height;
+    }
+
+    public int height2() {
+        return height(root);
+    }
+
+    private int height(Node<E> node) {
+        if (node == null) return 0;
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+
+    /**
+     * 判断是否是完全二叉树，即 叶子节点只会出现最后 2 层，且最后 1 层的叶子结点都靠左对齐
+     * @return
+     */
+    public boolean isComplete() {
+        if (root == null) return false;
+
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+
+        boolean leaf = false;
+        while (!queue.isEmpty()) {
+            Node<E> node = queue.poll();
+            if (leaf && !node.isLeaf()) return false;
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            } else if (node.right != null) { // node.left == null && node.right != null
+                return false;
+            }
+
+            if (node.right != null) {
+                queue.offer(node.right);
+            } else { // node.right == null
+                leaf = true;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 前序遍历
+     * @param visitor
+     */
+    public void preorder(Visitor<E> visitor) {
+        if (visitor == null) return;
+        preorder(root, visitor);
+    }
+
+    private void preorder(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor.stop) return;
+
+        visitor.stop = visitor.visit(node.element);
+        preorder(node.left, visitor);
+        preorder(node.right, visitor);
+    }
+
+    /**
+     * 中序遍历
+     * @param visitor
+     */
+    public void inorder(Visitor<E> visitor) {
+        if (visitor == null) return;
+        inorder(root, visitor);
+    }
+
+    private void inorder(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor.stop) return;
+
+        inorder(node.left, visitor);
+        if (visitor.stop) return;
+        visitor.stop = visitor.visit(node.element);
+        inorder(node.right, visitor);
+    }
+
+    /**
+     * 后序遍历
+     * @param visitor
+     */
+    public void postorder(Visitor<E> visitor) {
+        if (visitor == null) return;
+        postorder(root, visitor);
+    }
+
+    private void postorder(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor.stop) return;
+
+        postorder(node.left, visitor);
+        postorder(node.right, visitor);
+        if (visitor.stop) return;
+        visitor.stop = visitor.visit(node.element);
+    }
+
+    /**
+     * 层序遍历
+     * @param visitor
+     */
+    public void levelOrder(Visitor<E> visitor) {
+        if (root == null || visitor == null) return;
+
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            Node<E> node = queue.poll();
+            if (visitor.visit(node.element)) return;
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
     }
 }
