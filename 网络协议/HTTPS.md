@@ -112,8 +112,6 @@ Wireshark
 在Wireshark中选择这个文件  编辑 → 首选项 → Protocols → TLS
 ```
 
-
-
 ## 配置服务器HTTPS - 配置Tomcat
 
 将证书*.jks文件放到TOMCAT_HOME/conf目录下
