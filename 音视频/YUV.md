@@ -136,3 +136,23 @@ B = Y + 1.770(U - 128)
 - 1个像素平均占用12bit（1.5字节）
   - 12bpp
   - 因为4个像素共占用48bit（6字节 = 4个Y分量 + 1个Cb分量 + 1个Cr分量）
+
+## 五、存储格式
+
+YUV的存储格式可以分为3大类：
+
+- Planar（平面）
+  - Y、U、V分量分开单独存储
+  - 名称通常以字母p结尾
+- Semi-Planar（半平面）
+  - Y分量单独存储，U、V分量交错存储
+  - 名称通常以字母sp结尾
+- Packed（紧凑）
+  - 或者叫Interleaved （交错）
+  - Y、U、V分量交错存储
+
+![4:4:4](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/497279-20210427160725877-441224954.png)
+
+![4:2:2](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/497279-20210427160727280-1159726486.png)
+
+![4:2:0](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/497279-20210427160729037-800619598.png)
