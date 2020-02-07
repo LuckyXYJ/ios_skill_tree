@@ -95,3 +95,36 @@ ffmpeg -h full
 # ffmpeg -help full
 ```
 
+### 2.2、ffprobe
+
+ffprobe的主要作用：查看音视频的参数信息。
+
+```
+# 可以查看MP3文件的采样率、比特率、时长等信息
+ffprobe xx.mp3
+```
+
+当输入命令*ffprobe*时，可以看到ffprobe命令的使用格式是：
+
+```
+ffprobe [OPTIONS] [INPUT_FILE]
+# OPTIONS：参数
+# INPUT_FILE：输入文件
+```
+
+帮助
+
+```
+# 简易版
+ffprobe -h
+# 详细版
+ffprobe -h long
+# 完整版
+ffprobe -h full
+ 
+# 或者使用
+# ffprobe -help
+# ffprobe -help long
+# ffprobe -help full
+```
+
