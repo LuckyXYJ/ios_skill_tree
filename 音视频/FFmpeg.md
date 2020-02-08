@@ -112,7 +112,7 @@ ffprobe [OPTIONS] [INPUT_FILE]
 # INPUT_FILE：输入文件
 ```
 
-帮助
+#### 帮助
 
 ```
 # 简易版
@@ -126,5 +126,90 @@ ffprobe -h full
 # ffprobe -help
 # ffprobe -help long
 # ffprobe -help full
+```
+
+### 2.3、ffplay
+
+fplay的主要作用：播放音视频。
+
+```shell
+# 播放MP3文件
+ffplay xx.mp3
+```
+
+当输入命令*ffplay*时，可以看到ffplay命令的使用格式是：
+
+```shell
+ffplay [options] input_file
+# options：参数
+# input_file：输入文件
+```
+
+#### ffplay 显示YUV数据
+
+```
+ffplay -s 512x512 -pix_fmt yuv420p in.yuv
+# 在ffplay中
+# -s已经过期，建议改为：-video_size
+# -pix_fmt已经过期，建议改为：-pixel_format
+ffplay -video_size 512x512 -pixel_format yuv420p in.yuv
+```
+
+- YUV中直接存储的是所有像素的颜色信息（可以理解为是图像的一种原始数据）
+- 必须得设置YUV的尺寸（*-s*）、像素格式（*-pix_fmt*）才能正常显示
+- 这就类似于：播放pcm时，必须得设置采样率（*-ar*）、声道数（*-ac*）、采样格式（*-f*）
+
+可以使用过滤器（filter）显示其中的单个分量（r、g、b、y、u、v）。
+
+```
+# 只显示r分量
+ffplay -vf extractplanes=r in.png
+ 
+# 只显示g分量
+ffplay -vf extractplanes=g in.png
+ 
+# 只显示b分量
+ffplay -vf extractplanes=b in.png
+ 
+# 只显示y分量
+ffplay -video_size 512x512 -pixel_format yuv420p -vf extractplanes=y in.yuv
+# 只显示y分量
+ffplay -video_size 512x512 -pixel_format yuv420p -vf extractplanes=u in.yuv
+# 只显示y分量
+ffplay -video_size 512x512 -pixel_format yuv420p -vf extractplanes=v in.yuv
+```
+
+- -vf
+  - 设置视频过滤器
+  - 等价写法：*-filter:v*
+- extractplanes
+  - 抽取单个分量的内容到灰度视频流中
+
+#### 帮助
+
+```
+# 简易版
+ffplay -h
+# 详细版
+ffplay -h long
+# 完整版
+ffplay -h full
+ 
+# 或者使用
+# ffplay -help
+# ffplay -help long
+# ffplay -help full
+```
+
+### 2.4、hide_banner
+
+增加*-hide_bannder*参数可以隐藏一些冗余的描述信息：
+
+```
+ffprobe xx.mp3
+ 
+ffprobe -hide_banner xx.mp3
+ 
+# ffmpeg、ffprobe、ffplay都适用
 ```
 
