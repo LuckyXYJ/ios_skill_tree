@@ -145,6 +145,22 @@ ffplay [options] input_file
 # input_file：输入文件
 ```
 
+#### ffplay 播放PCM文件
+
+播放PCM需要指定相关参数：
+
+- *ar*：采样率
+- *ac*：声道数
+- f：采样格式
+  - *s16le*：PCM signed 16-bit little-endian
+  - 更多PCM的采样格式可以使用命令查看
+    - Windows：*ffmpeg -formats | findstr PCM*
+    - Mac：*ffmpeg -formats | grep PCM*
+
+```sh
+ffplay -ar 44100 -ac 2 -f s16le out.pcm
+```
+
 #### ffplay 显示YUV数据
 
 ```
