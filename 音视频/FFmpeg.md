@@ -79,6 +79,25 @@ ffmpeg -s 512x512 -pix_fmt yuv420p -i in.yuv out.jpg
 - 这里必须得设置YUV的尺寸（*-s*）、像素格式（*-pix_fmt*）
 - 这就类似于：对pcm进行编码时，必须得设置采样率（*-ar*）、声道数（*-ac*）、采样格式（*-f*）
 
+#### PCM转成WAV
+
+```
+ffmpeg -ar 44100 -ac 2 -f s16le -i out.pcm out.wav
+```
+
+需要注意的是：上面命令生成的WAV文件头有78字节。对比44字节的文件头，它多增加了一个34字节大小的LIST chunk。
+
+关于LIST chunk的参考资料：
+
+- [What is a “LIST” chunk in a RIFF/Wav header?](https://stackoverflow.com/questions/63929283/what-is-a-list-chunk-in-a-riff-wav-header)
+- [List chunk (of a RIFF file)](https://www.recordingblogs.com/wiki/list-chunk-of-a-wave-file)
+
+加上一个输出文件参数*-bitexact*可以去掉LIST Chunk。
+
+```
+ffmpeg -ar 44100 -ac 2 -f s16le -i out.pcm -bitexact out2.wav
+```
+
 #### 帮助
 
 ```shell
