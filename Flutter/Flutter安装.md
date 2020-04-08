@@ -8,6 +8,18 @@ Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质�
 
 [React Native VS Flutter评测](https://juejin.cn/post/6844903619867869192)
 
+react native：
+
+在 Web 容器方案的基础上，优化了加载、解析和渲染这三大过程。用原生自带的 UI 组件实现代替了核心的渲染引擎，从而保证了良好的**渲染性能**。
+
+除开通过 JavaScript 虚拟机进行原生接口的调用，**效率低**。由原生代理，因此我们还需要**面对大量平台相关的逻辑**。
+
+Flutter：
+
+视图渲染完全闭环在其框架内部，不依赖于底层操作系统提供的任何组件，从根本上保证了视图渲染在 Android 和 iOS 上的高度**一致性**
+
+开发期**调试效率高**，发布期**运行速度快**、执行**性能好**，在代码执行效率上可以媲美原生 App
+
 ### Flutter 前景
 
 [闲鱼正在悄悄放弃 Flutter 吗？](https://juejin.cn/post/6955304605190357005)
@@ -103,6 +115,10 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 ```
 
 如果系统可以访问以上三个网站，仅终端doctor命令失败，是因为终端环境与系统环境不同，需要单独开启**超能力**。
+
+![image-20220917215201176](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220917215201176.png)
+
+终端执行复制来的命令后即可
 
 3、运行flutter出错，可能是是缓存的问题，解决方案即终端执行以下命令：
 
