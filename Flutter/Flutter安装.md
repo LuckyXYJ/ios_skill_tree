@@ -70,7 +70,7 @@ source ~/.bash_profile
 flutter doctor
 ```
 
-8、创建第一个flutter工程xxxxx,终端输入
+8、创建第一个flutter工程xxxxx,终端输入, 工程名字不支持大小驼峰
 
 ```
 flutter create xxxxx
