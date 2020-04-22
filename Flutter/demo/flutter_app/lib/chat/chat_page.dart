@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/chat/search_bar.dart';
 import '/tools/http_manager.dart' as http;
 import '../const.dart';
 
@@ -109,7 +110,7 @@ class _ChatPageState extends State<ChatPage>
           child: Text("Loading..."),
         )
             : ListView.builder(
-          itemCount: _datas.length,
+          itemCount: _datas.length + 1,
           itemBuilder: _buildCellForRow,
         ),
       ),
@@ -118,6 +119,13 @@ class _ChatPageState extends State<ChatPage>
 
   Widget _buildCellForRow(BuildContext context, int index) {
 
+    if (index == 0) {
+      return SearchCell(
+        datas: _datas,
+      );
+    }
+    //保证从模型数据正确取数据!从0开始!
+    index--;
     return ListTile(
         title: Text(_datas[index].name),
         subtitle: Container(
