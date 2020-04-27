@@ -13,7 +13,7 @@ class WechatAppRootPage extends StatefulWidget {
 
 class _RootPageState extends State<WechatAppRootPage> {
   int _currentIndex = 2;
-  final List<Widget> _pages = [ChatPage(), FriendsPage(), DiscoverPage(), const MinePage()];
+  final List<Widget> _pages = [ChatPage(), FriendsPage(), DiscoverPage(), MinePage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
