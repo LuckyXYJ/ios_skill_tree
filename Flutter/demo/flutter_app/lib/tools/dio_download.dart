@@ -2,10 +2,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-main() {
-  dioDemo();
-}
-
 void dioDemo() {
   //发送网络请求
   //1.创建dio对象
