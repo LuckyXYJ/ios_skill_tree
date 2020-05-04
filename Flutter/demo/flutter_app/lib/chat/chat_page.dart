@@ -8,8 +8,7 @@ class ChatPage extends StatefulWidget {
   _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage>
-    with AutomaticKeepAliveClientMixin {
+class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
   Widget _buildPopupMenuItem(String imageAss, String title) {
     return Row(
       children: <Widget>[

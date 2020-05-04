@@ -10,12 +10,13 @@ String _data = '0';
 void computeTest() {
   print('外部代码1');
 
-  compute(func2, 10).then((value) => print(value));
+  compute(func2, 100000000000).then((value) => print(value));
 
   print('外部代码2');
 }
 
 int func2(int count) {
+  print('外部代码3');
   sleep(Duration(seconds: 1));
   return 10000;
 }

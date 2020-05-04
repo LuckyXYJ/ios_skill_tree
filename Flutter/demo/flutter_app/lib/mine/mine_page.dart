@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/discover/discover_cell.dart';
 
+import '../tools/thread.dart';
+
 class MinePage extends StatefulWidget {
   @override
   _MinePageState createState() => _MinePageState();
@@ -133,6 +135,7 @@ class _MinePageState extends State<MinePage> {
                     DiscoverCell(
                       imageName: 'images/微信设置.png',
                       title: '设置',
+                      onPress: computeTest,
                     ),
                   ],
                 ),

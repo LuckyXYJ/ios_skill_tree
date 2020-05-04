@@ -6,13 +6,19 @@ class DiscoverCell extends StatelessWidget {
   final String? subTitle;
   final String? imageName;
   final String? subImageName;
+  final Function? onPress;
 
-  const DiscoverCell({super.key,  this.title, this.subTitle, this.imageName, this.subImageName}) :assert(title != null, 'title不能为空');
+  const DiscoverCell({super.key,  this.title, this.subTitle, this.imageName, this.subImageName, this.onPress}) :assert(title != null, 'title不能为空');
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+
+        if(onPress != null) {
+          onPress!();
+          return;
+        }
         Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context) =>
                 DiscoverChildPage(title: '$title')));
