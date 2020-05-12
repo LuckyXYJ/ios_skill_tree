@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/discover/discover_cell.dart';
+import 'package:flutter_app/lifeCycle/life_cycle_page.dart';
 
 import '../tools/thread.dart';
 
@@ -9,6 +10,13 @@ class MinePage extends StatefulWidget {
 }
 
 class _MinePageState extends State<MinePage> {
+
+  // void lifeCycleDemo() {
+  //   Navigator.of(context).push(MaterialPageRoute(
+  //       builder: (BuildContext context) =>
+  //           LifeCycle(title: '生命周期')));
+  // }
+
   Widget headerWidget() {
     return Container(
       color: Colors.white,
@@ -128,13 +136,14 @@ class _MinePageState extends State<MinePage> {
                     DiscoverCell(
                       imageName: 'images/微信表情.png',
                       title: '表情',
+                      onPress: ()=>{lifeCycleDemo(context)},
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     DiscoverCell(
                       imageName: 'images/微信设置.png',
-                      title: '设置',
+                      title: '异步操作',
                       onPress: computeTest,
                     ),
                   ],
