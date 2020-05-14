@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/lifeCycle/inherited_demo.dart';
 
 void lifeCycleDemo(context) {
   Navigator.of(context).push(MaterialPageRoute(
@@ -18,9 +19,10 @@ class LifeCycle extends StatelessWidget {
       appBar: AppBar(
         title: Text('$title'),
       ),
-      body: Center(
-        child: Text('$title'),
-      ),
+      // body: Center(
+      //   child: Text('$title'),
+      // ),
+      body: InheritedDemo(),
     );
   }
 }
