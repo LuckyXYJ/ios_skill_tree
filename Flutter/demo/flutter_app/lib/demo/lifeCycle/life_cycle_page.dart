@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/lifeCycle/inherited_demo.dart';
+import 'package:flutter_app/demo/lifeCycle/inherited_demo.dart';
 
 void lifeCycleDemo(context) {
   Navigator.of(context).push(MaterialPageRoute(

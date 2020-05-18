@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/demo/key/key_demo_page.dart';
 import 'package:flutter_app/discover/discover_cell.dart';
-import 'package:flutter_app/lifeCycle/life_cycle_page.dart';
+import 'package:flutter_app/demo/lifeCycle/life_cycle_page.dart';
 
 import '../tools/thread.dart';
 
@@ -125,7 +126,8 @@ class _MinePageState extends State<MinePage> {
                     ), //分割线
                     DiscoverCell(
                       imageName: 'images/微信卡包.png',
-                      title: '卡包',
+                      title: '卡包--key与复用',
+                      onPress: ()=>{keyDemo(context)},
                     ),
                     Row(
                       children: <Widget>[
@@ -135,7 +137,7 @@ class _MinePageState extends State<MinePage> {
                     ), //分割线
                     DiscoverCell(
                       imageName: 'images/微信表情.png',
-                      title: '表情',
+                      title: '表情--生命周期',
                       onPress: ()=>{lifeCycleDemo(context)},
                     ),
                     SizedBox(
