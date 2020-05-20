@@ -1,12 +1,17 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/demo/key/global_key_demo.dart';
 
 
 void keyDemo(context) {
+  // Navigator.of(context).push(MaterialPageRoute(
+  //     builder: (BuildContext context) =>
+  //         KeyDemo()));
+
   Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) =>
-          KeyDemo()));
+          GlobalKeyDemo()));
 }
 
 class KeyDemoPage extends StatelessWidget {
