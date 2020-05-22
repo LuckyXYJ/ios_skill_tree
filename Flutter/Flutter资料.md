@@ -10,6 +10,8 @@
 
 [Flutter中文文档](https://flutter.cn/docs)
 
+[三方插件](https://pub.dev)
+
 ## 书籍
 
 [Flutter实战*第二版](https://book.flutterchina.club/)

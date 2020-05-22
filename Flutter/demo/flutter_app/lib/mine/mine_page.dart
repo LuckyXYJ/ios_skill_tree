@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app/demo/key/key_demo_page.dart';
 import 'package:flutter_app/discover/discover_cell.dart';
 import 'package:flutter_app/demo/lifeCycle/life_cycle_page.dart';
@@ -12,11 +15,27 @@ class MinePage extends StatefulWidget {
 
 class _MinePageState extends State<MinePage> {
 
-  // void lifeCycleDemo() {
-  //   Navigator.of(context).push(MaterialPageRoute(
-  //       builder: (BuildContext context) =>
-  //           LifeCycle(title: '生命周期')));
-  // }
+  File? _avatarFile;
+  MethodChannel _methodChannel = MethodChannel('mine_page/method');
+  @override
+  void initState() {
+    super.initState();
+    
+    // _methodChannel.setMethodCallHandler((call) => null)
+    
+    _methodChannel.setMethodCallHandler((call) async {
+      if (call.method == 'imagePath') {
+
+        print("object=============");
+        print(call.arguments);
+        String imagePath = call.arguments.toString();
+        setState(() {
+          _avatarFile = File(imagePath);
+        });
+      }
+      return null;
+    });
+  }
 
   Widget headerWidget() {
     return Container(
@@ -30,18 +49,27 @@ class _MinePageState extends State<MinePage> {
           margin: EdgeInsets.only(left: 30),
 //          padding: EdgeInsets.all(5),
 //          color: Colors.red,
+//             (imageUrl != null ?NetworkImage(imageUrl??'') : AssetImage(imageAssets??'')) as ImageProvider<Object>
           child: Row(
             children: <Widget>[
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                      image: AssetImage('images/photo_icon.png'), fit: BoxFit.cover),
+              GestureDetector(
+                onTap: () {
+                  print('切换图片');
+                  _methodChannel.invokeMapMethod('picture');
+                },
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                        image: (_avatarFile != null
+                            ? FileImage(_avatarFile!): AssetImage('images/photo_icon.png')) as ImageProvider<Object>, fit: BoxFit.cover),
+                  ),
                 ),
-              ), //头像
+              ),
+               //头像
               Container(
                 margin:
                 EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 5),
