@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/demo/key/key_demo_page.dart';
 import 'package:flutter_app/discover/discover_cell.dart';
 import 'package:flutter_app/demo/lifeCycle/life_cycle_page.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../tools/thread.dart';
 
@@ -55,7 +56,8 @@ class _MinePageState extends State<MinePage> {
               GestureDetector(
                 onTap: () {
                   print('切换图片');
-                  _methodChannel.invokeMapMethod('picture');
+                  // _methodChannel.invokeMapMethod('picture');
+                  _pickImage();
                 },
                 child: Container(
                   width: 50,
@@ -195,5 +197,19 @@ class _MinePageState extends State<MinePage> {
         ],
       ),
     );
+  }
+
+  void _pickImage() async {
+    try {
+      XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
+      setState(() {
+        _avatarFile = File(file!.path);
+      });
+    } catch (e) {
+      print(e.toString());
+      setState(() {
+        _avatarFile = null;
+      });
+    }
   }
 }
