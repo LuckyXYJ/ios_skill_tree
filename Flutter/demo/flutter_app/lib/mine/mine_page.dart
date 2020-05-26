@@ -36,6 +36,7 @@ class _MinePageState extends State<MinePage> {
       }
       return null;
     });
+
   }
 
   Widget headerWidget() {
