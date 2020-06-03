@@ -102,3 +102,12 @@ gclient sync
 ninja -C host_debug_unopt && ninja -C ios_debug_sim_unopt && ninja -C ios_debug_unopt && ninja -C ios_release_unopt
 ```
 
+### 配置项目代码
+
+iOS工程。在iOS工程中找到Generated.xcconfig文件，在里面添加两个环境变量
+
+```
+FLUTTER_ENGINE= ${引擎代码路径}/engine/src 
+LOCAL_ENGINE=ios_debug_sim_unopt  # 使用引擎对应的版本
+```
+
