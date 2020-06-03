@@ -59,3 +59,22 @@ solutions = [
 gclient sync
 ```
 
+5、成功后src/flutter中的部分目录结构
+
+```
+├── assets  #资源读取
+├── common  #公共逻辑
+├── flow  #渲染管道相关逻辑
+├── flutter_frontend_server  #Dart构建相关逻辑
+├── fml   #消息循环相关逻辑
+├── lib   #Dart Runtime及渲染和Web相关逻辑
+├── runtime  #Dart Runtime相关逻辑
+├── shell
+    ├──platform
+        ├──android  #Android Embedder相关逻辑
+        ├──common #Embedder公共逻辑
+├── sky
+├── testing  #测试相关
+├── third_party
+```
+
