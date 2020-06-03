@@ -13,3 +13,13 @@ Flutter提供了三种Channel：
 - FlutterMethodChannel：用来调用方法，原生与flutter相互调用
 - FlutterEventChannel：支持数据流通信
 
+### 关键成员变量
+
+1、name
+
+每个Channel唯一标志，通过name区分多个channel
+
+2、messenger：BinaryMessenger
+
+用作消息的发送和接收的工具，主要负责Flutter与原生的相互通讯
+
