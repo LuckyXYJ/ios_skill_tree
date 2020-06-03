@@ -78,3 +78,27 @@ gclient sync
 ├── third_party
 ```
 
+### 编译引擎代码
+
+1、构建。此处./gn文件目录“engine/src/flutter/tools/gn”
+
+不要直接使用gn命令，因为会使用depot_toolsde gn工具
+
+```
+# 构建iOS设备使用引擎
+# 真机debug
+./gn --ios --unoptimized
+# 真机release
+./gn --ios --unoptimized --runtime-mode=release 
+# 模拟器版本
+./gn --ios --simulator --unoptimized
+# 主机端(Mac)构建
+./gn --unoptimized
+```
+
+2、编译
+
+```
+ninja -C host_debug_unopt && ninja -C ios_debug_sim_unopt && ninja -C ios_debug_unopt && ninja -C ios_release_unopt
+```
+
