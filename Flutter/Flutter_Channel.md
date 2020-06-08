@@ -41,5 +41,21 @@ FlutterMethodCodec：对FlutterMethodCall编解码。比FlutterMessageCodec多�
 - FlutterJSONMethodCodec
 - FlutterStandardMethodCodec
 
+## Handler消息处理
+
+Handler用于处理经过Codec编码后的消息。在使用Channel时需要为其设置对应的Handler
+
+```
+typedef void (^FlutterMessageHandler)(id _Nullable message, FlutterReply callback);
+typedef void (^FlutterMethodCallHandler)(FlutterMethodCall* call, FlutterResult result);
+@protocol FlutterStreamHandler
+- (FlutterError* _Nullable)onListenWithArguments:(id _Nullable)arguments
+                                       eventSink:(FlutterEventSink)events;
+- (FlutterError* _Nullable)onCancelWithArguments:(id _Nullable)arguments;
+@end
+```
+
+
+
 
 
