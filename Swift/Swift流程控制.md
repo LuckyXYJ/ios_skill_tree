@@ -48,6 +48,8 @@ for - in 也可以使用带间隔的区间值 **stride(from: , through: , by: )*
 
 **逆序**：` ...`或者` ..<`都是从小到大，如果是需要逆序的情况下，可以使用`stride(from: 3, through: 0, by: -1)`实现，也可以使用` (0...10).reversed()`来实现
 
+**index**：遍历数组时可以通过` for i in 0..<arr.count`方式获取index。或者` for (index, item) in arr.enumerated()`
+
 ```
 let names = ["小王", "老王", "小任", "大任"];
 let range1: ClosedRange<Int> = 1...2	//闭区间
