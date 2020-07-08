@@ -9,7 +9,6 @@ import Foundation
 
 class HeapSort: ArraySort {
     
-    var list : [Int]?
     static var heapSize = 0
     
     static func sort(arr: [Int]) -> [Int] {

@@ -14,6 +14,7 @@
 		30D06E102929D28B0030C65E /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E0F2929D28B0030C65E /* SelectionSort.swift */; };
 		30D06E122929D2A30030C65E /* HeapSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E112929D2A30030C65E /* HeapSort.swift */; };
 		30D06E15292B2F090030C65E /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E14292B2F090030C65E /* InsertionSort.swift */; };
+		30D06E17292B541C0030C65E /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E16292B541C0030C65E /* MergeSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		30D06E0F2929D28B0030C65E /* SelectionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
 		30D06E112929D2A30030C65E /* HeapSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapSort.swift; sourceTree = "<group>"; };
 		30D06E14292B2F090030C65E /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
+		30D06E16292B541C0030C65E /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				30D06E0F2929D28B0030C65E /* SelectionSort.swift */,
 				30D06E112929D2A30030C65E /* HeapSort.swift */,
 				30D06E14292B2F090030C65E /* InsertionSort.swift */,
+				30D06E16292B541C0030C65E /* MergeSort.swift */,
 			);
 			path = sort;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			files = (
 				30D06E0129289DF80030C65E /* main.swift in Sources */,
 				30D06E122929D2A30030C65E /* HeapSort.swift in Sources */,
+				30D06E17292B541C0030C65E /* MergeSort.swift in Sources */,
 				30D06E0E2929D26D0030C65E /* BublleSort.swift in Sources */,
 				30D06E15292B2F090030C65E /* InsertionSort.swift in Sources */,
 				30D06E0A2928AB7F0030C65E /* ArraySort.swift in Sources */,
