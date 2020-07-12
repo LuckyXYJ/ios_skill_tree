@@ -39,7 +39,7 @@ class MergeSort: ArraySort {
         
         MergeSort.tempList = []
         for i in li..<le {
-            MergeSort.tempList.append(arr[begin + i]) 
+            MergeSort.tempList.append(arr[begin + i])
         }
         
         while(li < le) {
@@ -55,3 +55,4 @@ class MergeSort: ArraySort {
         }
     }
 }
+
