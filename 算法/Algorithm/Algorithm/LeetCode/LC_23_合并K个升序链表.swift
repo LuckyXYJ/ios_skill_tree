@@ -1,5 +1,5 @@
 //
-//  LC_21_合并两个有序链表.swift
+//  LC_23合并K个升序链表.swift
 //  Algorithm
 //
 //  Created by xingyajie on 2022/11/21.
@@ -7,7 +7,18 @@
 
 import Foundation
 
-class LC_21_合并两个有序链表 {
+class LC_23_合并K个升序链表 {
+    
+    func mergeKLists(_ lists: [ListNode?]) -> ListNode? {
+
+        var resNode:ListNode? = nil;
+        
+        for node in lists {
+            resNode = mergeTwoLists(resNode, node);
+        }
+        return resNode;
+    }
+    
     func mergeTwoLists(_ list1: ListNode?, _ list2: ListNode?) -> ListNode? {
         if list1 == nil {
             return list2
@@ -37,3 +48,5 @@ class LC_21_合并两个有序链表 {
         return resHead?.next
     }
 }
+
+
