@@ -28,6 +28,9 @@ class QuickSort: ArraySort {
     
     static func pivotIndex(arr: inout [Int], left: Int, right: Int) -> Int {
         
+        let random = Int.random(in: 0..<(right-left))
+        (arr[left], arr[left + random]) = (arr[left + random], arr[left])
+        
         var begin = left
         var end = right
         
