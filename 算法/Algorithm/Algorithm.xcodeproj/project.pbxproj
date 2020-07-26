@@ -20,6 +20,7 @@
 		30D06E1F292B78480030C65E /* ListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E1E292B78480030C65E /* ListNode.swift */; };
 		30D06E21292B9E4E0030C65E /* LC_23_合并K个升序链表.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E20292B9E4E0030C65E /* LC_23_合并K个升序链表.swift */; };
 		30D06E2D292D19690030C65E /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E2C292D19690030C65E /* QuickSort.swift */; };
+		30D06E2F292F103C0030C65E /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E2E292F103C0030C65E /* ShellSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		30D06E1E292B78480030C65E /* ListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNode.swift; sourceTree = "<group>"; };
 		30D06E20292B9E4E0030C65E /* LC_23_合并K个升序链表.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LC_23_合并K个升序链表.swift"; sourceTree = "<group>"; };
 		30D06E2C292D19690030C65E /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
+		30D06E2E292F103C0030C65E /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				30D06E14292B2F090030C65E /* InsertionSort.swift */,
 				30D06E16292B541C0030C65E /* MergeSort.swift */,
 				30D06E2C292D19690030C65E /* QuickSort.swift */,
+				30D06E2E292F103C0030C65E /* ShellSort.swift */,
 			);
 			path = sort;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				30D06E0129289DF80030C65E /* main.swift in Sources */,
 				30D06E122929D2A30030C65E /* HeapSort.swift in Sources */,
 				30D06E17292B541C0030C65E /* MergeSort.swift in Sources */,
+				30D06E2F292F103C0030C65E /* ShellSort.swift in Sources */,
 				30D06E2D292D19690030C65E /* QuickSort.swift in Sources */,
 				30D06E0E2929D26D0030C65E /* BublleSort.swift in Sources */,
 				30D06E1A292B6CCD0030C65E /* LC_88_合并两个有序数组.swift in Sources */,
