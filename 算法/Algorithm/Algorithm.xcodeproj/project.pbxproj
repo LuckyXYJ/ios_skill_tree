@@ -21,6 +21,8 @@
 		30D06E21292B9E4E0030C65E /* LC_23_合并K个升序链表.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E20292B9E4E0030C65E /* LC_23_合并K个升序链表.swift */; };
 		30D06E2D292D19690030C65E /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E2C292D19690030C65E /* QuickSort.swift */; };
 		30D06E2F292F103C0030C65E /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E2E292F103C0030C65E /* ShellSort.swift */; };
+		30D06E31292F6E290030C65E /* CountSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E30292F6E290030C65E /* CountSort.swift */; };
+		30D06E33292F7A2A0030C65E /* RadixSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E32292F7A2A0030C65E /* RadixSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		30D06E20292B9E4E0030C65E /* LC_23_合并K个升序链表.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LC_23_合并K个升序链表.swift"; sourceTree = "<group>"; };
 		30D06E2C292D19690030C65E /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		30D06E2E292F103C0030C65E /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
+		30D06E30292F6E290030C65E /* CountSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountSort.swift; sourceTree = "<group>"; };
+		30D06E32292F7A2A0030C65E /* RadixSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				30D06E16292B541C0030C65E /* MergeSort.swift */,
 				30D06E2C292D19690030C65E /* QuickSort.swift */,
 				30D06E2E292F103C0030C65E /* ShellSort.swift */,
+				30D06E30292F6E290030C65E /* CountSort.swift */,
+				30D06E32292F7A2A0030C65E /* RadixSort.swift */,
 			);
 			path = sort;
 			sourceTree = "<group>";
@@ -185,6 +191,8 @@
 				30D06E1A292B6CCD0030C65E /* LC_88_合并两个有序数组.swift in Sources */,
 				30D06E1C292B77C60030C65E /* LC_21_合并两个有序链表.swift in Sources */,
 				30D06E15292B2F090030C65E /* InsertionSort.swift in Sources */,
+				30D06E33292F7A2A0030C65E /* RadixSort.swift in Sources */,
+				30D06E31292F6E290030C65E /* CountSort.swift in Sources */,
 				30D06E0A2928AB7F0030C65E /* ArraySort.swift in Sources */,
 				30D06E082928AB520030C65E /* ArrayPrint.swift in Sources */,
 				30D06E102929D28B0030C65E /* SelectionSort.swift in Sources */,
