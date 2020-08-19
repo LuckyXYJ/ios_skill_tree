@@ -7,6 +7,9 @@
 
 import Foundation
 
+/*
+ 
+ 
 var array: [Int] = [2,5,3,1,4,8,10,7,6,9,11,12,21,35,12,6]
 
 //let arr = BublleSort.sort(arr: array);
@@ -18,3 +21,10 @@ var bArray: [Int] = [33, 51, 27, 81, 43, 39, 38, 72]
 let arr1 = BucketSort.sort(arr: bArray)
 ArrayPrint.printArr(arr: arr1);
 
+ */
+
+
+let num = fibRecursion6.fib(50)
+print(num)
+
+hanoiRecursion.hanoi(n: 5, p1: "A", p2: "B", p3: "C")
