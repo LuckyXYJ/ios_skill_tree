@@ -23,8 +23,16 @@ ArrayPrint.printArr(arr: arr1);
 
  */
 
-
+/*
+ // 斐波那契数列
 let num = fibRecursion6.fib(50)
 print(num)
+*/
 
+/*
+// 汉诺塔
 hanoiRecursion.hanoi(n: 5, p1: "A", p2: "B", p3: "C")
+*/
+
+let queue = Queens()
+queue.placeQueens(count: 16)
