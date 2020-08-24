@@ -34,5 +34,5 @@ print(num)
 hanoiRecursion.hanoi(n: 5, p1: "A", p2: "B", p3: "C")
 */
 
-let queue = Queens()
-queue.placeQueens(count: 16)
+let queue = Queens1()
+queue.placeQueens(count: 8)
