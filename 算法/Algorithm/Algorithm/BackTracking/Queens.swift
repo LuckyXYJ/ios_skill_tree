@@ -97,7 +97,7 @@ class Queens1 {
             return
         }
         
-        for col in 0..<cols.count {    
+        for col in 0..<cols.count {
             let ltIndex = row - col + cols.count - 1
             let rtIndex = row + col
             if !isValid(col: col, ltIndex: ltIndex, rtIndex: rtIndex) { continue }
