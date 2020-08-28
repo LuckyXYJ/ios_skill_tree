@@ -34,5 +34,19 @@ print(num)
 hanoiRecursion.hanoi(n: 5, p1: "A", p2: "B", p3: "C")
 */
 
+/*
 let queue = Queens1()
 queue.placeQueens(count: 8)
+*/
+
+
+Knapsack.run { a, b in
+    // 价值主导
+//    return a.value > b.value
+    
+    // 重量主导
+//    return a.weight < b.weight
+    
+    // 性价比主导
+    return a.valueDensity > b.valueDensity
+}

@@ -10,6 +10,7 @@
 		302A1C992931C3EA0000372D /* RS_斐波那契数列.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1C982931C3EA0000372D /* RS_斐波那契数列.swift */; };
 		302A1C9B2931F7CB0000372D /* RS_汉诺塔.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1C9A2931F7CB0000372D /* RS_汉诺塔.swift */; };
 		302A1C9E2933A20A0000372D /* Queens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1C9D2933A20A0000372D /* Queens.swift */; };
+		302A1CA12936082E0000372D /* Knapsack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CA02936082E0000372D /* Knapsack.swift */; };
 		30D06E0129289DF80030C65E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E0029289DF80030C65E /* main.swift */; };
 		30D06E082928AB520030C65E /* ArrayPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E072928AB520030C65E /* ArrayPrint.swift */; };
 		30D06E0A2928AB7F0030C65E /* ArraySort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E092928AB7F0030C65E /* ArraySort.swift */; };
@@ -45,6 +46,7 @@
 		302A1C982931C3EA0000372D /* RS_斐波那契数列.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS_斐波那契数列.swift"; sourceTree = "<group>"; };
 		302A1C9A2931F7CB0000372D /* RS_汉诺塔.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS_汉诺塔.swift"; sourceTree = "<group>"; };
 		302A1C9D2933A20A0000372D /* Queens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queens.swift; sourceTree = "<group>"; };
+		302A1CA02936082E0000372D /* Knapsack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knapsack.swift; sourceTree = "<group>"; };
 		30D06DFD29289DF80030C65E /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D06E0029289DF80030C65E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		30D06E072928AB520030C65E /* ArrayPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPrint.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 			path = BackTracking;
 			sourceTree = "<group>";
 		};
+		302A1C9F293607EC0000372D /* Greedy */ = {
+			isa = PBXGroup;
+			children = (
+				302A1CA02936082E0000372D /* Knapsack.swift */,
+			);
+			path = Greedy;
+			sourceTree = "<group>";
+		};
 		30D06DF429289DF80030C65E = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +122,7 @@
 		30D06DFF29289DF80030C65E /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				302A1C9F293607EC0000372D /* Greedy */,
 				302A1C9C29339FE30000372D /* BackTracking */,
 				302A1C972931C3BA0000372D /* Recursion */,
 				30D06E18292B6C8E0030C65E /* LeetCode */,
@@ -211,6 +222,7 @@
 			files = (
 				30D06E21292B9E4E0030C65E /* LC_23_合并K个升序链表.swift in Sources */,
 				302A1C992931C3EA0000372D /* RS_斐波那契数列.swift in Sources */,
+				302A1CA12936082E0000372D /* Knapsack.swift in Sources */,
 				30D06E0129289DF80030C65E /* main.swift in Sources */,
 				30D06E122929D2A30030C65E /* HeapSort.swift in Sources */,
 				30D06E17292B541C0030C65E /* MergeSort.swift in Sources */,
