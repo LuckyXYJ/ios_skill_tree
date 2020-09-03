@@ -39,7 +39,8 @@ let queue = Queens1()
 queue.placeQueens(count: 8)
 */
 
-
+/*
+// 贪心算法，0-1背包
 Knapsack.run { a, b in
     // 价值主导
 //    return a.value > b.value
@@ -50,3 +51,7 @@ Knapsack.run { a, b in
     // 性价比主导
     return a.valueDensity > b.valueDensity
 }
+ */
+
+let arr: [Int] = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+print(MaxSubArray.maxSub3(nums: arr))
