@@ -53,5 +53,13 @@ Knapsack.run { a, b in
 }
  */
 
+/*
+ // 最大子串
 let arr: [Int] = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 print(MaxSubArray.maxSub3(nums: arr))
+*/
+
+let num = CoinsNumber.coins3(n: 41)
+
+//let num = CoinsNumber.coins(n: 41, faces:[1, 5, 20, 25])
+print(num)

@@ -12,6 +12,7 @@
 		302A1C9E2933A20A0000372D /* Queens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1C9D2933A20A0000372D /* Queens.swift */; };
 		302A1CA12936082E0000372D /* Knapsack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CA02936082E0000372D /* Knapsack.swift */; };
 		302A1CA4293636BC0000372D /* MaxSubArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CA3293636BC0000372D /* MaxSubArray.swift */; };
+		302A1CA72936F4140000372D /* DynamicProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CA62936F4140000372D /* DynamicProgramming.swift */; };
 		30D06E0129289DF80030C65E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E0029289DF80030C65E /* main.swift */; };
 		30D06E082928AB520030C65E /* ArrayPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E072928AB520030C65E /* ArrayPrint.swift */; };
 		30D06E0A2928AB7F0030C65E /* ArraySort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E092928AB7F0030C65E /* ArraySort.swift */; };
@@ -49,6 +50,7 @@
 		302A1C9D2933A20A0000372D /* Queens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queens.swift; sourceTree = "<group>"; };
 		302A1CA02936082E0000372D /* Knapsack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knapsack.swift; sourceTree = "<group>"; };
 		302A1CA3293636BC0000372D /* MaxSubArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxSubArray.swift; sourceTree = "<group>"; };
+		302A1CA62936F4140000372D /* DynamicProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicProgramming.swift; sourceTree = "<group>"; };
 		30D06DFD29289DF80030C65E /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D06E0029289DF80030C65E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		30D06E072928AB520030C65E /* ArrayPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPrint.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 			path = DivideAndConquer;
 			sourceTree = "<group>";
 		};
+		302A1CA52936F3ED0000372D /* DynamicProgramming */ = {
+			isa = PBXGroup;
+			children = (
+				302A1CA62936F4140000372D /* DynamicProgramming.swift */,
+			);
+			path = DynamicProgramming;
+			sourceTree = "<group>";
+		};
 		30D06DF429289DF80030C65E = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 		30D06DFF29289DF80030C65E /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				302A1CA52936F3ED0000372D /* DynamicProgramming */,
 				302A1CA2293635820000372D /* DivideAndConquer */,
 				302A1C9F293607EC0000372D /* Greedy */,
 				302A1C9C29339FE30000372D /* BackTracking */,
@@ -248,6 +259,7 @@
 				30D06E33292F7A2A0030C65E /* RadixSort.swift in Sources */,
 				30D06E31292F6E290030C65E /* CountSort.swift in Sources */,
 				30D06E0A2928AB7F0030C65E /* ArraySort.swift in Sources */,
+				302A1CA72936F4140000372D /* DynamicProgramming.swift in Sources */,
 				302A1C9B2931F7CB0000372D /* RS_汉诺塔.swift in Sources */,
 				302A1C9E2933A20A0000372D /* Queens.swift in Sources */,
 				30D06E082928AB520030C65E /* ArrayPrint.swift in Sources */,
