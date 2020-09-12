@@ -11,6 +11,7 @@ import Foundation
 class MaxSubArray {
     
     // 难以理解地，以下三种最优解
+    // 可以使用动态规划，继续优化，看MaxSubArray2
     // 分治
     static func maxSub3(nums: [Int]) -> Int {
             
