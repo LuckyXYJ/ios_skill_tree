@@ -59,7 +59,13 @@ let arr: [Int] = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 print(MaxSubArray.maxSub3(nums: arr))
 */
 
+/*
+//找零钱
 let num = CoinsNumber.coins3(n: 41)
-
 //let num = CoinsNumber.coins(n: 41, faces:[1, 5, 20, 25])
 print(num)
+*/
+
+//最长上升子序列
+let len = LC_300_最长上升子序列.lengthOfLIS(nums: [10, 2, 2, 5, 1, 7, 101, 18])
+print(len)
