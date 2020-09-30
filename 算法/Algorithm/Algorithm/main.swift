@@ -66,6 +66,11 @@ let num = CoinsNumber.coins3(n: 41)
 print(num)
 */
 
+/*
 //最长上升子序列
 let len = LC_300_最长上升子序列.lengthOfLIS(nums: [10, 2, 2, 5, 1, 7, 101, 18])
 print(len)
+ */
+
+let index = BruteForce.indexOf2(text: "abcdeabcfgabc", pattern: "abcfg")
+print(index)

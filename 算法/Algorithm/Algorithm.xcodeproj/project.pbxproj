@@ -15,6 +15,7 @@
 		302A1CA72936F4140000372D /* DynamicProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CA62936F4140000372D /* DynamicProgramming.swift */; };
 		302A1CA929375D960000372D /* MaxSubArray2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CA829375D960000372D /* MaxSubArray2.swift */; };
 		302A1CAB293846680000372D /* LC_300_最长上升子序列.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CAA293846680000372D /* LC_300_最长上升子序列.swift */; };
+		302A1CAE2938A6200000372D /* 字符串中子串位置.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CAD2938A6200000372D /* 字符串中子串位置.swift */; };
 		30D06E0129289DF80030C65E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E0029289DF80030C65E /* main.swift */; };
 		30D06E082928AB520030C65E /* ArrayPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E072928AB520030C65E /* ArrayPrint.swift */; };
 		30D06E0A2928AB7F0030C65E /* ArraySort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E092928AB7F0030C65E /* ArraySort.swift */; };
@@ -55,6 +56,7 @@
 		302A1CA62936F4140000372D /* DynamicProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicProgramming.swift; sourceTree = "<group>"; };
 		302A1CA829375D960000372D /* MaxSubArray2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxSubArray2.swift; sourceTree = "<group>"; };
 		302A1CAA293846680000372D /* LC_300_最长上升子序列.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LC_300_最长上升子序列.swift"; sourceTree = "<group>"; };
+		302A1CAD2938A6200000372D /* 字符串中子串位置.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "字符串中子串位置.swift"; sourceTree = "<group>"; };
 		30D06DFD29289DF80030C65E /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D06E0029289DF80030C65E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		30D06E072928AB520030C65E /* ArrayPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPrint.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			path = DynamicProgramming;
 			sourceTree = "<group>";
 		};
+		302A1CAC2938A5F40000372D /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				302A1CAD2938A6200000372D /* 字符串中子串位置.swift */,
+			);
+			path = Sequence;
+			sourceTree = "<group>";
+		};
 		30D06DF429289DF80030C65E = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 		30D06DFF29289DF80030C65E /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				302A1CAC2938A5F40000372D /* Sequence */,
 				302A1CA52936F3ED0000372D /* DynamicProgramming */,
 				302A1CA2293635820000372D /* DivideAndConquer */,
 				302A1C9F293607EC0000372D /* Greedy */,
@@ -248,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302A1CAE2938A6200000372D /* 字符串中子串位置.swift in Sources */,
 				30D06E21292B9E4E0030C65E /* LC_23_合并K个升序链表.swift in Sources */,
 				302A1C992931C3EA0000372D /* RS_斐波那契数列.swift in Sources */,
 				302A1CA12936082E0000372D /* Knapsack.swift in Sources */,
