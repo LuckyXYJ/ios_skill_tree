@@ -16,6 +16,7 @@
 		302A1CA929375D960000372D /* MaxSubArray2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CA829375D960000372D /* MaxSubArray2.swift */; };
 		302A1CAB293846680000372D /* LC_300_最长上升子序列.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CAA293846680000372D /* LC_300_最长上升子序列.swift */; };
 		302A1CAE2938A6200000372D /* 字符串中子串位置.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CAD2938A6200000372D /* 字符串中子串位置.swift */; };
+		302A1CB02938F36D0000372D /* KMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1CAF2938F36D0000372D /* KMP.swift */; };
 		30D06E0129289DF80030C65E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E0029289DF80030C65E /* main.swift */; };
 		30D06E082928AB520030C65E /* ArrayPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E072928AB520030C65E /* ArrayPrint.swift */; };
 		30D06E0A2928AB7F0030C65E /* ArraySort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D06E092928AB7F0030C65E /* ArraySort.swift */; };
@@ -57,6 +58,7 @@
 		302A1CA829375D960000372D /* MaxSubArray2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxSubArray2.swift; sourceTree = "<group>"; };
 		302A1CAA293846680000372D /* LC_300_最长上升子序列.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LC_300_最长上升子序列.swift"; sourceTree = "<group>"; };
 		302A1CAD2938A6200000372D /* 字符串中子串位置.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "字符串中子串位置.swift"; sourceTree = "<group>"; };
+		302A1CAF2938F36D0000372D /* KMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMP.swift; sourceTree = "<group>"; };
 		30D06DFD29289DF80030C65E /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D06E0029289DF80030C65E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		30D06E072928AB520030C65E /* ArrayPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPrint.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				302A1CAD2938A6200000372D /* 字符串中子串位置.swift */,
+				302A1CAF2938F36D0000372D /* KMP.swift */,
 			);
 			path = Sequence;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				30D06E17292B541C0030C65E /* MergeSort.swift in Sources */,
 				302A1CA929375D960000372D /* MaxSubArray2.swift in Sources */,
 				30D06E2F292F103C0030C65E /* ShellSort.swift in Sources */,
+				302A1CB02938F36D0000372D /* KMP.swift in Sources */,
 				30D06E2D292D19690030C65E /* QuickSort.swift in Sources */,
 				30D06E35292F9C520030C65E /* BucketSort.swift in Sources */,
 				30D06E0E2929D26D0030C65E /* BublleSort.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// kmp可以比暴力递归效率更高
 
 /// 蛮力递归
 class BruteForce {
