@@ -28,5 +28,10 @@ void XZSwizzleInstanceMethod(Class class, SEL originalSelector, SEL alternativeS
 void XZSwizzleClassMethod(Class class, SEL originalSelector, SEL alternativeSelector);
 ```
 
+## CameraTool 相机相册
+
+- 保存相册
+- 获取相机权限
+
 
 
