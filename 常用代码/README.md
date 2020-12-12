@@ -40,3 +40,17 @@ void XZSwizzleClassMethod(Class class, SEL originalSelector, SEL alternativeSele
 - 气泡提示框LFBubbleView
 - 环形进度条LFAnnulusProgress
 - 未读消息角标红点LFBadge
+
+## Category
+
+自定义一些分类，扩展系统类的功能
+
+### UIImage+XZAdditions
+
+- 截图
+- 通过颜色生成图片
+- 获取矩形的渐变色的UIImage
+- 生成高斯模糊图片
+- 将图片方向调整为适合观看的角度
+- 截取部分图像
+- 根据size缩放图片
