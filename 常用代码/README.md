@@ -54,3 +54,7 @@ void XZSwizzleClassMethod(Class class, SEL originalSelector, SEL alternativeSele
 - 将图片方向调整为适合观看的角度
 - 截取部分图像
 - 根据size缩放图片
+
+### UIColor+XZAdditions
+
+颜色转换
