@@ -58,3 +58,9 @@ void XZSwizzleClassMethod(Class class, SEL originalSelector, SEL alternativeSele
 ### UIColor+XZAdditions
 
 颜色转换
+
+### UIDevice+XZAdditions
+
+- 通过KeychainItemWrapper 获取设备不变uuid
+- 获取手机 ip地址
+
