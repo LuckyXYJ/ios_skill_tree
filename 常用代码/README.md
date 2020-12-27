@@ -67,3 +67,7 @@ void XZSwizzleClassMethod(Class class, SEL originalSelector, SEL alternativeSele
 ### NSDate+Utilities
 
 时间相关拓展属性
+
+### NSURL+Encode
+
+解决url中含有中文无法加载问题
