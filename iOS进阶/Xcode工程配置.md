@@ -71,7 +71,29 @@ xcconfig生效的地方设置成我们自定义的xcconfig文件即可。
 OTHER_LDFLAGS = $(inherited) -framework "AFNetworking"
 ```
 
+## xcode常见宏
 
+TARGET_NAME：目标工程名称
+
+SRCROOT：当前代码路径，工程文件（比如Nuno.xcodeproj）的路径
+
+BUILD_DIR：当前编译的路径
+
+BUILT_PRODUCTS_DIR：最终产品路径，build成功后的，最终产品路径－－可以在Build Settings参数的Per-configuration Build Products Path项里设置
+
+CURRENT_PROJECT_VERSION：当前工程版本号
+
+PRODUCT_NAME：产品名字
+
+CONFIGURATION：表示当前状态是调试Debug还是运行状态release
+
+EFFECTIVE_PLATFORM_NAME：宏代表当前配置是OS还是simulator
+
+PLATFORM_NAME = iphonesimulator 表示获取当前程序运行的平台
+
+SDK_NAME
+
+$(EXECUTABLE_NAME) = libUtilLib.a，表示可执行文件libUtiLib.a
 
 
 
