@@ -71,6 +71,13 @@ xcconfig生效的地方设置成我们自定义的xcconfig文件即可。
 OTHER_LDFLAGS = $(inherited) -framework "AFNetworking"
 ```
 
+### 优先级（由高到低）
+
+1. 手动配置Target Build Setting
+2. Target中配置的xcconfig文件
+3. 手动配置Project Build Setting
+4. Project中配置的xcconfig文件
+
 ## xcode常见宏
 
 TARGET_NAME：目标工程名称

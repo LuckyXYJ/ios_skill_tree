@@ -1,6 +1,6 @@
 ## Mach-O
 
-Mach-O是Mach object的缩写，是Mac\iOS上用于存储程序、库的标准格式
+Mach-O是Mach object的缩写，是Mac/iOS上用于存储程序、库的标准格式
 
 可以在**xun**的源码中找到Mach-O的定义，地址：https://opensource.apple.com/tarballs/xnu/
 

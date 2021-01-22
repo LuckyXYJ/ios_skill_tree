@@ -1,4 +1,4 @@
-# 面向协议编程
+## 面向协议编程
 
 （Protocol Oriented Programming，简称POP）
 
@@ -10,7 +10,7 @@
 
 不要为了面向协议而使用协议
 
-# 面向对象的编程语言
+## 面向对象的编程语言
 
 （Object Oriented Programming，简称OOP）
 
@@ -24,7 +24,7 @@ OOP存在的问题：如何将 两个类的 的公共方法 抽取出来？
 - 将公共方法增加到公共父类的分类中。父类会越来越臃肿，而且会影响它的其他所有子类
 - 多继承。会增加程序设计复杂度，产生菱形继承等问题，需要开发者额外解决
 
-# 利用协议实现前缀效果
+## 利用协议实现前缀效果
 
 ```swift
 // 效果
@@ -62,7 +62,7 @@ extension MJ where Base == String {
 }
 ```
 
-## Base:类
+### Base:类
 
 ```swift
 class Person {} 
@@ -82,7 +82,7 @@ let s = Student()
 s.mj.run()
 ```
 
-## Base: 协议
+### Base: 协议
 
 ```swift
 var s1: String = "123fdsf434" 
