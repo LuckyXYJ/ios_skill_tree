@@ -1,0 +1,31 @@
+VERBOSE_SCRIPT_LOGGING=-v
+MACH_PATH=${BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/${PRODUCT_NAME}
+
+// 查看mach-header
+//  objdump --macho -private-header ${MACH_PATH}
+//  otool -l ${MACH_PATH}
+
+// 查看__TEXT
+// objdump --macho -d ${MACH_PATH}
+
+// 查看符号表
+// objdump --macho --syms ${MACH_PATH}
+// 查看导出符号
+// objdump --macho --exports-trie ${MACH_PATH}
+// 查看间接符号表
+// objdump --macho --indirect-symbols ${MACH_PATH}
+// nm -m ${MACH_PATH}
+//CMD = objdump --macho --syms ${MACH_PATH}
+
+//TTY=/dev/ttys000
+
+// mach-o + 签名
+// mach-o __TEXT.__text只读
+// 2016 7、8 60m 500m __TEXT.__text
+
+//CMD=objdump --macho --syms ${MACH_PATH}
+CMD=objdump --macho --syms ${MACH_PATH}
+//CMD=objdump --macho --exports-trie ${MACH_PATH} //查看导出符号
+
+TTY=/dev/ttys000
+
