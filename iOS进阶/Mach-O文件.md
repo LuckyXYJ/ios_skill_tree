@@ -8,6 +8,19 @@ Mach-O 文件是可读可写的
 
 ![image-20221206152902873](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20221206152902873.png)
 
+__TEXT段：只读区域 包含可执⾏代码和常量数据。
+
+__DATA段：读/写 包含初始化和未初始化数据和⼀些动态链接专属数据。
+
+### mach-o文件组成，有两部分：：header 和data。
+
+- header：代表了⽂件的映射，描述了⽂件的内容以及⽂件所有内容所在的位置。包含三种类型。 Mach header，segment，sections
+  - header内的section描述了对应的⼆进制信息。
+  - Mach header属于header的⼀部分，它包含了整个⽂件的信息和segment信息。
+  - Segments(segment commands): 指定操作系统应该将Segments加载到内存中的 什么位置，以及为该Segments分配的字节数。还指定⽂件中的哪些字节属于该 Segments，以及⽂件包含多少 sections。Mac上始终是4096字节或4 KB的倍 数，其中4096字节是最⼩⼤⼩。iOS上是8 KB。Segments名称的约定是使⽤全⼤ 写字⺟，后跟双下划线（例如__TEXT）。
+  - 所有sections都在每个segment之后⼀个接⼀个地描述。sections⾥⾯定 义其名称，在内存中的地址，⼤⼩，⽂件中section数据的偏移量和segment名 称。Section的名称约定是使⽤全⼩写字⺟，再加上双下划线（例如__text）。
+- data：紧跟header之后，由多个⼆进制组成
+
 ### 查看Mach-O文件信息命令
 
 查看mach-header 
