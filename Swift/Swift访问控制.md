@@ -80,7 +80,7 @@ required初始化器 ≥ 它的默认访问级别
 
 如果结构体有private\fileprivate的存储实例属性，那么它的成员初始化器也是
 
-private\fileprivate p否则默认就是internal
+private\fileprivate 否则默认就是internal
 
 ## 枚举类型的case
 
