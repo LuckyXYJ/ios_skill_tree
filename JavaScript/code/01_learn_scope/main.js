@@ -1,14 +1,10 @@
 
 /*
-
 let n = 100
-
 function foo() {
     n = 300
 }
-
 foo()
-
 console.log(n);
 
 */
