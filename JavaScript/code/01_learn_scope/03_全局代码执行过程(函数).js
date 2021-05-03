@@ -5,12 +5,12 @@ function foo(num) {
   console.log(m)
   var m = 10
   var n = 20
-
+  console.log(num);
   console.log(name)
 }
 
 
-console.log(aaaaaaa)
+// console.log(aaaaaaa)
 
 
 

@@ -9,7 +9,7 @@ function foo(num) {
   var n = 20
 
   function bar() {
-    console.log(name)
+    console.log(num)
   }
 
   bar()
