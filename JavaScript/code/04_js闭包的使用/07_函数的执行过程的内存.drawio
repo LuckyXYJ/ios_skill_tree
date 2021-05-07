@@ -1,0 +1,97 @@
+<mxfile host="65bd71144e">
+    <diagram id="St3KooMB8bdpVELIS1Yk" name="Page-1">
+        <mxGraphModel dx="1058" dy="587" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="110" width="530" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Date&lt;br&gt;String&lt;br&gt;window&lt;br&gt;fn: 0xb00&lt;br&gt;foo:&amp;nbsp;&lt;span style=&quot;text-align: center&quot;&gt;0xa00&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="160" width="150" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="GO对象(0x100)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="130" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="110" width="250" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="ECStack(调用栈)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="80" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="430" width="230" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="全局执行上下文" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="400" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="VO: GO" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="440" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="310" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="foo函数对象(0xa00)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="280" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="parentScope: GO(0x100)" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="315" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="函数的执行体" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="350" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="endArrow=classic;html=1;entryX=0.122;entryY=0.002;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="10" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="590" y="240" as="sourcePoint"/>
+                        <mxPoint x="640" y="190" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="3" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="644.63" y="315" as="sourcePoint"/>
+                        <mxPoint x="625.37" y="385.14" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="&lt;span style=&quot;text-align: center&quot;&gt;name: &quot;foo&quot;&lt;br&gt;age: 18&lt;br&gt;bar: 0xb00&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="160" width="150" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="AO对象(foo)(0x200)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="130" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="742" y="310" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="bar函数对象(0xb00)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="752" y="280" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="parentScope: AO(0x200)" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="752" y="315" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="函数的执行体" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="752" y="350" width="150" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="836.6300000000001" y="315" as="sourcePoint"/>
+                        <mxPoint x="817" y="260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" value="" style="endArrow=classic;html=1;entryX=0.115;entryY=-0.055;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="26">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="771.26" y="230" as="sourcePoint"/>
+                        <mxPoint x="752" y="300.14" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="var fn = 0xb00" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="490" width="210" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="endArrow=classic;html=1;entryX=0.044;entryY=-0.026;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="26">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="600" y="220" as="sourcePoint"/>
+                        <mxPoint x="650" y="170" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
