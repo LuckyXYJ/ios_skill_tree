@@ -1,13 +1,13 @@
 var nums = [10, 5, 11, 100, 55]
 
-// var newNums = []
-// for (var i = 0; i < nums.length; i++) {
-//   var num = nums[i]
-//   if (num % 2 === 0) {
-//     newNums.push(num)
-//   }
-// }
-// console.log(newNums)
+var newNums = []
+for (var i = 0; i < nums.length; i++) {
+  var num = nums[i]
+  if (num % 2 === 0) {
+    newNums.push(num)
+  }
+}
+console.log(newNums)
 
 // 函数和方法的区别:
 // 函数function: 独立的function, 那么称之为是一个函数
@@ -60,9 +60,9 @@ obj.foo()
 // })
 // console.log(findFriend)
 
-var friendIndex = friends.findIndex(function(item) {
-  return item.name === 'james'
-})
+// var friendIndex = friends.findIndex(function(item) {
+//   return item.name === 'james'
+// })
 // console.log(friendIndex)
 
 
