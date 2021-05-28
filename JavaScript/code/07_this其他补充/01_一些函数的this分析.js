@@ -17,15 +17,15 @@ boxDiv.onclick = function() {
   console.log(this)
 }
 
-// boxDiv.addEventListener('click', function() {
-//   console.log(this)
-// })
-// boxDiv.addEventListener('click', function() {
-//   console.log(this)
-// })
-// boxDiv.addEventListener('click', function() {
-//   console.log(this)
-// })
+boxDiv.addEventListener('click', function() {
+  console.log(this)
+})
+boxDiv.addEventListener('click', function() {
+  console.log(this)
+})
+boxDiv.addEventListener('click', function() {
+  console.log(this)
+})
 
 // 3.数组.forEach/map/filter/find
 var names = ["abc", "cba", "nba"]

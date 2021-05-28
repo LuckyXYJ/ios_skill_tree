@@ -23,8 +23,8 @@ var person2 = { name: 'person2' }
 // person1.foo1(); // person1(隐式绑定)
 // person1.foo1.call(person2); // person2(显示绑定优先级大于隐式绑定)
 
-person1.foo2(); // window(不绑定作用域,上层作用域是全局)
-person1.foo2.call(person2); // window
+// person1.foo2(); // window(不绑定作用域,上层作用域是全局)
+// person1.foo2.call(person2); // window
 
 // person1.foo3()(); // window(独立函数调用)
 // person1.foo3.call(person2)(); // window(独立函数调用)
