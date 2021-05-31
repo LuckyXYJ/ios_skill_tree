@@ -1,27 +1,27 @@
 // 默认绑定: 独立函数调用
 // 1.案例一:
-// function foo() {
-//   console.log(this)
-// }
+function foo() {
+  console.log(this)
+}
 
-// foo()
+foo()
 
 // 2.案例二:
-// function foo1() {
-//   console.log(this)
-// }
+function foo1() {
+  console.log(this)
+}
 
-// function foo2() {
-//   console.log(this)
-//   foo1()
-// }
+function foo2() {
+  console.log(this)
+  foo1()
+}
 
-// function foo3() {
-//   console.log(this)
-//   foo2()
-// }
+function foo3() {
+  console.log(this)
+  foo2()
+}
 
-// foo3()
+foo3()
 
 
 // 3.案例三:

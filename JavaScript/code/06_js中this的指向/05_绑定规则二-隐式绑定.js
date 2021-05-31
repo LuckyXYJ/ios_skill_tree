@@ -1,20 +1,20 @@
 // 隐式绑定: object.fn()
 // object对象会被js引擎绑定到fn函数的中this里面
 
-// function foo() {
-//   console.log(this)
-// }
+function foo() {
+  console.log(this)
+}
 
-// // 独立函数调用
-// foo()
+// 独立函数调用
+foo()
 
 // 1.案例一:
-// var obj = {
-//   name: "why",
-//   foo: foo
-// }
+var obj = {
+  name: "why",
+  foo: foo
+}
 
-// obj.foo() // obj对象
+obj.foo() // obj对象
 
 // 2.案例二:
 // var obj = {

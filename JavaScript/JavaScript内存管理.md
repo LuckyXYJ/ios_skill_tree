@@ -93,6 +93,21 @@ setInterval(replaceThing, 1000);
 
 这个范例的关键在于，闭包之间是共享作用域的，尽管 unused 可能一直没有被调用，但是 someMethod 可能会被调用，就会导致无法对其内存进行回收。 当这段代码被反复执行时，内存会持续增长。
 
+```
+function makeAdder(count) {
+  return function (num) {
+    return count + num
+  }
+}
+
+var add5 = makeAdder(5)
+console.log(add5(6))
+```
+
+这段代码中makeAdder函数执行完毕，正常情况下我们的AO对象会被释放； 但是因为在0xb00的函数中有作用域引用指向了这个AO对象，所以它不会被释放掉；
+
+解决方案 ` add5 = null`
+
 4、DOM 引用
 
 很多时候, 我们对 Dom 的操作, 会把 Dom 的引用保存在一个数组或者 Map 中。

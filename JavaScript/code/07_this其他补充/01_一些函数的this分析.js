@@ -4,7 +4,7 @@
 // }
 
 // hySetTimeout(function() {
-//   console.log(this) // window
+//   console.log(this) // abc
 // }, 3000)
 
 // setTimeout(function() {
@@ -27,7 +27,7 @@ boxDiv.addEventListener('click', function() {
   console.log(this)
 })
 
-// 3.数组.forEach/map/filter/find
+// // 3.数组.forEach/map/filter/find
 var names = ["abc", "cba", "nba"]
 names.forEach(function(item) {
   console.log(item, this)
