@@ -156,6 +156,8 @@ JS中构造函数也是一个普通的函数，从表现形式来说，和千千
 
 如果这么一个普通的函数被使用new操作符来调用了，那么这个函数就称之为是一个构造函数；
 
+构造函数首字母一般是大写
+
 ### new操作符调用的作用
 
 如果一个函数被使用new操作符调用了，那么它会执行如下操作：
@@ -165,3 +167,144 @@ JS中构造函数也是一个普通的函数，从表现形式来说，和千千
 3. 构造函数内部的this，会指向创建出来的新对象； 
 4. 执行函数的内部代码（函数体代码）； 
 5. 如果构造函数没有返回非空对象，则返回创建出来的新对象；
+
+```
+function Person(name, age, height, address) {
+  this.name = name
+  this.age = age
+  this.height = height
+  this.address = address
+
+  this.eating = function() {
+    console.log(this.name + "在吃东西~")
+  }
+
+  this.running = function() {
+    console.log(this.name + "在跑步")
+  }
+}
+
+
+var p1 = new Person("张三", 18, 1.88, "广州市")
+```
+
+构造函数缺点：我们需要为每个对象的函数去创建一个函数对象实例；
+
+解决方案：将这些函数放到Person.prototype的对象上即可；
+
+```
+function Person(name, age, height, address) {
+  this.name = name
+  this.age = age
+  this.height = height
+  this.address = address
+}
+
+Person.prototype.eating = function() {
+  console.log(this.name + "在吃东西~")
+}
+
+Person.prototype.running = function() {
+  console.log(this.name + "在跑步~")
+}
+
+var p1 = new Person("why", 18, 1.88, "北京市")
+```
+
+## 对象的原型
+
+JavaScript当中每个对象都有一个特殊的内置属性 [[prototype]]，这个特殊的对象可以指向另外一个对象。 
+
+prototype执行对象的作用 
+
+- 当我们通过引用对象的属性key来获取一个value时，它会触发 [[Get]]的操作； 
+- 这个操作会首先检查该属性是否有对应的属性，如果有的话就使用它； 
+- 如果对象中没有改属性，那么会访问对象[[prototype]]内置属性指向的对象上的属性； 
+
+那么如果通过字面量直接创建一个对象，这个对象也会有这样的属性吗？如果有，应该如何获取这个属性呢？ 
+
+- 答案是有的，只要是对象都会有这样的一个内置属性； 
+- 获取的方式有两种： 
+  - 方式一：通过对象的 `__proto__` 属性可以获取到（但是这个是早期浏览器自己添加的，存在一定的兼容性问 题）； 
+  - 方式二：通过 Object.getPrototypeOf 方法可以获取到；
+
+## 函数的原型 prototype
+
+所有的函数都有一个prototype的属性
+
+```
+function foo() {
+}
+
+// 函数也是一个对象
+// console.log(foo.__proto__) // 函数作为对象来说, 它也是有[[prototype]] 隐式原型
+
+// 函数它因为是一个函数, 所以它还会多出来一个显示原型属性: prototype
+console.log(foo.prototype)
+```
+
+new关键字创建一个对象时，这个对象内部的[[prototype]]属性会被赋值为该构造函数的prototype属性；
+
+```
+function Person() {
+
+}
+
+var p = new Person()
+
+// 以上操作类等同如下操作
+p = {}
+p.__proto__ = Person.prototype
+```
+
+## constructor属性
+
+事实上原型对象上面是有一个属性的：constructor
+
+默认情况下原型上都会添加一个属性叫做constructor，这个constructor指向当前的函数对象；
+
+```
+function Person() {}
+console.log(Person.prototype.constructor); // [Function: person]
+console.log(p.__proto__.constructor); // [Function: person]
+console.log(p.__proto__.constructor.name); // Person
+```
+
+## 重写原型对象
+
+给prototype重新赋值了一个对象, 那么这个新对象的constructor属性, 会指向Object构造函 数, 而不是Person构造函数了
+
+```
+function Person() {}
+Person.prototype = {
+  name: "why",
+  age: 18,
+}
+```
+
+如果希望constructor指向Person，那么可以手动添加：
+
+```
+function Person() {}
+Person.prototype = {
+	constructor: Person,
+  name: "why",
+  age: 18,
+}
+```
+
+以上存在问题：造成constructor的[[Enumerable]]特性被设置了true.
+
+- 默认情况下, 原生的constructor属性是不可枚举的.
+- 如果希望解决这个问题, 就可以使用我们前面介绍的Object.defineProperty()函数了.
+
+```
+// 真实开发中我们可以通过Object.defineProperty方式添加constructor
+Object.defineProperty(Person.prototype, "constructor", {
+  enumerable: false,
+  configurable: true,
+  writable: true,
+  value: foo
+})
+```
+
