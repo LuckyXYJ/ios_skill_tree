@@ -308,3 +308,9 @@ Object.defineProperty(Person.prototype, "constructor", {
 })
 ```
 
+## 对象的方法补充
+
+- hasOwnProperty 对象是否有某一个属于自己的属性（不是在原型上的属性）
+- in/for in  操作符判断某个属性是否在某个对象或者对象的原型上
+- instanceof 用于检测构造函数的pototype，是否出现在某个实例对象的原型链上
+- isPrototypeOf 用于检测某个对象，是否出现在某个实例对象的原型链上
