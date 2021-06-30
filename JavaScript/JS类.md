@@ -36,7 +36,68 @@ var Student = class {
 
 对于实例的方法，我们是希望放到原型上的，这样可以被多个实例来共享； 这个时候我们可以直接在类中定义；
 
+```
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+  // 普通的实例方法
+  // 创建出来的对象进行访问
+  // var p = new Person()
+  // p.eating()
+  eating() {
+    console.log(this.name + " eating~")
+  }
+  running() {
+    console.log(this.name + " running~")
+  }
+}
+```
 
+## 类的访问器方法
 
+对象可以添加setter和getter函数的，那么类也是可以的
 
+```
+class Person {
+  constructor(name, age) {
+    this._address = "xxx"
+  }
+
+  // 类的访问器方法
+  get address() {
+    console.log("拦截访问操作")
+    return this._address
+  }
+
+  set address(newAddress) {
+    console.log("拦截设置操作")
+    this._address = newAddress
+  }
+}
+```
+
+## 类的静态方法
+
+静态方法通常用于定义直接使用类来执行的方法，不需要有类的实例，使用static关键字来定义
+
+```
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+    this._address = "广州市"
+  }
+  
+  // 类的静态方法(类方法)
+  // Person.createPerson()
+  static randomPerson() {
+    var nameIndex = Math.floor(Math.random() * names.length)
+    var name = names[nameIndex]
+    var age = Math.floor(Math.random() * 100)
+    return new Person(name, age)
+  }
+}
+```
 
