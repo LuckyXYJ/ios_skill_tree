@@ -144,3 +144,30 @@ inheritPrototype(Student, Person)
 
 
 
+## ES6类的继承 - extends
+
+ES6中新增了使用extends关键字，可以方便的帮助我们实现继承：
+
+```
+class Student extends Person {}
+```
+
+### super关键字
+
+在子（派生）类的构造函数中使用this或者返回默认对象之前，必须先通过super调用父类的构造函数！ 
+
+super的使用位置有三个：子类的构造函数、实例方法、静态方法；
+
+![image-20230106232526666](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20230106232526666.png)
+
+### 继承内置类
+
+![image-20230106232554933](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20230106232554933.png)
+
+### 类的混入mixin
+
+JavaScript的类只支持单继承：也就是只能有一个父类
+
+如果我们需要在一个类中添加更多相似的功能时，应该如何来做呢？ 这个时候我们可以使用混入（mixin）；
+
+![image-20230106232647353](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20230106232647353.png)
