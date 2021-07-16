@@ -108,7 +108,61 @@ var所表现出来的特殊性：比如作用域提升、window全局对象、�
 
 只有当我们明确知道一个变量后续会需要被重新赋值时，这个时候再使用let； 
 
-## 块级作用域
+### 块级作用域
 
 在ES6中新增了块级作用域，并且通过let、const、function、class声明的标识符是具备块级作用域的限制的：
+
+## 标签模块字符串
+
+```
+const info = `age double is ${age * 2}`
+console.log(info)
+```
+
+```
+function foo(m, n, x) {
+  console.log(m, n, x, '---------')
+}
+
+foo("Hello", "World")
+
+// 另外调用函数的方式: 标签模块字符串
+// foo``
+// [ 'Hello World' ] undefined undefined ---------
+foo`Hello World`
+const name = "why"
+const age = 18
+// [ 'Hello', 'Wo', 'rld' ] why 18 ---------
+foo`Hello${name}Wo${age}rld`
+```
+
+## 函数的默认参数
+
+在ES6中，我们允许给函数一个默认值
+
+```
+function foo(x = 20, y = 31) {
+  console.log(x, y);
+}
+
+foo() // 20 31
+```
+
+默认参数与解构
+
+```
+// 2.对象参数和默认值以及解构
+function printInfo({name, age} = {name: "why", age: 18}) {
+  console.log(name, age)
+}
+
+printInfo({name: "kobe", age: 40})
+
+// 另外一种写法
+function printInfo1({name = "why", age = 18} = {}) {
+  console.log(name, age)
+}
+
+printInfo1()
+```
 
