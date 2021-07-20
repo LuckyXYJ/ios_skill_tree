@@ -166,3 +166,24 @@ function printInfo1({name = "why", age = 18} = {}) {
 printInfo1()
 ```
 
+## 函数的剩余参数
+
+ES6中引用了rest parameter，可以将不定数量的参数放入到一个数组中
+
+如果最后一个参数是 ... 为前缀的，那么它会将剩余的参数放到该参数中，并且作为一个数组；
+
+剩余参数和arguments有什么区别呢？
+
+- 剩余参数只包含那些没有对应形参的实参，而 arguments 对象包含了传给函数的所有实参； 
+- arguments对象不是一个真正的数组，而rest参数是一个真正的数组，可以进行数组的所有操作； 
+- arguments是早期的ECMAScript中为了方便去获取所有的参数提供的一个数据结构，而rest参数是ES6中提供 并且希望以此来替代arguments的；
+
+```
+function foo(n, m, ...args) {
+  console.log(m, n)
+  console.log(args)
+
+  console.log(arguments)
+}
+```
+
