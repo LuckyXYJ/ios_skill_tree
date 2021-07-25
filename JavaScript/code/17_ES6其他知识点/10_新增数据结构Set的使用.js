@@ -16,7 +16,7 @@ const obj = {}
 set.add(obj)
 set.add(obj)
 
-// console.log(set)
+console.log(set)
 
 // 3.对数组去重(去除重复的元素)
 const arr = [33, 10, 26, 30, 33, 26]

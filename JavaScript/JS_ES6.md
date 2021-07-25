@@ -177,6 +177,7 @@ ES6中引用了rest parameter，可以将不定数量的参数放入到一个数
 - 剩余参数只包含那些没有对应形参的实参，而 arguments 对象包含了传给函数的所有实参； 
 - arguments对象不是一个真正的数组，而rest参数是一个真正的数组，可以进行数组的所有操作； 
 - arguments是早期的ECMAScript中为了方便去获取所有的参数提供的一个数据结构，而rest参数是ES6中提供 并且希望以此来替代arguments的；
+- 剩余参数必须放到最后一个位置，否则会报错
 
 ```
 function foo(n, m, ...args) {
@@ -185,5 +186,19 @@ function foo(n, m, ...args) {
 
   console.log(arguments)
 }
+```
+
+## ES6数值表示
+
+```
+const num1 = 100 // 十进制
+// b -> binary
+const num2 = 0b100 // 二进制
+// o -> octonary
+const num3 = 0o100 // 八进制
+// x -> hexadecimal
+const num4 = 0x100 // 十六进制
+// 大的数值的连接符(ES2021 ES12)
+const num = 10_000_000_000_000_000
 ```
 

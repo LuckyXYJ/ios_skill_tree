@@ -230,7 +230,9 @@ prototype执行对象的作用
 
 ## 函数的原型 prototype
 
-所有的函数都有一个prototype的属性
+所有的函数都有一个prototype的属性，箭头函数除外
+
+箭头函数是没有显式原型的，所以不能作为构造函数，也不能使用new来创建对象；
 
 ```
 function foo() {
