@@ -202,3 +202,43 @@ const num4 = 0x100 // 十六进制
 const num = 10_000_000_000_000_000
 ```
 
+## Symbol的基本使用
+
+Symbol是ES6中新增的一个基本数据类型，翻译为符号。
+
+那么为什么需要Symbol呢？ 
+
+- 在ES6之前，对象的属性名都是字符串形式，那么很容易造成属性名的冲突； 
+- 比如原来有一个对象，我们希望在其中添加一个新的属性和值，但是我们在不确定它原来内部有什么内容的情况下， 很容易造成冲突，从而覆盖掉它内部的某个属性； 
+- 比如我们前面在讲apply、call、bind实现时，我们有给其中添加一个fn属性，那么如果它内部原来已经有了fn属性了 呢？ 
+- 比如开发中我们使用混入，那么混入中出现了同名的属性，必然有一个会被覆盖掉；
+
+Symbol的作用，用来生成一个独一无二的值。 
+
+- Symbol值是通过Symbol函数来生成的，生成后可以作为属性名； 
+- 也就是在ES6中，对象的属性名可以使用字符串，也可以使用Symbol值；
+
+Symbol即使多次创建值，它们也是不同的：Symbol函数执行后每次创建出来的值都是独一无二的；
+
+我们也可以在创建Symbol值的时候传入一个描述description：这个是ES2019（ES10）新增的特性；
+
+```
+// ES6中Symbol的基本使用
+const s1 = Symbol()
+const s2 = Symbol()
+
+console.log(s1 === s2) // false
+
+// ES2019(ES10)中, Symbol还有一个描述(description)
+const s3 = Symbol("aaa")
+console.log(s3.description) // aaa
+```
+
+可以使用Symbol.for方法来创建相同的Symbol
+
+```
+const sa = Symbol.for("aaa")
+const sb = Symbol.for("aaa")
+console.log(sa === sb) // true
+```
+
