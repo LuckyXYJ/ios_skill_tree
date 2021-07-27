@@ -310,3 +310,20 @@ class Person {
 }
 ```
 
+### Map
+
+map与对象区别，Map的key为可以为对象，对象的key只能为字符串
+
+Map 用法：
+
+- Map常见的属性：
+  - size：返回Map中元素的个数；
+- Map常见的方法：
+  - set(key, value)：在Map中添加key、value，并且返回整个Map对象； 
+  - get(key)：根据key获取Map中的value； 
+  - has(key)：判断是否包括某一个key，返回Boolean类型； 
+  - delete(key)：根据key删除一个键值对，返回Boolean类型； 
+  - clear()：清空所有的元素； 
+  - forEach(callback, [, thisArg])：通过forEach遍历Map； 
+- Map也可以通过for of进行遍历。
+
