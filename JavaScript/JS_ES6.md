@@ -278,3 +278,35 @@ set常见方法：
   - forEach(callback, [, thisArg])：通过forEach遍历set；
 - 另外Set是支持for of的遍历的。
 
+### WeakSet
+
+和Set有什么区别呢？
+
+1. WeakSet中只能存放对象类型，不能存放基本数据类型；
+2. WeakSet对元素的引用是弱引用，如果没有其他引用对某个对象进行引用，那么GC可以对该对象进行回收
+3. WeakSet不能遍历,存储到WeakSet中的对象是没办法获取的
+
+WeakSet常见的方法：
+
+1. add(value)：添加某个元素，返回WeakSet对象本身；
+2. delete(value)：从WeakSet中删除和这个值相等的元素，返回boolean类型； 
+3. has(value)：判断WeakSet中是否存在某个元素，返回boolean类型；
+
+WeakSet的作用：
+
+```
+const personSet = new WeakSet()
+class Person {
+  constructor() {
+    personSet.add(this)
+  }
+
+  running() {
+    if (!personSet.has(this)) {
+      throw new Error("不能通过非构造方法创建出来的对象调用running方法")
+    }
+    console.log("running~", this)
+  }
+}
+```
+
