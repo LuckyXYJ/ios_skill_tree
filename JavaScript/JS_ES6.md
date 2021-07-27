@@ -242,3 +242,39 @@ const sb = Symbol.for("aaa")
 console.log(sa === sb) // true
 ```
 
+## ES6新增数据结构
+
+在ES6之前，我们存储数据的结构主要有两种：数组、对象。
+
+ES6中新增了另外两种数据结构：Set、Map，以及它们的另外形式WeakSet、WeakMap。
+
+### Set
+
+创建Set我们需要通过Set构造函数（暂时没有字面量创建的方式）
+
+```
+const set = new Set()
+set.add(10)
+```
+
+Set有一个非常常用的功能就是给数组去重
+
+```
+const arrSet = new Set(arr)
+const newArr = Array.from(arrSet)
+const newArr = [...arrSet]
+console.log(newArr)
+```
+
+set常见方法：
+
+- Set常见的属性：
+  - size：返回Set中元素的个数；
+- Set常用的方法：
+  - add(value)：添加某个元素，返回Set对象本身； 
+  - delete(value)：从set中删除和这个值相等的元素，返回boolean类型； 
+  - has(value)：判断set中是否存在某个元素，返回boolean类型； 
+  - clear()：清空set中所有的元素，没有返回值； 
+  - forEach(callback, [, thisArg])：通过forEach遍历set；
+- 另外Set是支持for of的遍历的。
+
