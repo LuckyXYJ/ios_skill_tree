@@ -342,3 +342,6 @@ WeakMap常见的方法有四个：
 - has(key)：判断是否包括某一个key，返回Boolean类型； 
 - delete(key)：根据key删除一个键值对，返回Boolean类型；
 
+weakMap应用：WeakMap 可以帮你省掉手动删除对象关联数据的步骤
+
+![image-20230113222036966](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20230113222036966.png)
