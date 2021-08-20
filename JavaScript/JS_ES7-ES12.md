@@ -90,3 +90,74 @@ function foo(m, n,) {
 foo(20, 30,)
 ```
 
+## ES10 - flat flatMap
+
+flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返 回。
+
+flatMap() 方法首先使用映射函数映射每个元素，然后将结果压缩成一个新数组。
+
+注意一：flatMap是先进行map操作，再做flat的操作； 
+
+注意二：flatMap中的flat相当于深度为1；
+
+```
+const nums = [10, 20, [2, 9], [[30, 40], [10, 45]], 78, [55, 88]]
+console.log(nums.flat()) // [ 10, 20, 2, 9, [ 30, 40 ], [ 10, 45 ], 78, 55, 88 ]
+console.log(nums.flat(2)) // [10, 20,  2,  9, 30, 40, 10, 45, 78, 55, 88]
+
+const messages = ["Hello World", "hello lhy", "my name is zxq"]
+const words = messages.flatMap(item => {
+  return item.split(" ")
+})
+
+console.log(words) // ['Hello', 'World', 'hello', 'lhy', 'my', 'name', 'is', 'zxq']
+```
+
+## ES10 - Object fromEntries
+
+我们可以通过 Object.entries 将一个对象转换成 entries
+
+ES10提供了 Object.formEntries，可以将entries转化为对象
+
+```
+const obj = {
+  name: "why",
+  age: 18,
+  height: 1.88
+}
+
+const entries = Object.entries(obj)
+console.log(entries)
+
+const newObj = Object.fromEntries(entries)
+console.log(newObj)
+```
+
+可以用来处理HTTP请求中参数
+
+```
+const queryString = 'name=why&age=18&height=1.88'
+const queryParams = new URLSearchParams(queryString)
+console.log(queryParams)
+for (const param of queryParams) {
+  console.log(param)
+}
+
+const paramObj = Object.fromEntries(queryParams)
+console.log(paramObj) // { name: 'why', age: '18', height: '1.88' }
+```
+
+## ES10 - trimStart trimEnd
+
+去除一个字符串首尾的空格，我们可以通过trim方法
+
+ES10中给我们提供了trimStart和trimEnd 用来单独去除前面或者后面的空格
+
+```
+const message = "    Hello World    "
+
+console.log(message.trim())
+console.log(message.trimStart())
+console.log(message.trimEnd())
+```
+
