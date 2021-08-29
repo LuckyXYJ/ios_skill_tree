@@ -1,4 +1,4 @@
-const names = ["abc", "cba", "nba", "mba"]
+const names = ["abc", "cba", "nba", "mba", NaN]
 
 if (names.indexOf("cba") !== -1) {
   console.log("包含abc元素")

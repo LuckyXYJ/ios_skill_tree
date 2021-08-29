@@ -1,6 +1,6 @@
 // ES11: 空值合并运算 ??
 
-const foo = " "
+const foo = ""
 const bar1 = foo || "default value"
 const bar2 = foo ?? "defualt value"
 
