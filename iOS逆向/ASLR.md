@@ -28,7 +28,7 @@ iOS4.3开始引入了ASLR技术
 
   
 
-![image-20220628180635335](/Users/xyj/Library/Application Support/typora-user-images/image-20220628180635335.png)
+![image-20220628180635335](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220628180635335.png)
 
 ## 使用ASLR
 
