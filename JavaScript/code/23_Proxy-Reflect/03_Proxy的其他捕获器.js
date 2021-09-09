@@ -29,14 +29,14 @@ const objProxy = new Proxy(obj, {
 
   // 监听delete的捕获器
   deleteProperty: function(target, key) {
-    console.log(`监听到对象的${key}属性in操作`, target)
+    console.log(`监听到对象的${key}属性delete操作`, target)
     delete target[key]
   }
 })
 
 
 // in操作符
-// console.log("name" in objProxy)
+console.log("name" in objProxy)
 
 // delete操作
 delete objProxy.name
