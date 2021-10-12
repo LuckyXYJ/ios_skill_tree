@@ -3,15 +3,16 @@ function* foo() {
 
   const value1 = 100
   console.log("第一段代码:", value1)
-  yield
+  const temp = yield
 
   const value2 = 200
   console.log("第二段代码:", value2)
-  yield
+  console.log(temp)
+  yield(value2)
 
   const value3 = 300
   console.log("第三段代码:", value3)
-  yield
+  yield(value3)
 
   console.log("函数执行结束~")
 }
@@ -20,11 +21,13 @@ function* foo() {
 const generator = foo()
 
 // 开始执行第一段代码
-generator.next()
+// generator.next()
 
 // 开始执行第二端代码
-console.log("-------------")
-generator.next()
-generator.next()
+// console.log("-------------")
+// generator.next()
+// console.log("----------")
+console.log(generator.next())
+console.log(generator.next(123))
 console.log("----------")
 generator.next()
