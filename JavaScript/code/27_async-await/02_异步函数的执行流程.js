@@ -10,5 +10,6 @@ async function foo() {
 
 
 console.log("script start")
+console.log(foo())
 foo()
 console.log("script end")
