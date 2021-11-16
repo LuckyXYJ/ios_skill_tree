@@ -35,3 +35,6 @@ console.log(obj.name)
 console.log(obj.age)
 
 obj.height = 1.88
+
+
+

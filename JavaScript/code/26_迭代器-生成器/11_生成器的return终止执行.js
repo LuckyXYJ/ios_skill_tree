@@ -30,3 +30,9 @@ console.log(generator.next())
 console.log(generator.next())
 console.log(generator.next())
 console.log(generator.next())
+
+// 函数开始执行~
+// 第一段代码: 1000
+// { value: 1000, done: false }
+// { value: 15, done: true }
+// { value: undefined, done: true }
