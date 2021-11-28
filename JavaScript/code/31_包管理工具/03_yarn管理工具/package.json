@@ -1,0 +1,10 @@
+{
+  "name": "03_yarn_demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
