@@ -1,0 +1,8 @@
+{
+  "name": "why",
+  "age": 18,
+  "friend": {
+    "name": "kobe"
+  },
+  "hobbies": ["篮球", "足球"]
+}
