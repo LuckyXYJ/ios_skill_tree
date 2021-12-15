@@ -30,7 +30,7 @@ const jsonString3 = JSON.stringify(obj, (key, value) => {
 console.log(jsonString3)
 
 // 3.stringify第三参数 space
-const jsonString4 = JSON.stringify(obj, null, "---")
+const jsonString4 = JSON.stringify(obj, null, '*')
 console.log(jsonString4)
 
 // 4.如果obj对象中有toJSON方法
