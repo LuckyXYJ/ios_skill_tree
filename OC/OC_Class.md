@@ -6,6 +6,37 @@ objc_class 继承与 objc_object
 
 ![image-20220601103622311](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601103622311.png)
 
+### ISA
+
+```
+union isa_t
+{
+    Class cls;
+    uintptr_t bits;
+    struct {
+        uintptr_t nonpointer        : 1; // 表示是否对 isa 指针开启指针优化
+        uintptr_t has_assoc         : 1; // 收否有oc关联对象
+        uintptr_t has_cxx_dtor      : 1; // 是否有c++析构函数
+        uintptr_t shiftcls          : 33; // 指针地址
+        uintptr_t magic             : 6;	// 占用6位，用于调试器判断当前对象是真的对象还是没有初始化的空间
+        uintptr_t weakly_referenced : 1;  // 占用1位，标志对象是否被指向或者曾经指向一个 ARC 的弱变量，
+        uintptr_t deallocating      : 1;  // 占用1位 标志对象是否正在释放内存
+        uintptr_t has_sidetable_rc  : 1;  // 占用1位 是否使用sidetable存储引用计数
+        uintptr_t extra_rc          : 19; // 当表示该对象的引用计数值，实际上是引用计数值减 1
+    }
+}
+```
+
+#### 结构体、联合体(共用体)
+
+struct 所有变量是‘共存’的，优点是‘有容乃大’，全面; 缺点是struct内存空间的分配是粗放的，不管用不用，全分配。
+
+联合体(union)中是各变量是“互斥”的——缺点就是不够“包容”; 但优点是内存使用更为精细灵活，也节省了内存空间
+
+#### 位域
+
+位域就是定义几个位表示一些信息，节约内存，内存优化的一种。isa_t要么是直接指向cls，要么是bits。
+
 ### class_rw_t
 
 class_rw_t里面的methods、properties、protocols是二维数组，是可读可写的，包含了类的初始内容、分类的内容
@@ -153,5 +184,56 @@ Class object_getClass(id obj)
   - 如果是class对象，返回meta-class对象
   - 如果是meta-class对象，返回NSObject（基类）的meta-class对象
 
+## new与alloc/init的区别
 
+new的源码
+
+```
++ (id)new {
+    return [callAlloc(self, false/*checkNil*/) init];
+}
+```
+
+Alloc 
+
+```
++ (id)alloc {
+    return _objc_rootAlloc(self);
+}
+
+id
+_objc_rootAlloc(Class cls)
+{
+    return callAlloc(cls, false/*checkNil*/, true/*allocWithZone*/);
+}
+```
+
+callAlloc方法
+
+```
+callAlloc(Class cls, bool checkNil, bool allocWithZone=false)
+{
+#if __OBJC2__
+    if (slowpath(checkNil && !cls)) return nil;
+    if (fastpath(!cls->ISA()->hasCustomAWZ())) {
+        return _objc_rootAllocWithZone(cls, nil);
+    }
+#endif
+
+    // No shortcuts available.
+    if (allocWithZone) {
+        return ((id(*)(id, SEL, struct _NSZone *))objc_msgSend)(cls, @selector(allocWithZone:), nil);
+    }
+    return ((id(*)(id, SEL))objc_msgSend)(cls, @selector(alloc));
+}
+```
+
+[className new]基本等同于[[className alloc] init]，区别只在于alloc分配内存的时候使用了zone。
+
+Zone 作用 是给对象分配内存的时候，把关联的对象分配到一个相邻的内存区域内，以便于调用时消耗很少的代价，提升了程序处理速度
+
+为什么不推荐使用new？
+
+- 如果使用new的话，初始化方法被固定死只能调用init。不能调用initXXX
+- 使用alloc init方法，我们可以重写init方法
 

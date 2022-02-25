@@ -39,7 +39,7 @@
 // Student
 @interface Student : Person
 {
-    int _no;
+    long _no;
 //    int _sex;
 }
 @end
@@ -51,6 +51,7 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
+        // objc_msgSend(objc_msgSend(objc_getClass("NSObject"), sel_registerName("alloc")), sel_registerName("init"));
         NSObject *obj = [[NSObject alloc] init];
 //        // 16个字节
 //        
@@ -79,6 +80,12 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"person - %zd", class_getInstanceSize([Person class]));
         NSLog(@"person - %zd", malloc_size((__bridge const void *)person));
+        
+        NSLog(@"person - %zd",sizeof(person));
+        
+        [person class];
+        [Person class];
+        object_getClass(<#id  _Nullable obj#>)
     }
     return 0;
 }

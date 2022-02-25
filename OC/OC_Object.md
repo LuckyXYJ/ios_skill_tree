@@ -122,7 +122,7 @@ instance对象在内存中存储的信息包括
 
 ![image-20220531175849847](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220531175849847.png)
 
-nobjectClass1 ~ objectClass5都是NSObject的class对象（类对象）
+objectClass1 ~ objectClass5都是NSObject的class对象（类对象）
 
 每个类在内存中有且只有一个class对象
 
@@ -156,7 +156,7 @@ meta-class对象和class对象的内存结构是一样的，但是用途不一�
 Class objClass = [[NSObject class] class];
 ```
 
-查看Class是否为meta-class
+查看su
 
 ```
 BOOL result = class_isMetaClass([NSObject class]);
