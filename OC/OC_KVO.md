@@ -105,5 +105,7 @@ for (NSString *keyPath in AFHTTPRequestSerializerObservedKeyPaths()) {
 
 3、重复移除，移除超过添加次数后，**NSRangeException**报错。
 
-**在移除观察的时候NSKVONotifying_XXX 是否移除? + isa 是否会回来?**  答：不会
+**在移除观察的时候NSKVONotifying_XXX 是否移除? + isa 是否会回来?**  
+
+答：NSKVONotifying_XXX没有移除。实例对象的isa是会重新指向原类。
 

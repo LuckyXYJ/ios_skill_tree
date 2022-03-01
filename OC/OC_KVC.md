@@ -18,7 +18,7 @@ KVC的全称是Key-Value Coding，俗称“键值编码”，可以通过一个k
 
 ![image-20220601173829649](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601173829649.png)
 
-naccessInstanceVariablesDirectly方法的默认返回值是YES
+accessInstanceVariablesDirectly方法的默认返回值是YES
 
 ## valueForKey:的原理
 

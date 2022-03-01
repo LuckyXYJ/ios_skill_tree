@@ -10,9 +10,9 @@
 
 @implementation MJPerson
 
-- (void)setAge:(int)age
-{
-    _age = age;
-}
+//- (void)setAge:(int)age
+//{
+//    _age = age;
+//}
 
 @end

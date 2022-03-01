@@ -75,7 +75,7 @@
     // 给person1对象添加KVO监听
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
     [self.person1 addObserver:self forKeyPath:@"age" options:options context:@"123"];
-    [self.person1 addObserver:self forKeyPath:@"age" options:options context:@"123"];
+    [self.person2 addObserver:self forKeyPath:@"age" options:options context:@"123"];
     
     [self printMethodNamesOfClass:object_getClass(self.person1)];
     [self printMethodNamesOfClass:object_getClass(self.person2)];
@@ -87,12 +87,18 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-//    [self.person1 setAge:21];
+//    [self.person1 setAge:1];
+    self.person1.age = 1;
     
-    [self.person1 willChangeValueForKey:@"age"];
-    [self.person1 didChangeValueForKey:@"age"];
+//    [self.person1 willChangeValueForKey:@"age"];
+//    [self.person1 didChangeValueForKey:@"age"];
     
     [self printClasses:[MJPerson class]];
+    [self printMethodNamesOfClass:object_getClass(self.person1)];
+    [self.person1 removeObserver:self forKeyPath:@"age"];
+    
+    [self printClasses:[MJPerson class]];
+    [self printMethodNamesOfClass:object_getClass(self.person1)];
 }
 
 - (void)dealloc {
