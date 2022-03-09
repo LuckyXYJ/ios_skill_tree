@@ -216,7 +216,7 @@ nums.sort { $0 < $1 } // [2, 5, 6, 11, 18, 45, 68]
 
 局部变量/常量
 
-```
+```swift
 typealias Fn = (Int) -> Int 
 func getFn() -> Fn {
 	var num = 0 
@@ -247,7 +247,7 @@ fn2(6) // 12
 
 全局变量
 
-```
+```swift
 class Closure { 
 	var num = 0 
 	func plus(_ i: Int) -> Int { 
