@@ -296,5 +296,25 @@ for cls in clses {
 }
 ```
 
+## 将方法赋值给var\let
 
+方法也可以像函数那样，赋值给一个let或者var
+
+```swift
+struct Person { 
+  var age: Int 
+  func run(_ v: Int) { print("func run", age, v) } 
+  static func run(_ v: Int) { print("static func run", v) } 
+}
+
+let fn1 = Person.run 
+fn1(10) // static func run 10
+
+let fn2: (Int) -> () = Person.run 
+fn2(20) // static func run 20
+
+let fn3: (Person) -> ((Int) -> ()) = Person.run 
+fn3(Person(age: 18))(30) // func run 18 30
+
+```
 
