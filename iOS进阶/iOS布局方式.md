@@ -183,3 +183,45 @@ UIView *view1 = [[UIView alloc]init];
 ##### 最后上效果图
 
 ![效果](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/1240-20230216141907643.png)
+
+## AutoresizingMask
+
+autoresizingMask是UIView的属性，该属性的作用是调整子视图的上、下、左、右边距及宽高，以保证子视图相对与父视图的位置。autoresizingMask的值对应一个枚举，默认值是UIViewAutoresizingNone；
+
+```
+typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
+  UIViewAutoresizingNone                = 0,
+  UIViewAutoresizingFlexibleLeftMargin  = 1 << 0,
+  UIViewAutoresizingFlexibleWidth        = 1 << 1,
+  UIViewAutoresizingFlexibleRightMargin  = 1 << 2,
+  UIViewAutoresizingFlexibleTopMargin    = 1 << 3,
+  UIViewAutoresizingFlexibleHeight      = 1 << 4,
+  UIViewAutoresizingFlexibleBottomMargin = 1 << 5
+};
+```
+
+- UIViewAutoresizingNone：表示不随父视图的改变而改变
+- UIViewAutoresizingFlexibleLeftMargin：表示随着父视图的改变自动调整view与父视图的左边距，保证view与父视图的右边距不变；
+- UIViewAutoresizingFlexibleWidth：表示随着父视图的改变自动调整view的宽度，保证view与父视图左右边距不变；
+- UIViewAutoresizingFlexibleRightMargin：表示随着父视图的改变自动调整view与父视图的右边距，保证view与父视图的左边距不变；
+- UIViewAutoresizingFlexibleTopMargin：表示随着父视图的改变自动调整view与父视图的上边距，保证下边距不变；
+- UIViewAutoresizingFlexibleHeight：表示随着父视图的改变自动调整view的高度，保证view与父视图的上下边距不变；
+- UIViewAutoresizingFlexibleBottomMargin：表示随着父视图的改变自动调整view与父视图的下边距，保证上边距不变；
+
+实际开发中，我们可以根据需要组合使用上述几种枚举值，各个值用‘|’隔开，如下：
+
+```objectivec
+self.overView.autoresizingMask=UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+```
+
+这句代码的意思是，自动调整self.overView的宽高保证self.overView与父视图的左右边距和上下边距不变；
+
+### translatesAutoresizingMaskIntoConstraints与AutoresizingMask关系
+
+默认情况下，translatesAutoresizingMaskIntoConstraints ＝ true , 此时视图的AutoresizingMask会被转换成对应效果的约束。这样很可能就会和我们手动添加的其它约束有冲突。此属性设置成false时，AutoresizingMask就不会变成约束。也就是说 当前 视图的 AutoresizingMask失效了。
+
+当我们用代码添加视图时,视图的translatesAutoresizingMaskIntoConstraints属性默认为true，可是AutoresizingMask属性默认会被设置成.None。也就是说如果我们不去动AutoresizingMask，那么AutoresizingMask就不会对约束产生影响。
+
+当我们使用interface builder添加视图时，AutoresizingMask虽然会被设置成非.None，但是translatesAutoresizingMaskIntoConstraints默认被设置成了false。所以也不会有冲突。
+
+反而有的视图是靠AutoresizingMask布局的，当我们修改了translatesAutoresizingMaskIntoConstraints后会让视图失去约束，走投无路。例如我自定义转场时就遇到了这样的问题，转场后的视图并不在视图的正中间。
