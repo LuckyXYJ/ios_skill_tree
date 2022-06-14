@@ -1,6 +1,6 @@
 ## 布局方式
 
-AutoLayout，AutoresizingMask
+frame，AutoLayout，Autoresizing，NSLayoutAnchor，自动布局SnapKit/Masonry
 
 ## AutoLayout
 
@@ -225,3 +225,8 @@ self.overView.autoresizingMask=UIViewAutoresizingFlexibleWidth | UIViewAutoresiz
 当我们使用interface builder添加视图时，AutoresizingMask虽然会被设置成非.None，但是translatesAutoresizingMaskIntoConstraints默认被设置成了false。所以也不会有冲突。
 
 反而有的视图是靠AutoresizingMask布局的，当我们修改了translatesAutoresizingMaskIntoConstraints后会让视图失去约束，走投无路。例如我自定义转场时就遇到了这样的问题，转场后的视图并不在视图的正中间。
+
+## NSLayoutAnchor
+
+iOS 9 推出的自动布局类，通过设置view的不同锚来实现自动布局约束，内部可以理解成也是NSLayoutConstraint实现。NSLayoutAnchor相对NSLayoutConstraint，代码更加整洁,优雅,易读。
+
