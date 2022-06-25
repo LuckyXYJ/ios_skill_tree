@@ -25,3 +25,11 @@
 4. 什么是导⼊（Import）符号？导出（Export）符号？
 5. strip命令是什么？间接符号不能删除？
 6. Strip Style有哪几种选项？
+
+### 4、Mach-O文件
+
+1. mach-O文件是什么？.o文件是什么？
+2. mach-O文件的格式是怎么样的？
+3. 查看Mach-O文件信息的命令有哪些？
+4. iOS生产Mach-O文件的过程
+5. dyld加载流程
