@@ -102,5 +102,11 @@ SDK_NAME
 
 $(EXECUTABLE_NAME) = libUtilLib.a，表示可执行文件libUtiLib.a
 
+## workspace
 
+workspace 作用：
+
+1. 可重⽤性。多个模块可以在多个项⽬中使⽤。节约开发和维护时间。
+2. 节省测试时间。单独模块意味着每个模块中都可以添加测试功能。
+3. 更好的理解模块化思想。
 
