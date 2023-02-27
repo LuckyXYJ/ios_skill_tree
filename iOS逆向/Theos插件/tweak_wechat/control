@@ -1,9 +1,0 @@
-Package: com.xyj.wechat
-Name: tweak_wechat
-Depends: mobilesubstrate
-Version: 0.0.1
-Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
-Maintainer: xyj
-Author: xyj
-Section: Tweaks
