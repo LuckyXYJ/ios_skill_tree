@@ -1,0 +1,27 @@
+name: FlutterCI #CI名称
+on: [push] #触发条件push操作！
+
+jobs:
+  check:
+    name: Test on ${{ matrix.os }}
+    #运行在哪个平台这里是MacOS平台
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      #三方flutter的Action，它可以在服务器配置一个Flutter环境
+      - uses: subosito/flutter-action@v2
+        with:
+          #flutter-version: '3.0.5'
+          channel: 'stable'
+      #想让我们CI做的事情！
+      - run: flutter --version
+      - run: cd flutter_module && flutter build ios-framework --cocoapods --output=../NativeDemo/Flutter 
+      - run: |
+         git add .
+         git commit -m 'update flutter framework'
+     
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

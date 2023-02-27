@@ -1,0 +1,15 @@
+#include "RunCMD.xcconfig"
+
+
+OTHER_LDFLAGS = -Xlinker -S
+OTHER_LDFLAGS = $(inherited) -Xlinker -unexported_symbol -Xlinker _global_init_value
+//-Xlinker -alias -Xlinker _NSLog -Xlinker _cat_NSLog
+
+// -non_global_symbols_no_strip_list
+// -unexported_symbol
+// -exported_symbol
+// -exported_symbols_order
+// -u
+// -U
+// -undefined error warning suppress dynamic_lookup
+

@@ -1,0 +1,14 @@
+{
+  "name": "04_npx_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "why": "webpack --version"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^3.6.0"
+  }
+}

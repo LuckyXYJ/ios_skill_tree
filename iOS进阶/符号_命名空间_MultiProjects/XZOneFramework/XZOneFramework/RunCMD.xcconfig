@@ -1,0 +1,14 @@
+VERBOSE_SCRIPT_LOGGING=-v
+TTY=/dev/ttys000
+MACHO_PATH=${BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/*.framework/${PRODUCT_NAME}
+CMD=objdump
+// nm
+// -p: 不排序
+// -a: 显示所有符号，除了调试符号
+// -m：显示（N_SECT）符号，格式(seg-ment_name, section_name) (external non-
+// external) (undefined), (common), (absolute) (indirect)
+// objdump
+// --macho --syms
+// --exports-trie :导出符号
+
+CMD_FLAG= --macho --exports-trie  $MACHO_PATH
