@@ -99,3 +99,7 @@ OPTIONS说明：
 ```
 docker exec -it 68711931de2e /bin/sh
 ```
+
+## 青龙重置 
+
+docker exec -it qinglong ql resetlet
