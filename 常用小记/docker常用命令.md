@@ -103,3 +103,24 @@ docker exec -it 68711931de2e /bin/sh
 ## 青龙重置 
 
 docker exec -it qinglong ql resetlet
+
+## docker-compose配置示例
+
+```
+version: '3.1'
+services:
+  nginx:
+    restart: always
+    image: nginx
+    container_name: nginx
+    ports:
+
+   - 80:80
+     443:443
+         volumes:
+        - ./html:/var/www/html
+          ./logs:/var/log/nginx
+```
+
+
+
