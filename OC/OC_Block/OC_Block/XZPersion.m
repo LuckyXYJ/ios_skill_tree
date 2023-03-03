@@ -14,10 +14,17 @@ int age_ = 10;
 
 - (void)test
 {
+    __block NSString *str = @"123456";
     void (^block)(void) = ^{
-        NSLog(@"-------%d", [self name]);
+//        NSLog(@"-------%@", self.name);
+//        self.name = @"addd";
+        NSLog(@"-------%@", str);
+        str = @"addd";
     };
     block();
+    self.block = block;
+//    NSLog(@"-------%@", self.name);
+    NSLog(@"-------%@", str);
 }
 
 - (instancetype)initWithName:(NSString *)name
@@ -26,6 +33,10 @@ int age_ = 10;
         self.name = name;
     }
     return self;
+}
+
+- (void)dealloc {
+    NSLog(@"释放");
 }
 
 @end

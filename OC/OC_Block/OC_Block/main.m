@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XZPersion.h"
 
 struct __main_block_desc_0 {
     size_t reserved;
@@ -104,6 +105,10 @@ int main(int argc, const char * argv[]) {
         block2();
 
         claTest();
+        
+        
+        XZPersion *ps = [[XZPersion alloc] initWithName:@"小白"];
+        [ps test];
     }
     return 0;
 }
