@@ -40,7 +40,7 @@ dispatch_semaphore_t semaphore_;
     
     dispatch_semaphore_wait(semaphore_, DISPATCH_TIME_FOREVER);
     // 定时器的唯一标识
-    NSString *name = [NSString stringWithFormat:@"%zd", timers_.count];
+    NSString *name = [[NSUUID UUID] UUIDString];
     // 存放到字典中
     timers_[name] = timer;
     dispatch_semaphore_signal(semaphore_);

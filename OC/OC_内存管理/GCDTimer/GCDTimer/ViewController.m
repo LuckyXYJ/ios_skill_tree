@@ -12,6 +12,8 @@
 @interface ViewController ()
 @property (strong, nonatomic) dispatch_source_t timer;
 @property (copy, nonatomic) NSString *task;
+@property (copy, nonatomic) NSString *task1;
+@property (copy, nonatomic) NSString *task2;
 @end
 
 @implementation ViewController
@@ -29,9 +31,9 @@
                           repeats:YES
                             async:NO];
     
-//    self.task = [XZTimer execTask:^{
-//        NSLog(@"111111 - %@", [NSThread currentThread]);
-//    } start:2.0 interval:-10 repeats:NO async:NO];
+    self.task1 = [XZTimer execTask:^{
+        NSLog(@"111111 - %@", [NSThread currentThread]);
+    } start:2.0 interval:-10 repeats:NO async:NO];
 }
 
 - (void)doTask
@@ -41,7 +43,16 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    
+    self.task2 = [XZTimer execTask:^{
+        NSLog(@"111111 - %@", [NSThread currentThread]);
+    } start:2.0 interval:1 repeats:NO async:NO];
+    
     [XZTimer cancelTask:self.task];
+    
+    
+    
+    NSLog(@"1=%@,2=%@,3=%@", self.task, self.task1, self.task2);
 }
 
 - (void)test
