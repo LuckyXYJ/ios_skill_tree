@@ -168,7 +168,7 @@ timer循环引用：self -> timer -> weakSelf -> self,当前的timer捕获的是
 
 Block循环引用：self -> block -> weakSelf -> self，当前的block捕获的是指针地址，即weakSelf表示的是指向self的临时变量的指针地址
 
-## ARC，MRC属性关键字
+## ARC，MRC内存管理
 
 retain 
     引用计数+1,如果引用计数出现上溢出，那么我们开始分开存储，一半存到散列表
