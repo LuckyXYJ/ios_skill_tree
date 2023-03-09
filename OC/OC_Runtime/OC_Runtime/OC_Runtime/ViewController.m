@@ -69,8 +69,8 @@
     
     ResolveMethod *persion = [[ResolveMethod alloc]init];
     
-    [persion test];
-    [ResolveMethod test];
+    [persion test1];
+//    [ResolveMethod test];
 }
 
 // 消息转发

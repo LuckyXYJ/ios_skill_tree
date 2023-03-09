@@ -94,6 +94,8 @@ receiverClass通过**superclass指针**找到superClass
 - +resolveInstanceMethod:
 - +resolveClassMethod:
 
+**注意：**经验证，以上两个方法返回bool值结果无论true 或 false，结果都一样。这个返回值只影响debug信息
+
 动态解析过后，会重新走“消息发送”的流程
 
 - “从receiverClass的cache中查找方法”这一步开始执行

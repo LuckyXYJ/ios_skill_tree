@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ResolveMethod : NSObject
 
 - (void)test;
+- (void)test1;
 + (void)test;
 
 @end

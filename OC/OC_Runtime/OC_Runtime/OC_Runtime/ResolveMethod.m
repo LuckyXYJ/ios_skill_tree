@@ -8,6 +8,7 @@
 
 #import "ResolveMethod.h"
 #import <objc/runtime.h>
+#import "ReceiveMethod.h"
 
 @implementation ResolveMethod
 
@@ -50,9 +51,39 @@ void c_other(id self, SEL _cmd)
         // 返回YES代表有动态添加方法
         return YES;
     }
-    return [super resolveInstanceMethod:sel];
+    
+    BOOL b = [super resolveInstanceMethod:sel];
+    return YES;
 }
 
++ (id)forwardingTargetForSelector:(SEL)aSelector
+{
+    if (aSelector == @selector(test1)) {
+        // objc_msgSend([[ReceiveMethod alloc] init], aSelector)
+        return [[ReceiveMethod alloc] init];
+    }
+    
+    id d = [super forwardingTargetForSelector:aSelector];
+    return d;
+}
+
+
+// 方法签名：返回值类型、参数类型
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    NSMethodSignature *a = [super methodSignatureForSelector:aSelector];
+    return a;
+}
+//
+//// NSInvocation封装了一个方法调用，包括：方法调用者、方法名、方法参数
+////    anInvocation.target 方法调用者
+////    anInvocation.selector 方法名
+////    [anInvocation getArgument:NULL atIndex:0]
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
+    
+    NSLog(@"1234");
+}
 
 //typedef struct objc_method *Method;
 //
