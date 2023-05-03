@@ -197,8 +197,13 @@ ssh root@x.x.x.x
 
 ### 允许任何来源应用
 
+解决` 已损坏，无法打开。您应该将它移到废纸篓` 问题
+
 ```
-sudo spctl  --master-disable
+sudo spctl  --master-disable // 开启任何来源选项
+
+
+sudo xattr -r -d com.apple.quarantine /Applications/WebStrom.app // 设置某个应用可用
 ```
 
 ### 进入目录搜索UIWebView
