@@ -11,3 +11,8 @@ git remote rm origin // 删除源
 git remote rename old new // git重命名远程仓库详解
 ```
 
+git config --global user.name '*'
+
+git config --global user.email *@qq.com'
+
+git config --list
