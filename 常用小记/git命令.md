@@ -1,4 +1,12 @@
-### git remote
+## git 设置
+
+git config --global user.name '*'
+
+git config --global user.email *@qq.com'
+
+git config --list
+
+## git remote
 
 ```
 git remote //查看源
@@ -11,8 +19,3 @@ git remote rm origin // 删除源
 git remote rename old new // git重命名远程仓库详解
 ```
 
-git config --global user.name '*'
-
-git config --global user.email *@qq.com'
-
-git config --list
