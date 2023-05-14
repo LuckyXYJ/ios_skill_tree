@@ -59,6 +59,17 @@ git config --list
 git config --list --show-origin
 ```
 
+### git设置命令别名详解
+
+```
+git config --global alias.aliasCmd cmd
+```
+
+| 参数     | 描述       |
+| -------- | ---------- |
+| aliasCmd | 命令别名。 |
+| cmd      | 命令。     |
+
 ## git 基础
 
 ### 创建仓库
@@ -272,14 +283,168 @@ git reset
 
 ## git 远程仓库 remote
 
+### 将代码添加到远程 git 仓库。
+
+```
+git remote add [shortname] [url]
+```
+
+### 远程仓库下载
+
+```
+git clone url
+```
+
+### 查看远程仓库详解
+
+```
+git remote [options]
+```
+
 ```
 git remote //查看源
 git remote -v //查看远程源仓库地址
 git remote show origin // 查看远程仓库信息，origin仓库名
 git remote add [shortname] [url] // 添加源名字，源地址
+```
 
-git remote rm origin // 删除源
+### git删除远程仓库详解
 
-git remote rename old new // git重命名远程仓库详解
+```
+git remote rm origin # 删除源
+```
+
+### git重命名远程仓库详解
+
+```
+git remote rename old new # git重命名远程仓库详解
+```
+
+### git修改远程仓库地址详解
+
+```
+git remote set-url origin url
+```
+
+### Git拉取远程仓库(git fetch)
+
+```
+git fetch [options]
+```
+
+| 实例                 | 描述                                                |
+| -------------------- | --------------------------------------------------- |
+| git fetch            | 创建并更新本地远程分支。                            |
+| git fetch origin     | 将 origin 远程主机的更新，全部取回本地。            |
+| git fetch origin dev | 将 origin 远程主机的 dev 分支的更新，全部取回本地。 |
+
+git pull 等于：
+
+```
+git pull = git fetch + git merge
+```
+
+取回远程主机分支的更新，并与本地合并。
+
+```
+git pull [options] [remote]
+```
+
+| 实例                        | 描述                                                         |
+| --------------------------- | ------------------------------------------------------------ |
+| git pull                    | 当前分支自动与唯一一个追踪分支进行合并。                     |
+| git pull origin             | 本地的当前分支自动与对应的 origin 主机 “追踪分支” 进行合并。 |
+| git pull origin next        | 取回 origin/next 分支，再与当前分支合并。                    |
+| git pull origin next:master | 取回 origin 主机的 next 分支，与本地的 master 分支合并。     |
+
+## git push命令详解
+
+用于将本地分支的更新，推动到远程。
+
+```
+git push <远程主机名> <本地分支名>:<远程分支名>
+```
+
+| 实例                          | 描述                                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| git push                      | 如果当前分支只有一个追踪分支，那么主机名都可以省略，表示将当前分支推送到 origin 主机的对应分支。 |
+| git push origin               | 将当前分支推送到 origin 主机的对应分支。                     |
+| git push origin master        | 将本地的 master 分支推送到 origin 主机的 master 分支。如果后者不存在，则会被新建。 |
+| git push origin master:newdev | 将本地的 master 分支推送到 origin 主机的 newdev 分支。如果后者不存在，则会被新建。 |
+| git push origin :master       | 删除远程仓库的分支。                                         |
+| git push -u origin master     | 如果当前分支与多个主机存在追踪关系，则可以使用 -u 参数指定一个默认主机，这样后面就可以不加任何参数使用 git push。 |
+| git push --all origin         | 不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机。 |
+| git push origin --tags        | 把 tag 推送到远端仓库。                                      |
+
+## git标签
+
+### git创建标签(git tag)详解
+
+```
+git tag tagName [commitId]
+```
+
+### 指定标签的备注信息
+
+```
+git tag -a tagName -m"tagnote"
+```
+
+### git查看所有标签详解
+
+```
+git tag -l
+```
+
+### git查看标签详解
+
+```
+git show tagName
+```
+
+### git删除本地标签详解
+
+```
+git tag -d tagName
+```
+
+### git删除远程标签详解
+
+git push 命令可以删除远程的 tag 标签。tagName：需要删除的远程标签的标签名
+
+```
+git push origin :refs/tags/tagName
+```
+
+### git推送tag到远程详解
+
+```
+git push origin [tagname]
+```
+
+### git推送所有tag到远程详解
+
+```
+git push origin --tags
+```
+
+### 重命名tag标签详解
+
+```
+git tag newTag oldTag
+git tag -d oldTag 
+```
+
+我们使用 git tag 将标签重命名后，我们还需要使用 git tag -d 命令，将旧标签删除，如果我们还需要将修改后的标签投送到远程，我们还需要使用如下命令：
+
+```
+git push origin：refs/tags/oldTag
+git push --tags 
+```
+
+push 命令中的冒号将标记从远程存储库。如果你不这样做，git 会在你的机器上创建旧的标签。最后，确保其他用户删除已删除的标签。请告诉他们运行以下命令：
+
+```
+git pull --prune --tags 
 ```
 
