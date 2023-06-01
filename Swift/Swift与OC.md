@@ -533,6 +533,31 @@ public static func delay(_ seconds: Double, _ block: @escaping Task) -> Dispatch
 }
 ```
 
+在 Swift 中，可以使用 GCD（Grand Central Dispatch）机制中的 `DispatchQueue` 来延时执行任务。具体来说，可以利用 `asyncAfter` 方法来实现延时执行任务，例如：
+
+```swift
+DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+    // 延时 2 秒后执行的代码
+}
+```
+
+上述代码中，`DispatchQueue.main` 表示在主线程中执行代码，`asyncAfter` 方法接受两个参数，第一个参数是任务执行的时间点，可以使用 `DispatchTime.now()` 表示当前时间，第二个参数是需要延时的时间间隔，以秒为单位。
+
+在上述代码中，我设置了一个 2 秒的延时，因此闭包中的代码会在延时结束后执行。如果想要取消已延时的任务，可以使用 `DispatchWorkItem` 来实现，例如：
+
+```swift
+let task = DispatchWorkItem {
+    // 需要延时执行的代码
+}
+
+DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: task)
+
+// 取消任务
+task.cancel()
+```
+
+上述代码中，`DispatchWorkItem` 表示一个任务，它包含了需要延时执行的代码，使用 `asyncAfter` 方法将任务添加到主队列中并设置了 2 秒的延时，如果需要取消任务，可以调用 `cancel` 方法。
+
 ## 多线程开发 – 异步延迟
 
 ```swift
