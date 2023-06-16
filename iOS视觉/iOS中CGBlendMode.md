@@ -24,5 +24,15 @@ CGBlendMode 是 iOS 开发中用于指定图形混合模式的枚举类型。它
 18. kCGBlendModeCopy：使用前景颜色替换背景颜色，忽略背景颜色的透明度。
 19. kCGBlendModeSourceIn：将源图形和目标图形相交的部分的颜色基于源图形颜色的透明度进行混合。
 20. kCGBlendModeSourceOut：将源图形和目标图形相交的部分的颜色基于源图形颜色的透明度进行混合，但是混合结果是反转的。
+21. kCGBlendModeSourceAtop - 保留源像素区域中与目标像素区域有重叠的部分，并将源像素区域中没有重叠的部分与目标像素区域混合。
+22. kCGBlendModeDestinationOver - 目标像素区域中的像素总是覆盖在源像素区域中的像素之上。
+23. kCGBlendModeDestinationIn - 将目标像素区域中与源像素区域有重叠的部分保留下来，并将其它像素设置为透明。
+24. kCGBlendModeDestinationOut - 保留目标像素区域中与源像素区域没有重叠的部分，并将其它像素设置为透明。
+25. kCGBlendModeDestinationAtop - 将目标像素区域中没有与源像素区域重叠的部分与源像素区域混合。
+26. kCGBlendModeXOR - 使用源像素和目标像素中不相同的部分。
+27. kCGBlendModePlusDarker - 将源像素和目标像素中颜色深度较浅的像素相加，以产生较深的颜色。
+28. kCGBlendModePlusLighter - 将源像素和目标像素中颜色深度较深的像素相加，以产生较浅的颜色。
+29. kCGBlendModeOverlayLinear - 根据源像素的亮度和目标像素的亮度选择叠加颜色或反射颜色。
+30. kCGBlendModeOverlaySaturate - 使用饱和度增加和减少通道，为源像素区域和目标像素区域产生亮色和暗色混合。
 
 这些混合模式可以用于绘制颜色、图片、渐变等，实现各种个性化、丰富多彩的视觉效果。
