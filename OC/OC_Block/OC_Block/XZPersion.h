@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XZPersion : NSObject
-@property (copy, nonatomic) void (^block)();
+@property (copy, nonatomic) void (^block)(void);
 @property (copy, nonatomic) NSString *name;
 
 - (void)test;

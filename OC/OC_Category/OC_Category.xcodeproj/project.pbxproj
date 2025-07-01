@@ -31,6 +31,7 @@
 		2DE1412D20A321DF009823F3 /* MJPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPerson.m; sourceTree = "<group>"; };
 		2DE1412F20A32235009823F3 /* MJPerson+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MJPerson+Test.h"; sourceTree = "<group>"; };
 		2DE1413020A32235009823F3 /* MJPerson+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MJPerson+Test.m"; sourceTree = "<group>"; };
+		30B5ABC12DF545EA00735F2A /* MJPerson+Ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MJPerson+Ext.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 				2DE1412D20A321DF009823F3 /* MJPerson.m */,
 				2DE1412F20A32235009823F3 /* MJPerson+Test.h */,
 				2DE1413020A32235009823F3 /* MJPerson+Test.m */,
+				30B5ABC12DF545EA00735F2A /* MJPerson+Ext.h */,
 			);
 			path = OC_Category;
 			sourceTree = "<group>";

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MJPerson.h"
 #import "MJPerson+Test.h"
+#import "MJPerson+Ext.h"
 #import <objc/runtime.h>
 
 int main(int argc, const char * argv[]) {
@@ -17,6 +18,7 @@ int main(int argc, const char * argv[]) {
         person.age = 10;
         person.name = @"jack";
         person.weight = 30;
+        person.age1 = 20;
         
         
 //        {
@@ -35,8 +37,8 @@ int main(int argc, const char * argv[]) {
         person2.name = nil;
         person2.weight = 50;
         
-        NSLog(@"person - age is %d, name is %@, weight is %d", person.age, person.name, person.weight);
-        NSLog(@"person2 - age is %d, name is %@, weight is %d", person2.age, person2.name, person2.weight);
+        NSLog(@"person - age is %d, name is %@, weight is %d", person.age1, person.name, person.weight);
+        NSLog(@"person2 - age is %d, name is %@, weight is %d", person2.age1, person2.name, person2.weight);
     }
     return 0;
 }

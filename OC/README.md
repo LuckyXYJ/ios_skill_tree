@@ -83,7 +83,7 @@
 4. 方法cache是怎么做的？有什么好处
 5. OC与Swift在方法调用上有什么区别？
 6. 动态方法解析过程中关键方法是哪个？` resolveInstanceMethod:`
-7. 消息转发过程关键方法有哪几个？` forwardInvocation:`，` methodSignatureForSelector:`，` forwardInvocation`
+7. 消息转发过程关键方法有哪几个？` forwardingTargetForSelector:`，` methodSignatureForSelector:`，` forwardInvocation`
 8. @dynamic的作用是什么？
 9. super xxxx]中super有什么作用？
 10. Runtime的API有哪些？

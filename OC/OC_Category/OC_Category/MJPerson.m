@@ -7,6 +7,7 @@
 //
 
 #import "MJPerson.h"
+#import "MJPerson+Ext.h"
 
 @implementation MJPerson
 
