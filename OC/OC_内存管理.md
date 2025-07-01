@@ -68,6 +68,13 @@ for (int i = 0; i < 1000; i++) {
   });
 }
 
+- (void)setName:(NSString *)name {
+    if(_name != name) {
+        [_name release];
+        _name = [name retain]; // or [name copy]
+    }
+}
+
 // 代码2
 dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
 for (int i = 0; i < 1000; i++) {

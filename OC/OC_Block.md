@@ -6,7 +6,7 @@ block是封装了**函数调用**以及**函数调用环境**的**OC对象**
 
 block的底层结构如下图所示
 
-![image-20220601203643653](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601203643653.png)
+![image-20250615121711429](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20250615121711429.png)
 
 ## Block变量捕获
 
@@ -18,7 +18,7 @@ block的底层结构如下图所示
 
 ### Auto变量的捕获
 
-![image-20220601204042313](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601204042313.png)
+![image-20250615121943141](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20250615121943141.png)
 
 ## block类型
 
@@ -40,7 +40,7 @@ __NSMallocBlock__ （ _NSConcreteMallocBlock ）
 
 每一种类型的block调用copy后的结果如下所示
 
-![image-20220601205102084](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20220601205102084.png)
+![image-20250615122717313](http://xingyajie.oss-cn-hangzhou.aliyuncs.com/uPic/image-20250615122717313.png)
 
 ## Block 的copy
 
